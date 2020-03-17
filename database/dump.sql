@@ -17,13 +17,17 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
+ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_pkey;
 ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
 ALTER TABLE ONLY public.foods DROP CONSTRAINT foods_pkey;
 ALTER TABLE public.users ALTER COLUMN "userId" DROP DEFAULT;
+ALTER TABLE public.groups ALTER COLUMN "groupId" DROP DEFAULT;
 ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
 ALTER TABLE public.foods ALTER COLUMN "foodId" DROP DEFAULT;
 DROP SEQUENCE public."users_userId_seq";
 DROP TABLE public.users;
+DROP SEQUENCE public."groups_groupId_seq";
+DROP TABLE public.groups;
 DROP SEQUENCE public."fridges_fridgeId_seq";
 DROP TABLE public.fridges;
 DROP SEQUENCE public."foods_foodId_seq";
@@ -124,6 +128,36 @@ ALTER SEQUENCE public."fridges_fridgeId_seq" OWNED BY public.fridges."fridgeId";
 
 
 --
+-- Name: groups; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.groups (
+    "groupId" integer NOT NULL,
+    "groupName" text NOT NULL
+);
+
+
+--
+-- Name: groups_groupId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."groups_groupId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: groups_groupId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."groups_groupId_seq" OWNED BY public.groups."groupId";
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -169,6 +203,13 @@ ALTER TABLE ONLY public.fridges ALTER COLUMN "fridgeId" SET DEFAULT nextval('pub
 
 
 --
+-- Name: groups groupId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups ALTER COLUMN "groupId" SET DEFAULT nextval('public."groups_groupId_seq"'::regclass);
+
+
+--
 -- Name: users userId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -188,6 +229,14 @@ COPY public.foods ("foodId", "foodName", "groupId") FROM stdin;
 --
 
 COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
+\.
+
+
+--
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.groups ("groupId", "groupName") FROM stdin;
 \.
 
 
@@ -214,6 +263,13 @@ SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
 
 
 --
+-- Name: groups_groupId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."groups_groupId_seq"', 1, false);
+
+
+--
 -- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -234,6 +290,14 @@ ALTER TABLE ONLY public.foods
 
 ALTER TABLE ONLY public.fridges
     ADD CONSTRAINT fridges_pkey PRIMARY KEY ("fridgeId");
+
+
+--
+-- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY ("groupId");
 
 
 --
