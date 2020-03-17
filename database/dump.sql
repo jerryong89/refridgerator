@@ -16,8 +16,10 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.users DROP CONSTRAINT "users_fridgeId_fkey";
 ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
 ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
+DROP TABLE public.users;
 DROP SEQUENCE public."fridges_fridgeId_seq";
 DROP TABLE public.fridges;
 DROP EXTENSION plpgsql;
@@ -85,6 +87,17 @@ ALTER SEQUENCE public."fridges_fridgeId_seq" OWNED BY public.fridges."fridgeId";
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.users (
+    "fridgeId" integer,
+    "userName" text NOT NULL,
+    "userId" integer NOT NULL
+);
+
+
+--
 -- Name: fridges fridgeId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -96,6 +109,14 @@ ALTER TABLE ONLY public.fridges ALTER COLUMN "fridgeId" SET DEFAULT nextval('pub
 --
 
 COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.users ("fridgeId", "userName", "userId") FROM stdin;
 \.
 
 
@@ -112,6 +133,14 @@ SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
 
 ALTER TABLE ONLY public.fridges
     ADD CONSTRAINT fridges_pkey PRIMARY KEY ("fridgeId");
+
+
+--
+-- Name: users users_fridgeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT "users_fridgeId_fkey" FOREIGN KEY ("fridgeId") REFERENCES public.fridges("fridgeId");
 
 
 --
