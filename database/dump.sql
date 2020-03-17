@@ -16,6 +16,10 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
+ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
+DROP SEQUENCE public."fridges_fridgeId_seq";
+DROP TABLE public.fridges;
 DROP EXTENSION plpgsql;
 DROP SCHEMA public;
 --
@@ -44,6 +48,70 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: fridges; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.fridges (
+    "fridgeId" integer NOT NULL,
+    "fridgeName" text NOT NULL
+);
+
+
+--
+-- Name: fridges_fridgeId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."fridges_fridgeId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: fridges_fridgeId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."fridges_fridgeId_seq" OWNED BY public.fridges."fridgeId";
+
+
+--
+-- Name: fridges fridgeId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.fridges ALTER COLUMN "fridgeId" SET DEFAULT nextval('public."fridges_fridgeId_seq"'::regclass);
+
+
+--
+-- Data for Name: fridges; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
+\.
+
+
+--
+-- Name: fridges_fridgeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
+
+
+--
+-- Name: fridges fridges_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.fridges
+    ADD CONSTRAINT fridges_pkey PRIMARY KEY ("fridgeId");
 
 
 --
