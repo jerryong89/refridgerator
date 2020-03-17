@@ -16,8 +16,13 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.users DROP CONSTRAINT "users_fridgeId_fkey";
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
+ALTER TABLE public.users ALTER COLUMN "userId" DROP DEFAULT;
 ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
+DROP SEQUENCE public."users_userId_seq";
+DROP TABLE public.users;
 DROP SEQUENCE public."fridges_fridgeId_seq";
 DROP TABLE public.fridges;
 DROP EXTENSION plpgsql;
@@ -85,10 +90,48 @@ ALTER SEQUENCE public."fridges_fridgeId_seq" OWNED BY public.fridges."fridgeId";
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.users (
+    "userId" integer NOT NULL,
+    "fridgeId" integer,
+    "fridgeName" text NOT NULL
+);
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."users_userId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."users_userId_seq" OWNED BY public.users."userId";
+
+
+--
 -- Name: fridges fridgeId; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.fridges ALTER COLUMN "fridgeId" SET DEFAULT nextval('public."fridges_fridgeId_seq"'::regclass);
+
+
+--
+-- Name: users userId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN "userId" SET DEFAULT nextval('public."users_userId_seq"'::regclass);
 
 
 --
@@ -100,10 +143,25 @@ COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
 
 
 --
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.users ("userId", "fridgeId", "fridgeName") FROM stdin;
+\.
+
+
+--
 -- Name: fridges_fridgeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."users_userId_seq"', 1, false);
 
 
 --
@@ -112,6 +170,22 @@ SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
 
 ALTER TABLE ONLY public.fridges
     ADD CONSTRAINT fridges_pkey PRIMARY KEY ("fridgeId");
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY ("userId");
+
+
+--
+-- Name: users users_fridgeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT "users_fridgeId_fkey" FOREIGN KEY ("fridgeId") REFERENCES public.fridges("fridgeId");
 
 
 --
