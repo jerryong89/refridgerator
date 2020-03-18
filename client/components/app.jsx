@@ -1,25 +1,42 @@
 import React from 'react';
+import LoginHeader from './login-header';
+import StartScreenLogin from './start-screen-login';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true
+      fridgeName: null
     };
+    this.createFridge = this.createFridge.bind(this);
+  }
+
+  createFridge(clientFridgeName) {
+    fetch('/api/fridges', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clientFridgeName)
+    }).then(response => {
+      return (response.json());
+    }).then(result => {
+      this.setState({
+        fridgeName: clientFridgeName
+      });
+    });
   }
 
   componentDidMount() {
-    fetch('/api/health-check')
-      .then(res => res.json())
-      .then(data => this.setState({ message: data.message || data.error }))
-      .catch(err => this.setState({ message: err.message }))
-      .finally(() => this.setState({ isLoading: false }));
+
   }
 
   render() {
-    return this.state.isLoading
-      ? <h1>Testing connections...</h1>
-      : <h1>{this.state.message.toUpperCase()}</h1>;
+    return (
+      <div>
+        <LoginHeader/>
+        <StartScreenLogin createFridgeMethod={this.createFridge}/>
+      </div>
+    );
   }
 }
