@@ -17,18 +17,25 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 ALTER TABLE ONLY public.users DROP CONSTRAINT "users_fridgeId_fkey";
+ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_userId_fkey";
+ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_groupId_fkey";
+ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_fridgeId_fkey";
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_pkey;
 ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
+ALTER TABLE ONLY public.claims DROP CONSTRAINT claims_pkey;
 ALTER TABLE public.users ALTER COLUMN "userId" DROP DEFAULT;
 ALTER TABLE public.groups ALTER COLUMN "groupId" DROP DEFAULT;
 ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
+ALTER TABLE public.claims ALTER COLUMN "claimId" DROP DEFAULT;
 DROP SEQUENCE public."users_userId_seq";
 DROP TABLE public.users;
 DROP SEQUENCE public."groups_groupId_seq";
 DROP TABLE public.groups;
 DROP SEQUENCE public."fridges_fridgeId_seq";
 DROP TABLE public.fridges;
+DROP SEQUENCE public."claims_claimId_seq";
+DROP TABLE public.claims;
 DROP EXTENSION plpgsql;
 DROP SCHEMA public;
 --
@@ -62,6 +69,41 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- Name: claims; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.claims (
+    "claimId" integer NOT NULL,
+    "fridgeId" integer NOT NULL,
+    "userId" integer NOT NULL,
+    "groupId" integer NOT NULL,
+    "foodName" text NOT NULL,
+    qty integer NOT NULL,
+    "expirationDate" timestamp(6) with time zone
+);
+
+
+--
+-- Name: claims_claimId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."claims_claimId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: claims_claimId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."claims_claimId_seq" OWNED BY public.claims."claimId";
+
 
 --
 -- Name: fridges; Type: TABLE; Schema: public; Owner: -
@@ -155,6 +197,13 @@ ALTER SEQUENCE public."users_userId_seq" OWNED BY public.users."userId";
 
 
 --
+-- Name: claims claimId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.claims ALTER COLUMN "claimId" SET DEFAULT nextval('public."claims_claimId_seq"'::regclass);
+
+
+--
 -- Name: fridges fridgeId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -173,6 +222,14 @@ ALTER TABLE ONLY public.groups ALTER COLUMN "groupId" SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN "userId" SET DEFAULT nextval('public."users_userId_seq"'::regclass);
+
+
+--
+-- Data for Name: claims; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.claims ("claimId", "fridgeId", "userId", "groupId", "foodName", qty, "expirationDate") FROM stdin;
+\.
 
 
 --
@@ -200,6 +257,13 @@ COPY public.users ("userId", "fridgeId", "fridgeName") FROM stdin;
 
 
 --
+-- Name: claims_claimId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."claims_claimId_seq"', 1, false);
+
+
+--
 -- Name: fridges_fridgeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -218,6 +282,14 @@ SELECT pg_catalog.setval('public."groups_groupId_seq"', 1, false);
 --
 
 SELECT pg_catalog.setval('public."users_userId_seq"', 1, false);
+
+
+--
+-- Name: claims claims_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.claims
+    ADD CONSTRAINT claims_pkey PRIMARY KEY ("claimId");
 
 
 --
@@ -242,6 +314,30 @@ ALTER TABLE ONLY public.groups
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY ("userId");
+
+
+--
+-- Name: claims claims_fridgeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.claims
+    ADD CONSTRAINT "claims_fridgeId_fkey" FOREIGN KEY ("fridgeId") REFERENCES public.fridges("fridgeId");
+
+
+--
+-- Name: claims claims_groupId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.claims
+    ADD CONSTRAINT "claims_groupId_fkey" FOREIGN KEY ("groupId") REFERENCES public.groups("groupId");
+
+
+--
+-- Name: claims claims_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.claims
+    ADD CONSTRAINT "claims_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users("userId");
 
 
 --
