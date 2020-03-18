@@ -17,19 +17,24 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 ALTER TABLE ONLY public.users DROP CONSTRAINT "users_fridgeId_fkey";
+ALTER TABLE ONLY public.messages DROP CONSTRAINT "messages_userId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_userId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_groupId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_fridgeId_fkey";
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
+ALTER TABLE ONLY public.messages DROP CONSTRAINT messages_pkey;
 ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_pkey;
 ALTER TABLE ONLY public.fridges DROP CONSTRAINT fridges_pkey;
 ALTER TABLE ONLY public.claims DROP CONSTRAINT claims_pkey;
 ALTER TABLE public.users ALTER COLUMN "userId" DROP DEFAULT;
+ALTER TABLE public.messages ALTER COLUMN "messageId" DROP DEFAULT;
 ALTER TABLE public.groups ALTER COLUMN "groupId" DROP DEFAULT;
 ALTER TABLE public.fridges ALTER COLUMN "fridgeId" DROP DEFAULT;
 ALTER TABLE public.claims ALTER COLUMN "claimId" DROP DEFAULT;
 DROP SEQUENCE public."users_userId_seq";
 DROP TABLE public.users;
+DROP SEQUENCE public."messages_messageId_seq";
+DROP TABLE public.messages;
 DROP SEQUENCE public."groups_groupId_seq";
 DROP TABLE public.groups;
 DROP SEQUENCE public."fridges_fridgeId_seq";
@@ -166,6 +171,38 @@ ALTER SEQUENCE public."groups_groupId_seq" OWNED BY public.groups."groupId";
 
 
 --
+-- Name: messages; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.messages (
+    "messageId" integer NOT NULL,
+    "userId" integer NOT NULL,
+    message text NOT NULL,
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: messages_messageId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."messages_messageId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messages_messageId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."messages_messageId_seq" OWNED BY public.messages."messageId";
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -218,6 +255,13 @@ ALTER TABLE ONLY public.groups ALTER COLUMN "groupId" SET DEFAULT nextval('publi
 
 
 --
+-- Name: messages messageId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.messages ALTER COLUMN "messageId" SET DEFAULT nextval('public."messages_messageId_seq"'::regclass);
+
+
+--
 -- Name: users userId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -249,6 +293,14 @@ COPY public.groups ("groupId", "groupName") FROM stdin;
 
 
 --
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.messages ("messageId", "userId", message, "createdAt") FROM stdin;
+\.
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -275,6 +327,13 @@ SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
 --
 
 SELECT pg_catalog.setval('public."groups_groupId_seq"', 1, false);
+
+
+--
+-- Name: messages_messageId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."messages_messageId_seq"', 1, false);
 
 
 --
@@ -309,6 +368,14 @@ ALTER TABLE ONLY public.groups
 
 
 --
+-- Name: messages messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY ("messageId");
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -338,6 +405,14 @@ ALTER TABLE ONLY public.claims
 
 ALTER TABLE ONLY public.claims
     ADD CONSTRAINT "claims_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users("userId");
+
+
+--
+-- Name: messages messages_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.messages
+    ADD CONSTRAINT "messages_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users("userId");
 
 
 --

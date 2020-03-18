@@ -1,23 +1,36 @@
 import React from 'react';
 import FridgeChat from './fridgechat';
+import LoginHeader from './login-header';
+import StartScreenLogin from './start-screen-login';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true,
+      fridgeName: null,
       chat: []
     };
+    this.createFridge = this.createFridge.bind(this);
+  }
+
+  createFridge(clientFridgeName) {
+    fetch('/api/fridges', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clientFridgeName)
+    }).then(response => {
+      return (response.json());
+    }).then(result => {
+      this.setState({
+        fridgeName: clientFridgeName
+      });
+    });
   }
 
   componentDidMount() {
-    // this.getChat();
-    // fetch('/api/health-check')
-    //   .then(res => res.json())
-    //   .then(data => this.setState({ message: data.message || data.error }))
-    //   .catch(err => this.setState({ message: err.message }))
-    //   .finally(() => this.setState({ isLoading: false }));
+    this.getChat();
   }
 
   getChat() {
@@ -26,6 +39,7 @@ export default class App extends React.Component {
       .then(messages => this.setState({
         chat: messages
       }));
+
   }
 
   // postChat(newMessage) {
@@ -50,12 +64,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <FridgeChat/>
+        <LoginHeader/>
+        <StartScreenLogin createFridgeMethod={this.createFridge}/>
         {this.state.chat.map(message => <FridgeChat key={message.messageId} post={message}/* post={this.postChat} */ />)}
       </div>
-      // this.state.isLoading
-      // ? <h1>Testing connections...</h1>
-      // : <h1>{this.state.message.toUpperCase()}</h1>;
     );
   }
 }
