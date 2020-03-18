@@ -14,8 +14,29 @@ app.use(sessionMiddleware);
 app.use(express.json());
 
 app.get('/api/health-check', (req, res, next) => {
-  db.query(`select 'successfully connected' as "message"`)
+  db.query('select \'successfully connected\' as "message"')
     .then(result => res.json(result.rows[0]))
+    .catch(err => next(err));
+});
+
+app.post('/api/fridges', (req, res, next) => {
+  const { fridgeName } = req.body;
+  const sql = `
+    INSERT INTO "fridges" ("fridgeName", "fridgeId")
+    VALUES ($1, default)
+    RETURNING *
+    `;
+
+  const value = [fridgeName];
+  if (fridgeName.length <= 0) {
+    return res.status(400).json({
+      error: 'fridge name must not be empty'
+    });
+  }
+  db.query(sql, value)
+    .then(result => {
+      return res.status(201).json(result.rows[0]);
+    })
     .catch(err => next(err));
 });
 
