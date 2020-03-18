@@ -4,7 +4,9 @@ export default class StartScreenLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fridgeName: ''
+      fridge: {
+        name: ''
+      }
     };
     this.handleFridgeNameInput = this.handleFridgeNameInput.bind(this);
     this.handleCreateFridgeClick = this.handleCreateFridgeClick.bind(this);
@@ -12,14 +14,16 @@ export default class StartScreenLogin extends React.Component {
 
   handleFridgeNameInput(event) {
     this.setState({
-      fridgeName: event.currentTarget.value
+      fridge: {
+        name: event.currentTarget.value
+      }
     });
   }
 
   handleCreateFridgeClick(event) {
     event.preventDefault();
     const createFridgeMethod = this.props.createFridgeMethod;
-    createFridgeMethod(this.state.fridgeName);
+    createFridgeMethod(this.state.fridge);
   }
 
   render() {
