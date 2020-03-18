@@ -28,9 +28,9 @@ app.post('/api/fridges', (req, res, next) => {
     `;
 
   const value = [fridgeName];
-  if (fridgeName.length <= 0) {
+  if (fridgeName.length <= 2) {
     return res.status(400).json({
-      error: 'fridge name must not be empty'
+      error: 'fridge name must be longer than 2 characters'
     });
   }
   db.query(sql, value)
