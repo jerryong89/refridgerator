@@ -19,10 +19,10 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('chatURL', (req, res, next) => {
+app.get('api/messages', (req, res, next) => {
   const sql = `
-    select "messagesROW",
-      from "CHATTABLE";
+    select "message",
+      from "messages";
   `;
   db.query(sql)
     .then(result => res.json(result.rows))
