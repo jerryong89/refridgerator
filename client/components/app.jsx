@@ -2,6 +2,7 @@ import React from 'react';
 import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
+import MemberLoginScreen from './member-login-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,6 +11,10 @@ export default class App extends React.Component {
       fridge: {
         fridgeId: '',
         fridgeName: ''
+      },
+      user: {
+        userId: '',
+        username: ''
       },
       view: 'start-screen',
       loginError: false
@@ -39,6 +44,10 @@ export default class App extends React.Component {
       return (
         <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
       );
+    } else if (this.state.view === 'member-login-screen') {
+      return (
+        <MemberLoginScreen/>
+      );
     }
   }
 
@@ -66,7 +75,8 @@ export default class App extends React.Component {
               fridgeId: result,
               fridgeName: clientFridgeName
             },
-            loginError: false
+            loginError: false,
+            view: 'member-login-screen'
           });
         }
       });
