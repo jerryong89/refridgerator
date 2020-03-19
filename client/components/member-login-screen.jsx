@@ -6,6 +6,13 @@ export default class MemberLoginScreen extends React.Component {
     this.state = {
 
     };
+    this.changeViewNewMember = this.changeViewNewMember.bind(this);
+  }
+
+  changeViewNewMember(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('new-member-login-screen');
   }
 
   render() {
@@ -14,7 +21,7 @@ export default class MemberLoginScreen extends React.Component {
         <div className="d-flex justify-content-center mt-5">
           <form>
             <label htmlFor="">
-              <button className="btn btn-secondary">New Member</button>
+              <button className="btn btn-secondary" onClick={this.changeViewNewMember}>New Member</button>
             </label>
           </form>
         </div>
