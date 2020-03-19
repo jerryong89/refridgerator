@@ -6,11 +6,26 @@ export default class MemberLoginScreen extends React.Component {
     this.state = {
 
     };
+    this.changeViewNewMember = this.changeViewNewMember.bind(this);
+  }
+
+  changeViewNewMember(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('new-member-login-screen');
   }
 
   render() {
     return (
-      <div>Member Login Screen</div>
+      <div>
+        <div className="d-flex justify-content-center mt-5">
+          <form>
+            <label htmlFor="">
+              <button className="btn btn-secondary" onClick={this.changeViewNewMember}>New Member</button>
+            </label>
+          </form>
+        </div>
+      </div>
     );
   }
 }

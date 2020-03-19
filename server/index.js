@@ -86,23 +86,25 @@ app.post('/api/fridges', (req, res, next) => {
 });
 
 // User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
-// req.body.fridgeId to be changed to req.ression.fridgeId
 app.post('/api/users', (req, res, next) => {
-  const values = [req.body.fridgeId, req.body.userName];
+  const values = [req.session.fridgeId, req.body.userName];
   const text = `
   INSERT INTO  "users" ("userId", "fridgeId", "userName")
   VALUES       (default, $1, $2)
   RETURNING     *;
   `;
-  const parsedId = parseInt(req.body.fridgeId);
+  const parsedId = parseInt(req.session.fridgeId);
   if (parsedId < 0 || isNaN(parsedId)) {
     return res.status(400).json({ error: 'Invalid Fridge ID' });
+  } else {
+    db.query(text, values)
+      .then(result => {
+        req.session.userId = result.rows[0].userId;
+        req.session.userName = result.rows[0].userName;
+        return res.status(201).json(result.rows[0]);
+      })
+      .catch(err => next(err));
   }
-  db.query(text, values)
-    .then(result => {
-      return res.status(201).json(result.rows[0]);
-    })
-    .catch(err => next(err));
 });
 
 // User Can View All Groceries in Fridge

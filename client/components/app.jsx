@@ -3,6 +3,7 @@ import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
 import MemberLoginScreen from './member-login-screen';
+import NewMemberLoginScreen from './new-member-login-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class App extends React.Component {
       },
       user: {
         userId: '',
-        username: ''
+        userName: ''
       },
       view: 'start-screen',
       loginError: false
@@ -24,6 +25,7 @@ export default class App extends React.Component {
     this.createFridge = this.createFridge.bind(this);
     this.getFridges = this.getFridges.bind(this);
     this.loginError = this.loginError.bind(this);
+    this.createNewMember = this.createNewMember.bind(this);
   }
 
   setView(name) {
@@ -46,7 +48,11 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'member-login-screen') {
       return (
-        <MemberLoginScreen/>
+        <MemberLoginScreen setView={this.setView}/>
+      );
+    } else if (this.state.view === 'new-member-login-screen') {
+      return (
+        <NewMemberLoginScreen createNewMember={this.createNewMember}/>
       );
     }
   }
@@ -94,6 +100,22 @@ export default class App extends React.Component {
     }).then(result => {
       this.setState({
         fridgeName: clientFridgeName
+      });
+    });
+  }
+
+  createNewMember(clientUserName) {
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clientUserName)
+    }).then(response => {
+      return (response.json());
+    }).then(result => {
+      this.setState({
+        userName: clientUserName
       });
     });
   }
