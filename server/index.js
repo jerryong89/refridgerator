@@ -21,7 +21,7 @@ app.get('/api/health-check', (req, res, next) => {
 
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
-  const fridgeName = req.body.name;
+  const fridgeName = req.body.fridgeName;
   const sql = `
     INSERT INTO "fridges" ("fridgeName", "fridgeId")
     VALUES ($1, default)
@@ -29,16 +29,17 @@ app.post('/api/fridges', (req, res, next) => {
     `;
 
   const value = [fridgeName];
-  if (fridgeName.length <= 2) {
+  if (!fridgeName) {
     return res.status(400).json({
-      error: 'fridge name must be longer than 2 characters'
+      error: 'fridge name must be valid'
     });
+  } else {
+    db.query(sql, value)
+      .then(result => {
+        return res.status(201).json(result.rows[0]);
+      })
+      .catch(err => next(err));
   }
-  db.query(sql, value)
-    .then(result => {
-      return res.status(201).json(result.rows[0]);
-    })
-    .catch(err => next(err));
 });
 
 // User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
