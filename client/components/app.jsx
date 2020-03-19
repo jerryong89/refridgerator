@@ -2,17 +2,28 @@ import React from 'react';
 import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
+import MemberLoginScreen from './member-login-screen';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fridgeName: null,
-      view: 'start-screen'
+      fridge: {
+        fridgeId: '',
+        fridgeName: ''
+      },
+      user: {
+        userId: '',
+        username: ''
+      },
+      view: 'start-screen',
+      loginError: false
     };
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
     this.createFridge = this.createFridge.bind(this);
+    this.getFridges = this.getFridges.bind(this);
+    this.loginError = this.loginError.bind(this);
   }
 
   setView(name) {
@@ -24,17 +35,55 @@ export default class App extends React.Component {
   displayView() {
     if (this.state.view === 'start-screen') {
       return (
-        <LoginScreen setView={this.setView} />
+        <div>
+          {this.loginError()}
+          <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
+        </div>
       );
     } else if (this.state.view === 'create-screen') {
       return (
         <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
       );
+    } else if (this.state.view === 'member-login-screen') {
+      return (
+        <MemberLoginScreen/>
+      );
     }
   }
 
+  loginError() {
+    if (this.state.loginError === true) {
+      return (
+        <p className="text-center loginError">Please Enter An Existing Fridge Name</p>
+      );
+    }
+  }
+
+  getFridges(clientFridgeName) {
+    event.preventDefault();
+    fetch(`/api/fridges/${clientFridgeName}`)
+      .then(response => {
+        return response.json();
+      }).then(result => {
+        if (result.error) {
+          this.setState({
+            loginError: true
+          });
+        } else {
+          this.setState({
+            fridge: {
+              fridgeId: result,
+              fridgeName: clientFridgeName
+            },
+            loginError: false,
+            view: 'member-login-screen'
+          });
+        }
+      });
+  }
+
   createFridge(clientFridgeName) {
-    fetch('/api/fridges', {
+    fetch('/api/fridges/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
