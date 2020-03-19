@@ -19,6 +19,16 @@ export default class LoginScreen extends React.Component {
     return (
       <div>
         <div className="d-flex justify-content-center mt-5">
+          <form>
+            <label htmlFor="">
+              <input type="text"/>
+            </label>
+            <div className="d-flex justify-content-center mt-4">
+              <button className="btn btn-secondary">Join Fridge</button>
+            </div>
+          </form>
+        </div>
+        <div className="d-flex justify-content-center mt-4">
           <div>
             <button className="btn btn-secondary" onClick={this.changeViewCreateScreen}>Create Fridge</button>
           </div>
