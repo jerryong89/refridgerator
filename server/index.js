@@ -41,7 +41,7 @@ app.post('/api/fridges', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row entry)
+// User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
 app.post('/api/users', (req, res, next) => {
   const values = [req.body.fridgeId, req.body.userName];
   const text = `
