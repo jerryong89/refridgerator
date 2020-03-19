@@ -9,6 +9,7 @@ export default class NewMemberLoginScreen extends React.Component {
       }
     };
     this.handleNewMemberInput = this.handleNewMemberInput.bind(this);
+    this.handleCreateNewMember = this.handleCreateNewMember.bind(this);
   }
 
   handleNewMemberInput(event) {
@@ -17,6 +18,12 @@ export default class NewMemberLoginScreen extends React.Component {
         userName: event.currentTarget.value
       }
     });
+  }
+
+  handleCreateNewMember(event) {
+    event.preventDefault();
+    const createNewMemberMethod = this.props.createNewMember;
+    createNewMemberMethod(this.state.user);
   }
 
   render() {
@@ -28,7 +35,7 @@ export default class NewMemberLoginScreen extends React.Component {
               <input type="text" placeholder="Name" onChange={this.handleNewMemberInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
-              <button className="btn btn-secondary">Create New Member</button>
+              <button className="btn btn-secondary" onClick={this.handleCreateNewMember}>Create New Member</button>
             </div>
           </form>
         </div>

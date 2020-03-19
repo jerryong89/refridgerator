@@ -25,6 +25,7 @@ export default class App extends React.Component {
     this.createFridge = this.createFridge.bind(this);
     this.getFridges = this.getFridges.bind(this);
     this.loginError = this.loginError.bind(this);
+    this.createNewMember = this.createNewMember.bind(this);
   }
 
   setView(name) {
@@ -51,7 +52,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'new-member-login-screen') {
       return (
-        <NewMemberLoginScreen/>
+        <NewMemberLoginScreen createNewMember={this.createNewMember}/>
       );
     }
   }
@@ -99,6 +100,22 @@ export default class App extends React.Component {
     }).then(result => {
       this.setState({
         fridgeName: clientFridgeName
+      });
+    });
+  }
+
+  createNewMember(clientUserName) {
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clientUserName)
+    }).then(response => {
+      return (response.json());
+    }).then(result => {
+      this.setState({
+        userName: clientUserName
       });
     });
   }
