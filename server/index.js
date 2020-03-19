@@ -61,6 +61,22 @@ app.post('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User Can View All Groceries in Fridge
+app.get('/api/claims', (req, res, next) => {
+  if (!req.body.fridgeId) {
+    throw new ClientError('No Fridge Found', 400);
+  }
+  const value = [req.body.fridgeid];
+  const text = `
+  SELECT    *
+  FROM      "claims"
+  WHERE     "fridgeId" = $1;
+  `;
+  db.query(text, value)
+    .then(result => res.status(201).json(result.rows[0]))
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
