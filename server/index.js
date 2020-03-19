@@ -69,6 +69,7 @@ app.post('/api/fridges', (req, res, next) => {
 });
 
 // User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
+// req.body.fridgeId to be changed to req.ression.fridgeId
 app.post('/api/users', (req, res, next) => {
   const values = [req.body.fridgeId, req.body.userName];
   const text = `
@@ -84,6 +85,61 @@ app.post('/api/users', (req, res, next) => {
     .then(result => {
       return res.status(201).json(result.rows[0]);
     })
+    .catch(err => next(err));
+});
+
+// User Can View All Groceries in Fridge
+// req.body to be changed to req.session
+// returns array of all claims
+app.get('/api/claims', (req, res, next) => {
+  if (!req.body.fridgeId) {
+    throw new ClientError('No Fridge Found', 400);
+  }
+  const value = [req.body.fridgeId];
+  const text = `
+  SELECT    *
+  FROM      "claims"
+  WHERE     "fridgeId" = $1;
+  `;
+  db.query(text, value)
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
+});
+
+// Testing - Add group, to be merged with post to claims
+app.post('/api/groups', (req, res, next) => {
+  const value = [req.body.groupName];
+  const text = `
+  INSERT INTO "groups" ("groupId", "groupName")
+  VALUES      (default, $1)
+  RETURNING   "groupId";
+  `;
+  db.query(text, value)
+    .then(result => res.json(result.rows[0]));
+});
+
+// User Can Add Groceries to Fridge
+// req.body.fridgeId to be changed to req.session.fridgeId
+app.post('/api/claims', (req, res, next) => {
+  // if(!req.session.fridgeId) {
+  //   throw new ClientError('No Fridge Found', 400)
+  // }
+  // if (
+  //   !req.body.userId ||
+  //   !req.body.groupId ||
+  //   !req.body.foodName ||
+  //   !req.body.qty ||
+  //   !req.body.expirationDate) {
+  //   throw new ClientError('Missing information from food claim', 400);
+  // }
+  const values = [req.body.fridgeId, req.body.userId, req.body.groupId, req.body.foodName, req.body.qty, req.body.expirationDate];
+  const text = `
+  INSERT INTO "claims" ("claimId", "fridgeId", "userId", "groupId", "foodName", "qty", "expirationDate")
+  VALUES      (default, $1, $2, $3, $4, $5, $6)
+  RETURNING   "claimId";
+  `;
+  db.query(text, values)
+    .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
 
