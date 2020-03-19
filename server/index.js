@@ -19,6 +19,30 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User Can Join a Fridge Back End - Blake
+app.get('/api/fridges/:fridgeName', (req, res, next) => {
+  const fridgeName = req.params.fridgeName;
+  const sql = `
+    SELECT "fridgeId"
+    FROM "fridges"
+    WHERE "fridgeName" = $1
+    `;
+
+  const params = [fridgeName];
+
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        return res.status(400).json({
+          error: 'this fridge name does not exist'
+        });
+      } else {
+        return res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch(err => console.error(err));
+});
+
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
   const fridgeName = req.body.fridgeName;
