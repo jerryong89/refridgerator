@@ -19,9 +19,9 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('api/messages', (req, res, next) => {
+app.get('/api/messages', (req, res, next) => {
   const sql = `
-    select "message",
+    select "message"
       from "messages";
   `;
   db.query(sql)

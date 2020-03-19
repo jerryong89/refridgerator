@@ -2,9 +2,10 @@ import React from 'react';
 
 export default class FridgeChat extends React.Component {
   constructor(props) {
+    // console.log('this is props', props);
     super(props);
     this.state = {
-      chat: ''
+      chat: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +26,7 @@ export default class FridgeChat extends React.Component {
       <div>
         <h1 className="center">-FRIDGE CHAT-</h1>
         <h3 className="center">Garland Boys</h3>
-        <div>Hey David, let me get two eggs.{/* {this.props.post.userId}{this.props.post.message} */}</div>
+        <div>Hey David, let me get two eggs.{this.props.post.userId}{this.props.post.message}</div>
         <form onSubmit={this.handleSubmit}>
           <input className="chatBox" value={this.state.chat} onChange={this.handleChange} type="text"/>
         </form>

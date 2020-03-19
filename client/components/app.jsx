@@ -34,12 +34,11 @@ export default class App extends React.Component {
   }
 
   getChat() {
-    fetch('/api/messsages')
+    fetch('/api/messages')
       .then(res => res.json())
       .then(messages => this.setState({
         chat: messages
       }));
-
   }
 
   // postChat(newMessage) {
@@ -66,7 +65,8 @@ export default class App extends React.Component {
       <div>
         <LoginHeader/>
         <StartScreenLogin createFridgeMethod={this.createFridge}/>
-        {this.state.chat.map(message => <FridgeChat key={message.messageId} post={message}/* post={this.postChat} */ />)}
+        {/* <FridgeChat/> */}
+        {this.state.chat.map(message => <FridgeChat key={message.messageId} post={message} /* post={this.postChat} */ />)}
       </div>
     );
   }
