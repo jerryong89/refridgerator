@@ -41,6 +41,25 @@ app.post('/api/fridges', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
+app.post('/api/users', (req, res, next) => {
+  const values = [req.body.fridgeId, req.body.userName];
+  const text = `
+  INSERT INTO  "users" ("userId", "fridgeId", "userName")
+  VALUES       (default, $1, $2)
+  RETURNING     *;
+  `;
+  const parsedId = parseInt(req.body.fridgeId);
+  if (parsedId < 0 || isNaN(parsedId)) {
+    return res.status(400).json({ error: 'Invalid Fridge ID' });
+  }
+  db.query(text, values)
+    .then(result => {
+      return res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

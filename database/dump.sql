@@ -209,7 +209,7 @@ ALTER SEQUENCE public."messages_messageId_seq" OWNED BY public.messages."message
 CREATE TABLE public.users (
     "userId" integer NOT NULL,
     "fridgeId" integer,
-    "fridgeName" text NOT NULL
+    "userName" text NOT NULL
 );
 
 
@@ -304,7 +304,7 @@ COPY public.messages ("messageId", "userId", message, "createdAt") FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.users ("userId", "fridgeId", "fridgeName") FROM stdin;
+COPY public.users ("userId", "fridgeId", "userName") FROM stdin;
 \.
 
 
