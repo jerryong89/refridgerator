@@ -5,7 +5,7 @@ export default class CreateFridgeScreen extends React.Component {
     super(props);
     this.state = {
       fridge: {
-        name: ''
+        fridgeName: ''
       }
     };
     this.handleFridgeNameInput = this.handleFridgeNameInput.bind(this);
@@ -16,7 +16,7 @@ export default class CreateFridgeScreen extends React.Component {
   handleFridgeNameInput(event) {
     this.setState({
       fridge: {
-        name: event.currentTarget.value
+        fridgeName: event.currentTarget.value
       }
     });
   }
