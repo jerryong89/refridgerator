@@ -11,12 +11,14 @@ export default class App extends React.Component {
         fridgeId: '',
         fridgeName: ''
       },
-      view: 'start-screen'
+      view: 'start-screen',
+      loginError: false
     };
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
     this.createFridge = this.createFridge.bind(this);
     this.getFridges = this.getFridges.bind(this);
+    this.loginError = this.loginError.bind(this);
   }
 
   setView(name) {
@@ -28,11 +30,22 @@ export default class App extends React.Component {
   displayView() {
     if (this.state.view === 'start-screen') {
       return (
-        <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
+        <div>
+          {this.loginError()}
+          <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
+        </div>
       );
     } else if (this.state.view === 'create-screen') {
       return (
         <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
+      );
+    }
+  }
+
+  loginError() {
+    if (this.state.loginError === true) {
+      return (
+        <p className="text-center loginError">Please Enter An Existing Fridge Name</p>
       );
     }
   }
@@ -43,12 +56,19 @@ export default class App extends React.Component {
       .then(response => {
         return response.json();
       }).then(result => {
-        this.setState({
-          fridge: {
-            fridgeId: result,
-            fridgeName: clientFridgeName
-          }
-        });
+        if (result.error) {
+          this.setState({
+            loginError: true
+          });
+        } else {
+          this.setState({
+            fridge: {
+              fridgeId: result,
+              fridgeName: clientFridgeName
+            },
+            loginError: false
+          });
+        }
       });
   }
 
