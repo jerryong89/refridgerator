@@ -10,7 +10,15 @@ export default class MemberLoginScreen extends React.Component {
 
   render() {
     return (
-      <div>Member Login Screen</div>
+      <div>
+        <div className="d-flex justify-content-center mt-5">
+          <form>
+            <label htmlFor="">
+              <button className="btn btn-secondary">New Member</button>
+            </label>
+          </form>
+        </div>
+      </div>
     );
   }
 }

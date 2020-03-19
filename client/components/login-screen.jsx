@@ -39,7 +39,7 @@ export default class LoginScreen extends React.Component {
       <div>
         <div className="d-flex justify-content-center mt-5">
           <form>
-            <label htmlFor="">
+            <label htmlFor="Fridge Name">
               <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
