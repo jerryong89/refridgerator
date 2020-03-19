@@ -64,6 +64,7 @@ app.post('/api/users', (req, res, next) => {
 
 // User Can View All Groceries in Fridge
 // req.body to be changed to req.session
+// returns array of all claims
 app.get('/api/claims', (req, res, next) => {
   if (!req.body.fridgeId) {
     throw new ClientError('No Fridge Found', 400);
