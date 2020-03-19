@@ -45,6 +45,23 @@ app.get('/api/fridges/:fridgeName', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+// User Can View All Members of his/her Fridge - Blake
+app.get('/api/users/', (req, res, next) => {
+  const fridgeId = req.body.fridgeId;
+  const sql = `
+    SELECT "userName"
+    FROM "users"
+    WHERE "fridgeId" = $1`;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
   const fridgeName = req.body.fridgeName;
