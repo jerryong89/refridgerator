@@ -68,15 +68,27 @@ app.get('/api/claims', (req, res, next) => {
   if (!req.body.fridgeId) {
     throw new ClientError('No Fridge Found', 400);
   }
-  const value = [req.body.fridgeid];
+  const value = [req.body.fridgeId];
   const text = `
   SELECT    *
   FROM      "claims"
   WHERE     "fridgeId" = $1;
   `;
   db.query(text, value)
-    .then(result => res.status(201).json(result.rows))
+    .then(result => res.json(result.rows))
     .catch(err => next(err));
+});
+
+// Testing - Add group, to be merged with post to claims
+app.post('/api/groups', (req, res, next) => {
+  const value = [req.body.groupName];
+  const text = `
+  INSERT INTO "groups" ("groupId", "groupName")
+  VALUES      (default, $1)
+  RETURNING   "groupId";
+  `;
+  db.query(text, value)
+    .then(result => res.json(result.rows[0]));
 });
 
 // User Can Add Groceries to Fridge
@@ -85,17 +97,17 @@ app.post('/api/claims', (req, res, next) => {
   // if(!req.session.fridgeId) {
   //   throw new ClientError('No Fridge Found', 400)
   // }
-  if (
-    !req.body.userId ||
-    !req.body.groupId ||
-    !req.body.foodName ||
-    !req.body.qty ||
-    !req.body.expirationDate) {
-    throw new ClientError('Missing information from food claim', 400);
-  }
+  // if (
+  //   !req.body.userId ||
+  //   !req.body.groupId ||
+  //   !req.body.foodName ||
+  //   !req.body.qty ||
+  //   !req.body.expirationDate) {
+  //   throw new ClientError('Missing information from food claim', 400);
+  // }
   const values = [req.body.fridgeId, req.body.userId, req.body.groupId, req.body.foodName, req.body.qty, req.body.expirationDate];
   const text = `
-  INSERT INTO "claims" ("claimId", "fridgeId", "userId", "groupId", "qty", "expirationDate")
+  INSERT INTO "claims" ("claimId", "fridgeId", "userId", "groupId", "foodName", "qty", "expirationDate")
   VALUES      (default, $1, $2, $3, $4, $5, $6)
   RETURNING   "claimId";
   `;
