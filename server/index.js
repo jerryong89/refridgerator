@@ -43,6 +43,7 @@ app.post('/api/fridges', (req, res, next) => {
 });
 
 // User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
+// req.body.fridgeId to be changed to req.ression.fridgeId
 app.post('/api/users', (req, res, next) => {
   const values = [req.body.fridgeId, req.body.userName];
   const text = `
@@ -62,6 +63,7 @@ app.post('/api/users', (req, res, next) => {
 });
 
 // User Can View All Groceries in Fridge
+// req.body to be changed to req.session
 app.get('/api/claims', (req, res, next) => {
   if (!req.body.fridgeId) {
     throw new ClientError('No Fridge Found', 400);
@@ -73,7 +75,32 @@ app.get('/api/claims', (req, res, next) => {
   WHERE     "fridgeId" = $1;
   `;
   db.query(text, value)
-    .then(result => res.status(201).json(result.rows[0]))
+    .then(result => res.status(201).json(result.rows))
+    .catch(err => next(err));
+});
+
+// User Can Add Groceries to Fridge
+// req.body.fridgeId to be changed to req.session.fridgeId
+app.post('/api/claims', (req, res, next) => {
+  // if(!req.session.fridgeId) {
+  //   throw new ClientError('No Fridge Found', 400)
+  // }
+  if (
+    !req.body.userId ||
+    !req.body.groupId ||
+    !req.body.foodName ||
+    !req.body.qty ||
+    !req.body.expirationDate) {
+    throw new ClientError('Missing information from food claim', 400);
+  }
+  const values = [req.body.fridgeId, req.body.userId, req.body.groupId, req.body.foodName, req.body.qty, req.body.expirationDate];
+  const text = `
+  INSERT INTO "claims" ("claimId", "fridgeId", "userId", "groupId", "qty", "expirationDate")
+  VALUES      (default, $1, $2, $3, $4, $5, $6)
+  RETURNING   "claimId";
+  `;
+  db.query(text, values)
+    .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
 
