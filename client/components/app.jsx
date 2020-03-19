@@ -1,14 +1,36 @@
 import React from 'react';
 import LoginHeader from './login-header';
-import StartScreenLogin from './start-screen-login';
+import LoginScreen from './login-screen';
+import CreateFridgeScreen from './create-fridge-screen';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fridgeName: null
+      fridgeName: null,
+      view: 'start-screen'
     };
+    this.setView = this.setView.bind(this);
+    this.displayView = this.displayView.bind(this);
     this.createFridge = this.createFridge.bind(this);
+  }
+
+  setView(name) {
+    this.setState({
+      view: name
+    });
+  }
+
+  displayView() {
+    if (this.state.view === 'start-screen') {
+      return (
+        <LoginScreen setView={this.setView} />
+      );
+    } else if (this.state.view === 'create-screen') {
+      return (
+        <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
+      );
+    }
   }
 
   createFridge(clientFridgeName) {
@@ -35,7 +57,7 @@ export default class App extends React.Component {
     return (
       <div>
         <LoginHeader/>
-        <StartScreenLogin createFridgeMethod={this.createFridge}/>
+        {this.displayView()}
       </div>
     );
   }
