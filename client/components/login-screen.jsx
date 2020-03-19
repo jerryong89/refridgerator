@@ -4,9 +4,13 @@ export default class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      error: false,
+      fridge: {
+        fridgeName: ''
+      }
     };
     this.changeViewCreateScreen = this.changeViewCreateScreen.bind(this);
+    this.handleFridgeNameInput = this.handleFridgeNameInput.bind(this);
   }
 
   changeViewCreateScreen(event) {
@@ -15,13 +19,21 @@ export default class LoginScreen extends React.Component {
     setViewMethod('create-screen');
   }
 
+  handleFridgeNameInput(event) {
+    this.setState({
+      fridge: {
+        fridgeName: event.currentTarget.value
+      }
+    });
+  }
+
   render() {
     return (
       <div>
         <div className="d-flex justify-content-center mt-5">
           <form>
             <label htmlFor="">
-              <input type="text"/>
+              <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
               <button className="btn btn-secondary">Join Fridge</button>
