@@ -11,6 +11,7 @@ export default class LoginScreen extends React.Component {
     };
     this.changeViewCreateScreen = this.changeViewCreateScreen.bind(this);
     this.handleFridgeNameInput = this.handleFridgeNameInput.bind(this);
+    this.joinFridge = this.joinFridge.bind(this);
   }
 
   changeViewCreateScreen(event) {
@@ -27,6 +28,12 @@ export default class LoginScreen extends React.Component {
     });
   }
 
+  joinFridge(event) {
+    event.preventDefault();
+    const joinFridgeMethod = this.props.getFridges;
+    joinFridgeMethod(this.state.fridge.fridgeName);
+  }
+
   render() {
     return (
       <div>
@@ -36,7 +43,7 @@ export default class LoginScreen extends React.Component {
               <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
-              <button className="btn btn-secondary">Join Fridge</button>
+              <button className="btn btn-secondary" onClick={this.joinFridge}>Join Fridge</button>
             </div>
           </form>
         </div>

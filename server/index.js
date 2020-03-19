@@ -37,7 +37,7 @@ app.get('/api/fridges/:fridgeName', (req, res, next) => {
           error: 'this fridge name does not exist'
         });
       } else {
-        return res.status(200).json(result.rows[0]);
+        return res.status(200).json(result.rows[0].fridgeId);
       }
     })
     .catch(err => console.error(err));

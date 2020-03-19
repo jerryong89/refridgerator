@@ -7,12 +7,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fridgeName: null,
+      fridge: {
+        fridgeId: '',
+        fridgeName: ''
+      },
       view: 'start-screen'
     };
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
     this.createFridge = this.createFridge.bind(this);
+    this.getFridges = this.getFridges.bind(this);
   }
 
   setView(name) {
@@ -24,7 +28,7 @@ export default class App extends React.Component {
   displayView() {
     if (this.state.view === 'start-screen') {
       return (
-        <LoginScreen setView={this.setView} />
+        <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
       );
     } else if (this.state.view === 'create-screen') {
       return (
@@ -33,8 +37,23 @@ export default class App extends React.Component {
     }
   }
 
+  getFridges(clientFridgeName) {
+    event.preventDefault();
+    fetch(`/api/fridges/${clientFridgeName}`)
+      .then(response => {
+        return response.json();
+      }).then(result => {
+        this.setState({
+          fridge: {
+            fridgeId: result,
+            fridgeName: clientFridgeName
+          }
+        });
+      });
+  }
+
   createFridge(clientFridgeName) {
-    fetch('/api/fridges', {
+    fetch('/api/fridges/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
