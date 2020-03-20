@@ -22,6 +22,8 @@ export default class NewMemberLoginScreen extends React.Component {
 
   handleCreateNewMember(event) {
     event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
     const createNewMemberMethod = this.props.createNewMember;
     createNewMemberMethod(this.state.user);
   }
