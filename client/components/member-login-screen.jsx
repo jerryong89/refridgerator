@@ -7,12 +7,19 @@ export default class MemberLoginScreen extends React.Component {
 
     };
     this.changeViewNewMember = this.changeViewNewMember.bind(this);
+    this.changeViewExistingMember = this.changeViewExistingMember.bind(this);
   }
 
   changeViewNewMember(event) {
     event.preventDefault();
     const setViewMethod = this.props.setView;
     setViewMethod('new-member-login-screen');
+  }
+
+  changeViewExistingMember(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('existing-member-login-screen');
   }
 
   render() {
@@ -25,7 +32,7 @@ export default class MemberLoginScreen extends React.Component {
             </label>
             <div className="mt-3">
               <label htmlFor="">
-                <button className="btn btn-secondary">Existing Member</button>
+                <button className="btn btn-secondary" onClick={this.changeViewExistingMember}>Existing Member</button>
               </label>
             </div>
           </form>

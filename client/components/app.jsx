@@ -4,6 +4,7 @@ import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
 import MemberLoginScreen from './member-login-screen';
 import NewMemberLoginScreen from './new-member-login-screen';
+import ExistingMemberLoginScreen from './existing-member-login-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -53,6 +54,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'new-member-login-screen') {
       return (
         <NewMemberLoginScreen createNewMember={this.createNewMember}/>
+      );
+    } else if (this.state.view === 'existing-member-login-screen') {
+      return (
+        <ExistingMemberLoginScreen/>
       );
     }
   }
