@@ -76,3 +76,8 @@
 .logo {
   max-width: 50%;
 }
+
+.loginError {
+  color: red;
+  font-weight: 800;
+}
