@@ -11,6 +11,7 @@ export default class App extends React.Component {
       chat: []
     };
     this.createFridge = this.createFridge.bind(this);
+    this.postChat = this.postChat.bind(this);
   }
 
   createFridge(clientFridgeName) {
@@ -41,32 +42,32 @@ export default class App extends React.Component {
       }));
   }
 
-  // postChat(newMessage) {
-  //   fetch('/api/messages', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newMessage)
-  //   })
-  //     .then(res => res.json())
-  //     .then(newMessage => {
-  //       this.setState({
-  //         chat: this.state.chat.concat(newMessage)
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.error('Error:', error);
-  //     });
-  // }
+  postChat(newMessage) {
+    const newObj = { newMessage };
+    fetch('/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newObj)
+    })
+      .then(res => res.json())
+      .then(newMessage => {
+        this.setState({
+          chat: this.state.chat.concat(newMessage)
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 
   render() {
     return (
       <div>
         <LoginHeader/>
         <StartScreenLogin createFridgeMethod={this.createFridge}/>
-        {/* <FridgeChat/> */}
-        {this.state.chat.map(message => <FridgeChat key={message.messageId} post={message} /* post={this.postChat} */ />)}
+        <FridgeChat post={this.postChat} get={this.state.chat}/>
       </div>
     );
   }

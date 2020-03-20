@@ -1,8 +1,8 @@
 import React from 'react';
+import Chat from './chat';
 
 export default class FridgeChat extends React.Component {
   constructor(props) {
-    // console.log('this is props', props);
     super(props);
     this.state = {
       chat: []
@@ -19,17 +19,24 @@ export default class FridgeChat extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const newMessage = this.state.chat;
+    this.props.post(newMessage);
   }
 
   render() {
     return (
-      <div>
+      <div className="chatBackground">
+        <div className="wave"></div>
         <h1 className="center">-FRIDGE CHAT-</h1>
         <h3 className="center">Garland Boys</h3>
-        <div>Hey David, let me get two eggs.{this.props.post.userId}{this.props.post.message}</div>
-        <form onSubmit={this.handleSubmit}>
-          <input className="chatBox" value={this.state.chat} onChange={this.handleChange} type="text"/>
-        </form>
+        <div className="container">
+          <div className="scrolling-box textContainer">
+            <Chat message={this.props.get} />
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            <input required className="chatBox" value={this.state.chat} onChange={this.handleChange} type="text" />
+          </form>
+        </div>
       </div>
     );
   }
