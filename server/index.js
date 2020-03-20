@@ -62,6 +62,7 @@ app.get('/api/users/', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+// User Can View his or her Groceries in the Fridge - Blake
 app.get('/api/claims', (req, res, next) => {
   const userId = parseInt(req.body.userId);
   const sql = `
