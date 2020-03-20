@@ -5,9 +5,28 @@
   margin-right: 0;
   background: #11385b;
 }
-.nameTag {
- display: flex;
- justify-content: flex-end;
+
+.headerButton{
+  width: fit-content;
+  margin-right: 0;
+  background-color: grey;
+  border-radius: 50%;
+  height: 25px;
+  width: 30px;
+  border: none;
+}
+.headerBiggerButton{
+  width: fit-content;
+  margin-right: 0;
+  background-color: grey;
+  border-radius: 50%;
+  height: 70px;
+  width: 80px;
+  border: none;
+}
+
+.buttonName {
+ color: white;
 }
 
 .scrolling-box {

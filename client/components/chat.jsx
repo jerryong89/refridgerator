@@ -5,8 +5,8 @@ function Chat(props) {
     return (
       <div key={text.messageId}>
         <div >
-          <div>{text.message}</div>
-          <div className="nameTag">-{text.userName}</div>
+          <div>{text.userName}{': '}{text.message}</div>
+          <div></div>
         </div>
       </div>
     );

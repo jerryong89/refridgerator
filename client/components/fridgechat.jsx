@@ -26,9 +26,22 @@ export default class FridgeChat extends React.Component {
   render() {
     return (
       <div className="chatBackground">
-        <div className="wave"></div>
-        <h1 className="center">-FRIDGE CHAT-</h1>
-        <h3 className="center">Garland Boys</h3>
+        <div className="container wave">
+          <div className="row">
+            <div className="col-8 column">
+              <div className="buttonName"><button className="headerButton"></button>Dae Kim</div>
+              <div className="buttonName"><button className="headerButton"></button>Create Fridge</div>
+              <div className="buttonName"><button className="headerButton"></button>Join Fridge</div>
+              <div className="buttonName"><button className="headerButton"></button>Add Member</div>
+            </div>
+            <div className="col-4 column">
+              <button className="headerBiggerButton"></button>
+              <div className="buttonName"> Garland Boys</div>
+            </div>
+          </div>
+        </div>
+        <h2 className="center">-FRIDGE CHAT-</h2>
+        <h4 className="center">Garland Boys</h4>
         <div className="container">
           <div className="scrolling-box textContainer">
             <Chat message={this.props.get} />
