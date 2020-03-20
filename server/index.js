@@ -80,7 +80,7 @@ app.get('/api/fridges/:fridgeName', (req, res, next) => {
 app.get('/api/users/', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "userName"
+    SELECT *
     FROM "users"
     WHERE "fridgeId" = $1`;
 
@@ -149,11 +149,15 @@ app.post('/api/users', (req, res, next) => {
     db.query(text, values)
       .then(result => {
         req.session.userId = result.rows[0].userId;
-        req.session.userName = result.rows[0].userName;
         return res.status(201).json(result.rows[0]);
       })
       .catch(err => next(err));
   }
+});
+
+app.post('/api/users/:userId', (req, res, next) => {
+  req.session.userId = req.params.userId;
+  res.sendStatus(200);
 });
 
 // User Can View All Groceries in Fridge

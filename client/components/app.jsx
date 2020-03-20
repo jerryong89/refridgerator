@@ -5,6 +5,8 @@ import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
 import MemberLoginScreen from './member-login-screen';
 import NewMemberLoginScreen from './new-member-login-screen';
+import ExistingMemberLoginScreen from './existing-member-login-screen';
+import MyFridgeScreen from './my-fridge-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -30,11 +32,21 @@ export default class App extends React.Component {
     this.getFridges = this.getFridges.bind(this);
     this.loginError = this.loginError.bind(this);
     this.createNewMember = this.createNewMember.bind(this);
+    this.setExistingMember = this.setExistingMember.bind(this);
   }
 
   setView(name) {
     this.setState({
       view: name
+    });
+  }
+
+  setExistingMember(clientUserId, clientUserName) {
+    this.setState({
+      user: {
+        userId: clientUserId,
+        userName: clientUserName
+      }
     });
   }
 
@@ -56,7 +68,15 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'new-member-login-screen') {
       return (
-        <NewMemberLoginScreen createNewMember={this.createNewMember}/>
+        <NewMemberLoginScreen setView={this.setView} createNewMember={this.createNewMember}/>
+      );
+    } else if (this.state.view === 'existing-member-login-screen') {
+      return (
+        <ExistingMemberLoginScreen setView={this.setView} setExistingMember={this.setExistingMember}/>
+      );
+    } else if (this.state.view === 'my-fridge-screen') {
+      return (
+        <MyFridgeScreen/>
       );
     }
   }
@@ -103,7 +123,10 @@ export default class App extends React.Component {
       return (response.json());
     }).then(result => {
       this.setState({
-        fridgeName: clientFridgeName
+        fridge: {
+          fridgeId: result.fridgeId,
+          fridgeName: result.fridgeName
+        }
       });
     });
   }
@@ -119,13 +142,12 @@ export default class App extends React.Component {
       return (response.json());
     }).then(result => {
       this.setState({
-        userName: clientUserName
+        user: {
+          userId: result.userId,
+          userName: result.userName
+        }
       });
     });
-  }
-
-  componentDidMount() {
-    this.getChat();
   }
 
   getChat() {
