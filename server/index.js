@@ -76,7 +76,7 @@ app.get('/api/fridges/:fridgeName', (req, res, next) => {
 
 // User Can View All Members of his/her Fridge - Blake
 app.get('/api/users/', (req, res, next) => {
-  const fridgeId = req.body.fridgeId;
+  const fridgeId = req.session.fridgeId;
   const sql = `
     SELECT "userName"
     FROM "users"
@@ -93,7 +93,7 @@ app.get('/api/users/', (req, res, next) => {
 
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
-  const fridgeName = req.body.fridgeName;
+  const fridgeName = req.session.fridgeName;
   const sql = `
     INSERT INTO "fridges" ("fridgeName", "fridgeId")
     VALUES ($1, default)
@@ -137,13 +137,12 @@ app.post('/api/users', (req, res, next) => {
 });
 
 // User Can View All Groceries in Fridge
-// req.body to be changed to req.session
 // returns array of all claims
 app.get('/api/claims', (req, res, next) => {
-  if (!req.body.fridgeId) {
+  if (!req.session.fridgeId) {
     throw new ClientError('No Fridge Found', 400);
   }
-  const value = [req.body.fridgeId];
+  const value = [req.session.fridgeId];
   const text = `
   SELECT    *
   FROM      "claims"
@@ -167,20 +166,21 @@ app.post('/api/groups', (req, res, next) => {
 });
 
 // User Can Add Groceries to Fridge
-// req.body.fridgeId to be changed to req.session.fridgeId
 app.post('/api/claims', (req, res, next) => {
-  // if(!req.session.fridgeId) {
-  //   throw new ClientError('No Fridge Found', 400)
-  // }
-  // if (
-  //   !req.body.userId ||
-  //   !req.body.groupId ||
-  //   !req.body.foodName ||
-  //   !req.body.qty ||
-  //   !req.body.expirationDate) {
-  //   throw new ClientError('Missing information from food claim', 400);
-  // }
-  const values = [req.body.fridgeId, req.body.userId, req.body.groupId, req.body.foodName, req.body.qty, req.body.expirationDate];
+  if (!req.session.fridgeId) {
+    throw new ClientError('No Fridge Found', 400);
+  }
+  if (!req.body.userId || !req.body.groupId || !req.body.foodName || !req.body.qty) {
+    throw new ClientError('Missing information from food claim', 400);
+  }
+  const values = [
+    req.session.fridgeId,
+    req.body.userId,
+    req.body.groupId,
+    req.body.foodName,
+    req.body.qty,
+    req.body.expirationDate
+  ];
   const text = `
   INSERT INTO "claims" ("claimId", "fridgeId", "userId", "groupId", "foodName", "qty", "expirationDate")
   VALUES      (default, $1, $2, $3, $4, $5, $6)
