@@ -19,6 +19,35 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/messages', (req, res, next) => {
+  const sql = `
+    select *
+      from "messages"
+      join "users" using ("userId");
+  `;
+  db.query(sql)
+    .then(result => res.json(result.rows));
+});
+
+app.post('/api/messages', (req, res) => {
+  const message = req.body.newMessage;
+  const params = [message];
+  const sql = `
+    insert into "messages"("messageId", "userId", "message", "createdAt")
+    values(default, 1, $1, default)
+    returning *;
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'The query may fail'
+      });
+    });
 // User Can Join a Fridge Back End - Blake
 app.get('/api/fridges/:fridgeName', (req, res, next) => {
   const fridgeName = req.params.fridgeName;
