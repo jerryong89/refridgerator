@@ -91,6 +91,24 @@ app.get('/api/users/', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+// User Can View his or her Groceries in the Fridge - Blake
+app.get('/api/claims', (req, res, next) => {
+  const userId = parseInt(req.body.userId);
+  const sql = `
+    SELECT "foodName"
+    FROM "claims"
+    WHERE "userId" = $1
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
   const fridgeName = req.session.fridgeName;
@@ -151,6 +169,7 @@ app.get('/api/claims', (req, res, next) => {
   db.query(text, value)
     .then(result => res.json(result.rows))
     .catch(err => next(err));
+
 });
 
 // Testing - Add group, to be merged with post to claims
