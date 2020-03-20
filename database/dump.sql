@@ -18,6 +18,7 @@ SET row_security = off;
 
 ALTER TABLE ONLY public.users DROP CONSTRAINT "users_fridgeId_fkey";
 ALTER TABLE ONLY public.messages DROP CONSTRAINT "messages_userId_fkey";
+ALTER TABLE ONLY public.messages DROP CONSTRAINT "messages_fridgeId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_userId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_groupId_fkey";
 ALTER TABLE ONLY public.claims DROP CONSTRAINT "claims_fridgeId_fkey";
@@ -176,8 +177,9 @@ ALTER SEQUENCE public."groups_groupId_seq" OWNED BY public.groups."groupId";
 
 CREATE TABLE public.messages (
     "messageId" integer NOT NULL,
-    "userId" integer NOT NULL,
     message text NOT NULL,
+    "userId" integer NOT NULL,
+    "fridgeId" integer NOT NULL,
     "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
@@ -273,6 +275,10 @@ ALTER TABLE ONLY public.users ALTER COLUMN "userId" SET DEFAULT nextval('public.
 --
 
 COPY public.claims ("claimId", "fridgeId", "userId", "groupId", "foodName", qty, "expirationDate") FROM stdin;
+12	1	2	2	Milk	3	\N
+13	1	2	2	Eggs	3	2021-01-01 00:00:00-08
+14	1	2	3	Chicken	1	2020-04-01 00:00:00-07
+15	2	2	3	Chicken	1	2020-04-01 00:00:00-07
 \.
 
 
@@ -281,6 +287,11 @@ COPY public.claims ("claimId", "fridgeId", "userId", "groupId", "foodName", qty,
 --
 
 COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
+1	Test
+2	Test2
+3	My Fridge
+4	Test Fridge
+5	Fridgey McFridtington
 \.
 
 
@@ -289,6 +300,9 @@ COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
 --
 
 COPY public.groups ("groupId", "groupName") FROM stdin;
+1	Produce
+2	Dairy
+3	Meat
 \.
 
 
@@ -296,7 +310,7 @@ COPY public.groups ("groupId", "groupName") FROM stdin;
 -- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.messages ("messageId", "userId", message, "createdAt") FROM stdin;
+COPY public.messages ("messageId", message, "userId", "fridgeId", "createdAt") FROM stdin;
 \.
 
 
@@ -305,6 +319,9 @@ COPY public.messages ("messageId", "userId", message, "createdAt") FROM stdin;
 --
 
 COPY public.users ("userId", "fridgeId", "userName") FROM stdin;
+1	1	Steve
+2	1	Blake
+3	5	Annie
 \.
 
 
@@ -312,21 +329,21 @@ COPY public.users ("userId", "fridgeId", "userName") FROM stdin;
 -- Name: claims_claimId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."claims_claimId_seq"', 1, false);
+SELECT pg_catalog.setval('public."claims_claimId_seq"', 15, true);
 
 
 --
 -- Name: fridges_fridgeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 1, false);
+SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 5, true);
 
 
 --
 -- Name: groups_groupId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."groups_groupId_seq"', 1, false);
+SELECT pg_catalog.setval('public."groups_groupId_seq"', 3, true);
 
 
 --
@@ -340,7 +357,7 @@ SELECT pg_catalog.setval('public."messages_messageId_seq"', 1, false);
 -- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."users_userId_seq"', 1, false);
+SELECT pg_catalog.setval('public."users_userId_seq"', 3, true);
 
 
 --
@@ -405,6 +422,14 @@ ALTER TABLE ONLY public.claims
 
 ALTER TABLE ONLY public.claims
     ADD CONSTRAINT "claims_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users("userId");
+
+
+--
+-- Name: messages messages_fridgeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.messages
+    ADD CONSTRAINT "messages_fridgeId_fkey" FOREIGN KEY ("fridgeId") REFERENCES public.fridges("fridgeId");
 
 
 --
