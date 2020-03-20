@@ -113,7 +113,7 @@ app.get('/api/claims', (req, res, next) => {
 
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
-  const fridgeName = req.session.fridgeName;
+  const fridgeName = req.body.fridgeName;
   const sql = `
     INSERT INTO "fridges" ("fridgeName", "fridgeId")
     VALUES ($1, default)
