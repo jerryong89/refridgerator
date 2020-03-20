@@ -48,6 +48,8 @@ app.post('/api/messages', (req, res) => {
         error: 'The query may fail'
       });
     });
+});
+
 // User Can Join a Fridge Back End - Blake
 app.get('/api/fridges/:fridgeName', (req, res, next) => {
   const fridgeName = req.params.fridgeName;

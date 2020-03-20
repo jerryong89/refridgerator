@@ -15,6 +15,7 @@
   width: 30px;
   border: none;
 }
+
 .headerBiggerButton{
   width: fit-content;
   margin-right: 0;
@@ -61,7 +62,7 @@
   height: 60vh;
 }
 
-.body {
+body {
   margin: 0;
   background-image: url(./images/background.jpg);
   background-size: cover;

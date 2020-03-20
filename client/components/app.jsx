@@ -160,8 +160,8 @@ export default class App extends React.Component {
     return (
       <div>
         <LoginHeader/>
-        //<StartScreenLogin createFridgeMethod={this.createFridge}/>
-       // <FridgeChat post={this.postChat} get={this.state.chat}/>
+        {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
+        {/* <FridgeChat post={this.postChat} get={this.state.chat}/> */}
         {this.displayView()}
       </div>
     );
