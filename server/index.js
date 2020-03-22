@@ -216,6 +216,33 @@ app.post('/api/claims', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/claims/:claimId', (req, res, next) => {
+  const sql = `
+    DELETE FROM "claims"
+    WHERE "claimId" = $1
+    RETURNING *
+    `;
+
+  const value = [req.params.claimId];
+
+  const param = parseInt(req.params.claimId);
+
+  if (param < 0 || isNaN(param)) {
+    return res.status(400).json({ error: 'This food item does not exist in the fridge' });
+  } else {
+    db.query(sql, value)
+      .then(result => {
+        if (result.rows[0]) {
+          return res.sendStatus(204);
+        } return res.status(404).json({ error: 'This food item does not exist' });
+      })
+      .catch(err => {
+        console.error(err);
+        return res.status(500).json({ error: 'An unexpected error occured' });
+      });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
