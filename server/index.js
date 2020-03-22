@@ -216,6 +216,7 @@ app.post('/api/claims', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User can Delete an entire entry in the Food Claim Table by the parameter claimId - Blake
 app.delete('/api/claims/:claimId', (req, res, next) => {
   const sql = `
     DELETE FROM "claims"
