@@ -65,7 +65,7 @@ export default class ExistingMemberLoginScreen extends React.Component {
             Existing Members:
           </label>
           <div>
-            <select name="" className="test mt-4" onChange={this.selectInputMember}>
+            <select name="" className="member-dropdown mt-4" onChange={this.selectInputMember}>
               <option>Members</option>
               {this.memberDropDown()}
             </select>

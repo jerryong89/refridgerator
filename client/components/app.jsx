@@ -1,5 +1,5 @@
 import React from 'react';
-import FridgeChat from './fridgechat';
+// import FridgeChat from './fridgechat';
 import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
@@ -7,6 +7,7 @@ import MemberLoginScreen from './member-login-screen';
 import NewMemberLoginScreen from './new-member-login-screen';
 import ExistingMemberLoginScreen from './existing-member-login-screen';
 import MyFridgeScreen from './my-fridge-screen';
+import HomeScreenHeader from './home-screen-header';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -54,29 +55,45 @@ export default class App extends React.Component {
     if (this.state.view === 'start-screen') {
       return (
         <div>
+          <LoginHeader/>
           {this.loginError()}
           <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
         </div>
       );
     } else if (this.state.view === 'create-screen') {
       return (
-        <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
+        <div>
+          <LoginHeader />
+          <CreateFridgeScreen setView={this.setView} createFridgeMethod={this.createFridge} />
+        </div>
       );
     } else if (this.state.view === 'member-login-screen') {
       return (
-        <MemberLoginScreen setView={this.setView}/>
+        <div>
+          <LoginHeader />
+          <MemberLoginScreen setView={this.setView}/>
+        </div>
       );
     } else if (this.state.view === 'new-member-login-screen') {
       return (
-        <NewMemberLoginScreen setView={this.setView} createNewMember={this.createNewMember}/>
+        <div>
+          <LoginHeader />
+          <NewMemberLoginScreen setView={this.setView} createNewMember={this.createNewMember}/>
+        </div>
       );
     } else if (this.state.view === 'existing-member-login-screen') {
       return (
-        <ExistingMemberLoginScreen setView={this.setView} setExistingMember={this.setExistingMember}/>
+        <div>
+          <LoginHeader />
+          <ExistingMemberLoginScreen setView={this.setView} setExistingMember={this.setExistingMember}/>
+        </div>
       );
     } else if (this.state.view === 'my-fridge-screen') {
       return (
-        <MyFridgeScreen/>
+        <div>
+          <HomeScreenHeader/>
+          <MyFridgeScreen/>
+        </div>
       );
     }
   }
@@ -181,7 +198,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <LoginHeader/>
         {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
         {/* <FridgeChat post={this.postChat} get={this.state.chat}/> */}
         {this.displayView()}
