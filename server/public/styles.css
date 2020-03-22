@@ -70,6 +70,10 @@ body {
   height: 100vh;
 }
 
+p {
+  margin: 0;
+}
+
 .login-header {
   height: 40vh;
 }
@@ -87,4 +91,30 @@ body {
   text-align: center;
   width: 30%;
   background-color: white;
+}
+
+.home-screen-header {
+  height: 20vh;
+}
+
+.header-left {
+  height: 20vh;
+}
+
+.header-right {
+  height: 100%;
+}
+
+.client-fridge-logo {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.user-icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: grey;
 }

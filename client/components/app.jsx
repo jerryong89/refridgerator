@@ -42,11 +42,10 @@ export default class App extends React.Component {
     });
   }
 
-  setExistingMember(clientUserId, clientUserName) {
+  setExistingMember(clientUserId) {
     this.setState({
       user: {
-        userId: clientUserId,
-        userName: clientUserName
+        userId: clientUserId
       }
     });
   }
