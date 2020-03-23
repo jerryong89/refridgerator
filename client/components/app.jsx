@@ -8,6 +8,7 @@ import NewMemberLoginScreen from './new-member-login-screen';
 import ExistingMemberLoginScreen from './existing-member-login-screen';
 import MyFridgeScreen from './my-fridge-screen';
 import HomeScreenHeader from './home-screen-header';
+import AddFoodScreen from './add-food-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -92,7 +93,14 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember}/>
-          <MyFridgeScreen/>
+          <MyFridgeScreen setView={this.setView}/>
+        </div>
+      );
+    } else if (this.state.view === 'add-food-screen') {
+      return (
+        <div>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <AddFoodScreen/>
         </div>
       );
     }
