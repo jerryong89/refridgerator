@@ -22,6 +22,8 @@ export default class HomeScreenHeader extends React.Component {
             userName: ''
           });
         } else {
+          const setExistingMemberMethod = this.props.setExistingMember;
+          setExistingMemberMethod(clientUserId, result[theIndex].userName);
           this.setState({
             userName: result[theIndex].userName,
             loaded: true

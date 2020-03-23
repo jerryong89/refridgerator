@@ -42,10 +42,11 @@ export default class App extends React.Component {
     });
   }
 
-  setExistingMember(clientUserId) {
+  setExistingMember(clientUserId, clientUserName) {
     this.setState({
       user: {
-        userId: clientUserId
+        userId: clientUserId,
+        userName: clientUserName
       }
     });
   }
@@ -90,7 +91,7 @@ export default class App extends React.Component {
     } else if (this.state.view === 'my-fridge-screen') {
       return (
         <div>
-          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user}/>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember}/>
           <MyFridgeScreen/>
         </div>
       );
