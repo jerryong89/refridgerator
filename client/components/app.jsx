@@ -90,7 +90,7 @@ export default class App extends React.Component {
     } else if (this.state.view === 'my-fridge-screen') {
       return (
         <div>
-          <HomeScreenHeader/>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user}/>
           <MyFridgeScreen/>
         </div>
       );

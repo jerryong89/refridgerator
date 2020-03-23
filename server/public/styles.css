@@ -118,3 +118,7 @@ p {
   border-radius: 50%;
   background: grey;
 }
+
+.blank {
+  background-color: honeydew;
+}
