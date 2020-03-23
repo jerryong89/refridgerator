@@ -85,7 +85,6 @@ app.get('/api/users/', (req, res, next) => {
     WHERE "fridgeId" = $1`;
 
   const value = [fridgeId];
-
   db.query(sql, value)
     .then(result => {
       return res.status(200).json(result.rows);
