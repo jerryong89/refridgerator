@@ -100,7 +100,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <AddFoodScreen/>
+          <AddFoodScreen setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
     }
