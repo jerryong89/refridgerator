@@ -16,6 +16,7 @@ export default class AddFoodScreen extends React.Component {
     this.handleFoodGroupInput = this.handleFoodGroupInput.bind(this);
     this.handleQuantityInput = this.handleQuantityInput.bind(this);
     this.handleDateInput = this.handleDateInput.bind(this);
+    this.addFoodClaim = this.addFoodClaim.bind(this);
   }
 
   changeToMyFridgeScreen() {
@@ -51,6 +52,30 @@ export default class AddFoodScreen extends React.Component {
     });
   }
 
+  addFoodClaim(event) {
+    const allClaimsInfo = {
+      userId: this.state.userId,
+      groupId: this.state.groupId,
+      foodName: this.state.foodName,
+      qty: this.state.qty,
+      expirationDate: this.state.expirationDate
+    };
+    event.preventDefault();
+    fetch('/api/claims', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(allClaimsInfo)
+    })
+      .then(response => {
+        return response.json();
+      }).then(result => {
+        const setViewMethod = this.props.setView;
+        setViewMethod('my-fridge-screen');
+      });
+  }
+
   render() {
     return (
       <div className="container d-flex justify-content-center test">
@@ -83,7 +108,7 @@ export default class AddFoodScreen extends React.Component {
             </div>
             <div className="mt-4">
               <div>
-                <button className="btn btn-success m-2">Add Item</button>
+                <button className="btn btn-success m-2" onClick={this.addFoodClaim}>Add Item</button>
                 <button className="btn btn-danger m-2" onClick={this.changeToMyFridgeScreen}>Cancel</button>
               </div>
             </div>
