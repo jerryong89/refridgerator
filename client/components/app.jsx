@@ -10,6 +10,7 @@ import MyFridgeScreen from './my-fridge-screen';
 import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
 import AddMemberToFridge from './add-member-to-fridge';
+import ViewFridgeMembers from './view-fridge-members';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -109,6 +110,13 @@ export default class App extends React.Component {
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <AddMemberToFridge/>
+        </div>
+      );
+    } else if (this.state.view === 'view-all-fridge-members') {
+      return (
+        <div>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
     }
