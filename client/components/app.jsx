@@ -109,13 +109,13 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <AddMemberToFridge/>
+          <AddMemberToFridge setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'view-all-fridge-members') {
       return (
         <div>
-          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
