@@ -111,6 +111,101 @@ app.get('/api/claims', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+app.get('/api/dairy', (req, res, next) => {
+  const userId = 2;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "userId" = $1;
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/produce', (req, res, next) => {
+  const userId = 2;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "userId" = $1;
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/frozen', (req, res, next) => {
+  const userId = 2;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "userId" = $1;
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/meats', (req, res, next) => {
+  const userId = 2;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "userId" = $1;
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/etc', (req, res, next) => {
+  const userId = 2;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "userId" = $1;
+    `;
+
+  const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
   const fridgeName = req.body.fridgeName;

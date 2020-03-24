@@ -1,12 +1,13 @@
 import React from 'react';
-import FridgeChat from './fridgechat';
-import LoginHeader from './login-header';
+// import FridgeChat from './fridgechat';
+// import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
 import MemberLoginScreen from './member-login-screen';
 import NewMemberLoginScreen from './new-member-login-screen';
 import ExistingMemberLoginScreen from './existing-member-login-screen';
 import MyFridgeScreen from './my-fridge-screen';
+import AllGroceries from './all-groceries';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -181,10 +182,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <LoginHeader/>
+        {/* <LoginHeader/> */}
         {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
+        <AllGroceries />
         {/* <FridgeChat post={this.postChat} get={this.state.chat}/> */}
-        {this.displayView()}
+        {/* {this.displayView()} */}
       </div>
     );
   }

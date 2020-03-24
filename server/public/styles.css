@@ -14,9 +14,11 @@
   height: 25px;
   width: 30px;
   border: none;
+  margin-top: 10px;
 }
 
 .headerBiggerButton{
+  margin-top: 20px;
   width: fit-content;
   margin-right: 0;
   background-color: grey;
@@ -87,4 +89,22 @@ body {
   text-align: center;
   width: 30%;
   background-color: white;
+}
+
+.buttonBody{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.groceryButton{
+  margin-bottom: 20px ;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  color: black;
+  width: 70%;
 }
