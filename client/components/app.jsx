@@ -10,6 +10,7 @@ import MyFridgeScreen from './my-fridge-screen';
 import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
 import ViewFridgeMembers from './view-fridge-members';
+import MyGroceriesCategories from './my-groceries-categories';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export default class App extends React.Component {
         userId: '',
         userName: ''
       },
-      view: 'start-screen',
+      view: 'my-groceries-categories',
       loginError: false
     };
     this.setView = this.setView.bind(this);
@@ -109,6 +110,13 @@ export default class App extends React.Component {
         <div>
           <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
+        </div>
+      );
+    } else if (this.state.view === 'my-groceries-categories') {
+      return (
+        <div>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} />
         </div>
       );
     }
