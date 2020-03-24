@@ -9,6 +9,7 @@ import ExistingMemberLoginScreen from './existing-member-login-screen';
 import MyFridgeScreen from './my-fridge-screen';
 import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
+import AddMemberToFridge from './add-member-to-fridge';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -92,15 +93,22 @@ export default class App extends React.Component {
     } else if (this.state.view === 'my-fridge-screen') {
       return (
         <div>
-          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember}/>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember}/>
           <MyFridgeScreen setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'add-food-screen') {
       return (
         <div>
-          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <AddFoodScreen setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
+        </div>
+      );
+    } else if (this.state.view === 'add-member-to-fridge-screen') {
+      return (
+        <div>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <AddMemberToFridge/>
         </div>
       );
     }

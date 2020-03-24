@@ -8,6 +8,8 @@ export default class HomeScreenHeader extends React.Component {
       loaded: false
     };
     this.getSpecificUserName = this.getSpecificUserName.bind(this);
+    this.changeToMyFridgeScreen = this.changeToMyFridgeScreen.bind(this);
+    this.changeToAddMemberToFridgeScreen = this.changeToAddMemberToFridgeScreen.bind(this);
   }
 
   getSpecificUserName(clientUserId) {
@@ -42,6 +44,18 @@ export default class HomeScreenHeader extends React.Component {
     this.getSpecificUserName(this.props.user.userId);
   }
 
+  changeToMyFridgeScreen(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
+  }
+
+  changeToAddMemberToFridgeScreen(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('add-member-to-fridge-screen');
+  }
+
   render() {
     return (
       <div className="home-screen-header d-flex blank">
@@ -51,11 +65,15 @@ export default class HomeScreenHeader extends React.Component {
               <div className="user-icon"></div>
               <p className="ml-1">{this.state.userName}</p>
             </div>
+            <div className="mt-1 d-flex align-items-center" onClick={this.changeToAddMemberToFridgeScreen}>
+              <div className="user-icon"></div>
+              <p className="ml-1">Add Member</p>
+            </div>
           </div>
         </div>
         <div className="col-6 header-right">
           <div className="d-flex justify-content-center mt-3">
-            <div className="client-fridge-logo"></div>
+            <div className="client-fridge-logo" onClick={this.changeToMyFridgeScreen}></div>
           </div>
           <h4 className="text-center">{this.props.fridge.fridgeName}</h4>
         </div>
