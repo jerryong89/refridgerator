@@ -159,6 +159,22 @@ app.post('/api/users/:userId', (req, res, next) => {
   res.sendStatus(200);
 });
 
+app.post('/api/newMember', (req, res, next) => {
+  const sql = `
+  INSERT INTO  "users" ("userId", "fridgeId", "userName")
+  VALUES       (default, $1, $2)
+  RETURNING     *;
+  `;
+  const fridgeId = req.session.fridgeId;
+  const newMember = req.body.newMember;
+
+  db.query(sql, [fridgeId, newMember])
+    .then(result => {
+      return res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 // User Can View All Groceries in Fridge
 // returns array of all claims
 app.get('/api/claims', (req, res, next) => {
