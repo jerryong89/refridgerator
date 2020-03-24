@@ -23,8 +23,12 @@ export default class MyFridgeScreen extends React.Component {
   render() {
     return (
       <div className="text-center">
-        <button className="btn btn-secondary mt-5" onClick={this.changeToAddFoodScreen}>Add Food</button>
-        <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.changeToAddFoodScreen}>Add Food</button>
+        </div>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+        </div>
       </div>
     );
   }
