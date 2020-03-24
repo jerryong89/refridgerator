@@ -10,10 +10,6 @@ export default class MyGroceriesCategories extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="text-center">-My Groceries-</h1>
-        <h2 className="text-center">-Categories</h2>
-      </div>,
       <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2 pb-2 pt-2">
         <h1>-My Groceries-</h1>
         <h3>-Category-</h3>
