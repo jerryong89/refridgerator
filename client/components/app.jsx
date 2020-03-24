@@ -27,7 +27,7 @@ export default class App extends React.Component {
         userId: '',
         userName: ''
       },
-      view: 'my-groceries-categories',
+      view: 'start-screen',
       loginError: false
     };
     this.setView = this.setView.bind(this);
@@ -228,6 +228,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
