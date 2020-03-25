@@ -1,33 +1,3 @@
-.wave {
-  height: 20vh;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  background: #11385b;
-}
-
-.headerButton{
-  width: fit-content;
-  margin-right: 0;
-  background-color: grey;
-  border-radius: 50%;
-  height: 25px;
-  width: 30px;
-  border: none;
-  margin-top: 10px;
-}
-
-.headerBiggerButton{
-  margin-top: 20px;
-  width: fit-content;
-  margin-right: 0;
-  background-color: grey;
-  border-radius: 50%;
-  height: 70px;
-  width: 80px;
-  border: none;
-}
-
 .buttonName {
  color: white;
 }
@@ -56,7 +26,7 @@
 }
 
 .chatBackground{
-  height: 100vh;
+  height: 80vh;
   background-color: #c2f0ff;
 }
 
@@ -72,6 +42,10 @@ body {
   height: 100vh;
 }
 
+p {
+  margin: 0;
+}
+
 .login-header {
   height: 40vh;
 }
@@ -85,7 +59,7 @@ body {
   font-weight: 800;
 }
 
-.test {
+.member-dropdown {
   text-align: center;
   width: 30%;
   background-color: white;
@@ -106,5 +80,43 @@ body {
   border-color: black;
   border-width: 1px;
   color: black;
-  width: 70%;
+  width: 70%;}
+
+.home-screen-header {
+  height: 20vh;
+}
+
+.header-left {
+  height: 20vh;
+}
+
+.header-right {
+  height: 100%;
+}
+
+.client-fridge-logo {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.user-icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: grey;
+}
+
+.blank {
+  background-color: honeydew;
+}
+
+.food-group-dropdown {
+  background: white;
+}
+
+.test {
+  background-color: pink;
+  height: 80vh;
 }

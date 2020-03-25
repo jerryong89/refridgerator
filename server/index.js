@@ -121,8 +121,7 @@ app.get('/api/dairy', (req, res, next) => {
     SELECT "groupName",
            "foodName",
            "userName",
-           "claimId",
-           "groupName"
+           "claimId"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")

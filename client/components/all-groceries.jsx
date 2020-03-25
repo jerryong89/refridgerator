@@ -137,20 +137,6 @@ export default class AllGroceries extends React.Component {
   render() {
     return (
       <div className="chatBackground">
-        <div className="container wave">
-          <div className="row">
-            <div className="col-8 column">
-              <div className="buttonName"><button className="headerButton"></button>Dae Kim</div>
-              <div className="buttonName"><button className="headerButton"></button>Create Fridge</div>
-              <div className="buttonName"><button className="headerButton"></button>Join Fridge</div>
-              <div className="buttonName"><button className="headerButton"></button>Add Member</div>
-            </div>
-            <div className="col-4 column">
-              <button className="headerBiggerButton"></button>
-              <div className="buttonName"> Garland Boys</div>
-            </div>
-          </div>
-        </div>
         <h2 className="center">-ALL GROCERIES-</h2>
         <div >
           {this.displayView()}
