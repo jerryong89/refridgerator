@@ -3,7 +3,6 @@ import React from 'react';
 export default class UserGroceries extends React.Component {
 
   render() {
-    // this.props.groceries <--- all the groceries
     const myGroceries = this.props.groceries;
     const mapGroceries = myGroceries.map(food => {
       return (
@@ -11,7 +10,6 @@ export default class UserGroceries extends React.Component {
       );
     });
 
-    console.log(myGroceries);
     return (
       <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2">
         <h1>-My Groceries-</h1>

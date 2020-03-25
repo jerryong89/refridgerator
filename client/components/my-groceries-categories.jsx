@@ -18,13 +18,7 @@ export default class MyGroceriesCategories extends React.Component {
     this.miscCategory = this.miscCategory.bind(this);
   }
 
-  // categoryChangeAll() {
-  //   const setCategory = this.props.setView;
-  //   setCategory('user-groceries');
-  // }
-
   setCategory() {
-    // this.setState = { view: user-groceries, group: something }
     this.setState({
       group: 'total-groceries'
     });
@@ -72,20 +66,6 @@ export default class MyGroceriesCategories extends React.Component {
       });
   }
 
-  // categoryMeat(userId) {
-  //   fetch(`api/claims?userId=${userId}`)
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(result => {
-  //       this.setState({
-  //         groceries: result,
-  //         group: 'meat',
-  //         view: 'meat-groceries'
-  //       });
-  //     });
-  // }
-
   componentDidMount() {
     this.categoryAll(this.props.user.userId);
   }
@@ -95,7 +75,7 @@ export default class MyGroceriesCategories extends React.Component {
 
     if (this.state.group === 'total-groceries' && this.state.view === 'my-groceries-categories') {
       return <UserGroceries groceries={this.state.groceries} />;
-    } // filter by this.state.group
+    }
 
     if (this.state.group === 'meat-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedMeat = this.state.groceries.filter(food => food.groupId === 3);
@@ -121,10 +101,6 @@ export default class MyGroceriesCategories extends React.Component {
       const sortedMisc = this.state.groceries.filter(food => food.groupId === 5);
       return <UserGroceries groceries={sortedMisc} />;
     }
-    // filter the groceries based on the state group
-    // pass the filtered list to the user groceries
-    // return user groceries component passing the filtered list
-    // pass a method down into the user groceries list to set the screen back to the group selection
 
     if (this.state.view === 'my-groceries-categories') {
       return (
