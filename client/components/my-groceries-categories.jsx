@@ -31,7 +31,7 @@ export default class MyGroceriesCategories extends React.Component {
         return response.json();
       })
       .then(result => {
-        this.setState = ({
+        this.setState({
           groceries: result
         });
       });
@@ -43,6 +43,16 @@ export default class MyGroceriesCategories extends React.Component {
 
   render() {
     console.log(this.state);
+
+    if (this.state.group === 'total-groceries' && this.state.view === 'my-groceries-categories') {
+      return <UserGroceries groceries={this.state.groceries} />;
+    } // filter by this.state.group
+
+    // filter the groceries based on the state group
+    // pass the filtered list to the user groceries
+    // return user groceries component passing the filtered list
+    // pass a method down into the user groceries list to set the screen back to the group selection
+
     if (this.state.view === 'my-groceries-categories') {
       return (
         <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2 pb-2 pt-2">
@@ -53,18 +63,10 @@ export default class MyGroceriesCategories extends React.Component {
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Frozen</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Meats</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Etc.</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={() => { this.setCategory(); this.categoryAll(); }} >ALL</button>
+          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.setCategory} >ALL</button>
         </div>
       );
     }
 
-    if (this.state.group === 'total-groceries') {
-      return <UserGroceries groceries={this.state.groceries} />;
-    } // filter by this.state.group
-
-    // filter the groceries based on the state group
-    // pass the filtered list to the user groceries
-    // return user groceries component passing the filtered list
-    // pass a method down into the user groceries list to set the screen back to the group selection
   }
 }
