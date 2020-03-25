@@ -12,6 +12,7 @@ import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
 import AddMemberToFridge from './add-member-to-fridge';
 import ViewFridgeMembers from './view-fridge-members';
+import MyGroceriesCategories from './my-groceries-categories';
 import UpcomingExpirationsScreen from './upcoming-expirations';
 
 export default class App extends React.Component {
@@ -119,6 +120,13 @@ export default class App extends React.Component {
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
+    } else if (this.state.view === 'my-groceries-categories') {
+      return (
+        <div>
+          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} />
+         </div>
+        );
     } else if (this.state.view === 'view-all-groceries') {
       return (
         <div>
@@ -213,6 +221,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}

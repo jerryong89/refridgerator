@@ -98,10 +98,10 @@ app.get('/api/users/', (req, res, next) => {
 });
 
 // User Can View his or her Groceries in the Fridge - Blake
-app.get('/api/claims', (req, res, next) => {
-  const userId = parseInt(req.body.userId);
+app.get('/api/claims/', (req, res, next) => {
+  const { userId } = req.query;
   const sql = `
-    SELECT "foodName"
+    SELECT *
     FROM "claims"
     WHERE "userId" = $1
     `;

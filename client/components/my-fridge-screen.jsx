@@ -8,6 +8,7 @@ export default class MyFridgeScreen extends React.Component {
     };
     this.changeToAddFoodScreen = this.changeToAddFoodScreen.bind(this);
     this.changeToViewFridgeMembers = this.changeToViewFridgeMembers.bind(this);
+    this.changeToMyGroceriesCategories = this.changeToMyGroceriesCategories.bind(this);
     this.changeToViewAllGroceries = this.changeToViewAllGroceries.bind(this);
     this.changeToViewFridgeChat = this.changeToViewFridgeChat.bind(this);
     this.changeToUpcomingExpirationsScreen = this.changeToUpcomingExpirationsScreen.bind(this);
@@ -23,6 +24,11 @@ export default class MyFridgeScreen extends React.Component {
     setViewMethod('view-all-fridge-members');
   }
 
+  changeToMyGroceriesCategories() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-groceries-categories');
+    const userId = this.state.userId;
+  }
   changeToViewAllGroceries() {
     const setViewMethod = this.props.setView;
     setViewMethod('view-all-groceries');
@@ -49,6 +55,9 @@ export default class MyFridgeScreen extends React.Component {
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+        </div>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.changeToMyGroceriesCategories}>My Groceries</button>
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeChat}>Fridge Chat</button>
