@@ -33,8 +33,8 @@ app.post('/api/messages', (req, res) => {
   const message = req.body.newMessage;
   const params = [message];
   const sql = `
-    insert into "messages"("messageId", "userId", "message", "createdAt")
-    values(default, 1, $1, default)
+    insert into "messages"("messageId", "userId", "message", "createdAt", "fridgeId")
+    values(default, 1, $1, default, 1)
     returning *;
   `;
 
@@ -112,16 +112,19 @@ app.get('/api/claims', (req, res, next) => {
 });
 
 app.get('/api/dairy', (req, res, next) => {
-  const userId = 2;
+  const fridgeId = 1;
   const sql = `
-    SELECT *
+    SELECT "groupName",
+           "foodName",
+           "userName"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
-    WHERE "userId" = $1;
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 2
     `;
 
-  const value = [userId];
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {
@@ -131,16 +134,19 @@ app.get('/api/dairy', (req, res, next) => {
 });
 
 app.get('/api/produce', (req, res, next) => {
-  const userId = 2;
+  const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT *
+    SELECT "groupName",
+           "foodName",
+           "userName"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
-    WHERE "userId" = $1;
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 1
     `;
 
-  const value = [userId];
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {
@@ -150,16 +156,19 @@ app.get('/api/produce', (req, res, next) => {
 });
 
 app.get('/api/frozen', (req, res, next) => {
-  const userId = 2;
+  const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT *
+    SELECT "groupName",
+           "foodName",
+           "userName"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
-    WHERE "userId" = $1;
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" =
     `;
 
-  const value = [userId];
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {
@@ -169,16 +178,19 @@ app.get('/api/frozen', (req, res, next) => {
 });
 
 app.get('/api/meats', (req, res, next) => {
-  const userId = 2;
+  const fridgeId = 1;
   const sql = `
-    SELECT *
+    SELECT "groupName",
+           "foodName",
+           "userName"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
-    WHERE "userId" = $1;
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 3
     `;
 
-  const value = [userId];
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {
@@ -188,16 +200,19 @@ app.get('/api/meats', (req, res, next) => {
 });
 
 app.get('/api/etc', (req, res, next) => {
-  const userId = 2;
+  const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT *
+    SELECT "groupName",
+           "foodName",
+           "userName"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
-    WHERE "userId" = $1;
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" =
     `;
 
-  const value = [userId];
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {

@@ -5,7 +5,8 @@ export default class FridgeChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chat: []
+      chat: [],
+      message: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,14 +14,42 @@ export default class FridgeChat extends React.Component {
 
   handleChange(event) {
     this.setState({
-      chat: event.target.value
+      message: event.target.value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const newMessage = this.state.chat;
-    this.props.post(newMessage);
+    const newMessage = this.state.message;
+    this.postChat(newMessage);
+  }
+
+  getChat() {
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(messages => this.setState({
+        chat: messages
+      }));
+  }
+
+  postChat(newMessage) {
+    const newObj = { newMessage };
+    fetch('/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newObj)
+    })
+      .then(res => this.getChat())
+      .then(() => this.setState({ message: '' }))
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  componentDidMount() {
+    this.getChat();
   }
 
   render() {
@@ -44,10 +73,10 @@ export default class FridgeChat extends React.Component {
         <h4 className="center">Garland Boys</h4>
         <div className="container">
           <div className="scrolling-box textContainer">
-            <Chat message={this.props.get} />
+            <Chat message={this.state.chat} />
           </div>
           <form onSubmit={this.handleSubmit}>
-            <input required className="chatBox" value={this.state.chat} onChange={this.handleChange} type="text" />
+            <input required className="chatBox" value={this.state.message} onChange={this.handleChange} type="text" />
           </form>
         </div>
       </div>

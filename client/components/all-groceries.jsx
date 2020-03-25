@@ -1,5 +1,5 @@
 import React from 'react';
-import Grocery from './grocery';
+// import Grocery from './grocery';
 
 export default class AllGroceries extends React.Component {
   constructor(props) {
@@ -7,7 +7,11 @@ export default class AllGroceries extends React.Component {
     this.state = {
       grocery: []
     };
-    this.getGrocery = this.getGrocery.bind(this);
+    this.getDairy = this.getDairy.bind(this);
+    this.getProduce = this.getProduce.bind(this);
+    this.getFrozen = this.getFrozen.bind(this);
+    this.getMeats = this.getMeats.bind(this);
+    this.getEtc = this.getEtc.bind(this);
   }
 
   getDairy() {
@@ -65,14 +69,6 @@ export default class AllGroceries extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.getGrocery();
-  }
-
-  componentDidUpdate() {
-    // console.log('this state', this.state.grocery);
-  }
-
   render() {
     return (
       <div className="chatBackground">
@@ -92,12 +88,12 @@ export default class AllGroceries extends React.Component {
         </div>
         <h2 className="center">-ALL GROCERIES-</h2>
         <div className="buttonBody container">
-          {this.state.grocery.map(groceries => <Grocery key={groceries.claimId} items={groceries}/>)}
-          {/* <button type="button" className="groceryButton btn btn-secondary" dairy={this.state.grocery}>Dairy</button>
-          <button type="button" className="groceryButton btn btn-secondary" produce={this.state.grocery}>Produce</button>
-          <button type="button" className="groceryButton btn btn-secondary" frozen={this.state.grocery}>Frozen</button>
-          <button type="button" className="groceryButton btn btn-secondary" meats={this.state.grocery}>Meats</button>
-          <button type="button" className="groceryButton btn btn-secondary" etc={this.state.grocery}>Etc.</button> */}
+          {/* {this.state.grocery.map(groceries => <Grocery key={groceries.claimId} items={groceries}/>)} */}
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getDairy} foodprop={this.state.grocery} >{/* {console.log('this is grocery:', this.state.grocery)} */}Dairy</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getProduce}>Produce</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getFrozen}>Frozen</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getMeats}>Meats</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getEtc}>Etc.</button>
         </div>
       </div>
     );
