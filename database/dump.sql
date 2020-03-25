@@ -277,8 +277,10 @@ ALTER TABLE ONLY public.users ALTER COLUMN "userId" SET DEFAULT nextval('public.
 COPY public.claims ("claimId", "fridgeId", "userId", "groupId", "foodName", qty, "expirationDate") FROM stdin;
 12	1	2	2	Milk	3	\N
 13	1	2	2	Eggs	3	2021-01-01 00:00:00-08
-14	1	2	3	Chicken	1	2020-04-01 00:00:00-07
-15	2	2	3	Chicken	1	2020-04-01 00:00:00-07
+15	2	2	3	Chicken	1	2020-03-31 23:00:00-08
+16	1	2	3	Shrimp	12	2020-05-20 00:00:00-08
+17	1	2	3	Tilapia	3	2020-04-15 00:00:00-08
+18	1	2	3	Baby Back Ribs	12	2020-04-30 00:00:00-08
 \.
 
 
@@ -292,6 +294,8 @@ COPY public.fridges ("fridgeId", "fridgeName") FROM stdin;
 3	My Fridge
 4	Test Fridge
 5	Fridgey McFridtington
+6	Jerrys Fridge
+7	Jacks Fridge
 \.
 
 
@@ -303,6 +307,8 @@ COPY public.groups ("groupId", "groupName") FROM stdin;
 1	Produce
 2	Dairy
 3	Meat
+4	Frozen
+5	Misc
 \.
 
 
@@ -329,21 +335,21 @@ COPY public.users ("userId", "fridgeId", "userName") FROM stdin;
 -- Name: claims_claimId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."claims_claimId_seq"', 15, true);
+SELECT pg_catalog.setval('public."claims_claimId_seq"', 18, true);
 
 
 --
 -- Name: fridges_fridgeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 5, true);
+SELECT pg_catalog.setval('public."fridges_fridgeId_seq"', 7, true);
 
 
 --
 -- Name: groups_groupId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."groups_groupId_seq"', 3, true);
+SELECT pg_catalog.setval('public."groups_groupId_seq"', 5, true);
 
 
 --
@@ -357,7 +363,7 @@ SELECT pg_catalog.setval('public."messages_messageId_seq"', 1, false);
 -- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."users_userId_seq"', 3, true);
+SELECT pg_catalog.setval('public."users_userId_seq"', 5, true);
 
 
 --
