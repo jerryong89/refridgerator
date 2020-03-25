@@ -71,8 +71,6 @@ export default class MyGroceriesCategories extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-
     if (this.state.group === 'total-groceries' && this.state.view === 'my-groceries-categories') {
       const title = 'All';
       return <UserGroceries groceries={this.state.groceries} title={title}/>;

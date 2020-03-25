@@ -123,10 +123,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'my-groceries-categories') {
       return (
         <div>
-          <HomeScreenHeader fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} />
-         </div>
-        );
+        </div>
+      );
     } else if (this.state.view === 'view-all-groceries') {
       return (
         <div>
@@ -221,10 +221,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
-        {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
         {this.displayView()}
       </div>
     );
