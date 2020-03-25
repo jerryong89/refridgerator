@@ -60,10 +60,8 @@ export default class AllGroceries extends React.Component {
   }
 
   displayView() {
-
     if (this.state.view === 'main') {
       return (
-
         <div className="buttonBody container">
           <button type="button" className="groceryButton btn btn-secondary" onClick={this.dairy} foodprop={this.state.grocery} >Dairy</button>
           <button type="button" className="groceryButton btn btn-secondary" onClick={this.produce}>Produce</button>
