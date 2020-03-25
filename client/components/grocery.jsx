@@ -1,9 +1,12 @@
 import React from 'react';
 
 export default function Grocery(props) {
-  // console.log('this is props', props.items);
-  const product = props.items;
-  return (
-    <div className="groceryButton btn btn-secondary">{product.foodName}{product.userName}</div>
-  );
+  const product = props.foodprop;
+  return product.map(foods => {
+    return (
+      <div key={foods.claimId}>
+        <button className="groceryButton btn btn-secondary">{foods.foodName}{foods.userName}</button>
+      </div>
+    );
+  });
 }

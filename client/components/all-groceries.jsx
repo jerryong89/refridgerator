@@ -1,17 +1,82 @@
 import React from 'react';
-// import Grocery from './grocery';
+import Grocery from './grocery';
 
 export default class AllGroceries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grocery: []
+      grocery: [],
+      view: 'main'
     };
     this.getDairy = this.getDairy.bind(this);
     this.getProduce = this.getProduce.bind(this);
     this.getFrozen = this.getFrozen.bind(this);
     this.getMeats = this.getMeats.bind(this);
     this.getEtc = this.getEtc.bind(this);
+    this.setView = this.setView.bind(this);
+    this.displayView = this.displayView.bind(this);
+    this.changeViewCreateScreen = this.changeViewCreateScreen.bind(this);
+    this.dairy = this.dairy.bind(this);
+    this.produce = this.produce.bind(this);
+    this.meat = this.meat.bind(this);
+    this.etc = this.etc.bind(this);
+    this.frozen = this.frozen.bind(this);
+  }
+
+  setView(name) {
+    this.setState({
+      view: name
+    });
+  }
+
+  changeViewCreateScreen(event) {
+    const setViewMethod = this.setView;
+    setViewMethod('groceryList');
+  }
+
+  dairy() {
+    this.getDairy();
+    this.changeViewCreateScreen();
+  }
+
+  produce() {
+    this.getProduce();
+    this.changeViewCreateScreen();
+  }
+
+  frozen() {
+    this.getFrozen();
+    this.changeViewCreateScreen();
+  }
+
+  meat() {
+    this.getMeats();
+    this.changeViewCreateScreen();
+  }
+
+  etc() {
+    this.getEtc();
+    this.changeViewCreateScreen();
+  }
+
+  displayView() {
+
+    if (this.state.view === 'main') {
+      return (
+
+        <div className="buttonBody container">
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.dairy} foodprop={this.state.grocery} >Dairy</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.produce}>Produce</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.frozen}>Frozen</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.meat}>Meats</button>
+          <button type="button" className="groceryButton btn btn-secondary" onClick={this.etc}>Etc.</button>
+        </div>
+      );
+    } else if (this.state.view === 'groceryList') {
+      return (
+        <Grocery foodprop={this.state.grocery}/>
+      );
+    }
   }
 
   getDairy() {
@@ -87,13 +152,8 @@ export default class AllGroceries extends React.Component {
           </div>
         </div>
         <h2 className="center">-ALL GROCERIES-</h2>
-        <div className="buttonBody container">
-          {/* {this.state.grocery.map(groceries => <Grocery key={groceries.claimId} items={groceries}/>)} */}
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getDairy} foodprop={this.state.grocery} >{/* {console.log('this is grocery:', this.state.grocery)} */}Dairy</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getProduce}>Produce</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getFrozen}>Frozen</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getMeats}>Meats</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.getEtc}>Etc.</button>
+        <div >
+          {this.displayView()}
         </div>
       </div>
     );
