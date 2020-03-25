@@ -10,6 +10,7 @@ export default class UserGroceries extends React.Component {
         <button className="col-10" key={food.claimId}>{food.foodName} , {food.qty}</button>
       );
     });
+
     console.log(myGroceries);
     return (
       <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2">
