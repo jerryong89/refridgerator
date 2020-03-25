@@ -6,7 +6,7 @@ export default class UserGroceries extends React.Component {
     const myGroceries = this.props.groceries;
     const mapGroceries = myGroceries.map(food => {
       return (
-        <button className="col-10" key={food.claimId}>{food.foodName} , {food.qty}</button>
+        <button className="col-10 mb-2 mt-2 bg-secondary text-white" key={food.claimId}>{food.foodName}, qty: {food.qty}</button>
       );
     });
 
