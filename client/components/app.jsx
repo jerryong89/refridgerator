@@ -1,5 +1,5 @@
 import React from 'react';
-// import FridgeChat from './fridgechat';
+import FridgeChat from './fridgechat';
 import LoginHeader from './login-header';
 import LoginScreen from './login-screen';
 import CreateFridgeScreen from './create-fridge-screen';
@@ -7,6 +7,7 @@ import MemberLoginScreen from './member-login-screen';
 import NewMemberLoginScreen from './new-member-login-screen';
 import ExistingMemberLoginScreen from './existing-member-login-screen';
 import MyFridgeScreen from './my-fridge-screen';
+import AllGroceries from './all-groceries';
 import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
 import AddMemberToFridge from './add-member-to-fridge';
@@ -18,7 +19,6 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       fridgeName: null,
-      chat: [],
       fridge: {
         fridgeId: '',
         fridgeName: ''
@@ -33,7 +33,6 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
     this.createFridge = this.createFridge.bind(this);
-    this.postChat = this.postChat.bind(this);
     this.getFridges = this.getFridges.bind(this);
     this.loginError = this.loginError.bind(this);
     this.createNewMember = this.createNewMember.bind(this);
@@ -120,6 +119,18 @@ export default class App extends React.Component {
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
+    } else if (this.state.view === 'view-all-groceries') {
+      return (
+        <div>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <AllGroceries />
+        </div>
+      );
+    } else if (this.state.view === 'view-fridge-chat') {
+      return (
+        <div>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <FridgeChat user={this.state.fridge}/>
     } else if (this.state.view === 'upcoming-expirations-screen') {
       return (
         <div>
@@ -199,39 +210,10 @@ export default class App extends React.Component {
     });
   }
 
-  getChat() {
-    fetch('/api/messages')
-      .then(res => res.json())
-      .then(messages => this.setState({
-        chat: messages
-      }));
-  }
-
-  postChat(newMessage) {
-    const newObj = { newMessage };
-    fetch('/api/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newObj)
-    })
-      .then(res => res.json())
-      .then(newMessage => {
-        this.setState({
-          chat: this.state.chat.concat(newMessage)
-        });
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-
   render() {
     return (
       <div>
         {/* <StartScreenLogin createFridgeMethod={this.createFridge}/> */}
-        {/* <FridgeChat post={this.postChat} get={this.state.chat}/> */}
         {this.displayView()}
       </div>
     );
