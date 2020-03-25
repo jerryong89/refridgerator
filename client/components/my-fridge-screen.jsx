@@ -8,6 +8,7 @@ export default class MyFridgeScreen extends React.Component {
     };
     this.changeToAddFoodScreen = this.changeToAddFoodScreen.bind(this);
     this.changeToViewFridgeMembers = this.changeToViewFridgeMembers.bind(this);
+    this.changeToUpcomingExpirationsScreen = this.changeToUpcomingExpirationsScreen.bind(this);
   }
 
   changeToAddFoodScreen() {
@@ -20,6 +21,11 @@ export default class MyFridgeScreen extends React.Component {
     setViewMethod('view-all-fridge-members');
   }
 
+  changeToUpcomingExpirationsScreen() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('upcoming-expirations-screen');
+  }
+
   render() {
     return (
       <div className="text-center">
@@ -28,6 +34,9 @@ export default class MyFridgeScreen extends React.Component {
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+        </div>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
         </div>
       </div>
     );

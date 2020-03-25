@@ -259,6 +259,22 @@ app.delete('/api/claims/:claimId', (req, res, next) => {
   }
 });
 
+app.get('/api/expirations', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const userId = req.session.userId;
+  const sql = `
+  SELECT *
+  FROM "claims"
+  WHERE "fridgeId" = $1 AND "userId" = $2
+  ORDER BY "expirationDate" ASC
+  `;
+
+  db.query(sql, [fridgeId, userId])
+    .then(result => {
+      res.json(result.rows);
+    }).catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
