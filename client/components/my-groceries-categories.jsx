@@ -37,6 +37,20 @@ export default class MyGroceriesCategories extends React.Component {
       });
   }
 
+  categoryMeat(userId, groupId) {
+    fetch(`api/claims?userId=${userId}?groupId=${groupId}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(result => {
+        this.setState({
+          groceries: result,
+          group: 'meat',
+          view: 'meat-groceries'
+        });
+      });
+  }
+
   componentDidMount() {
     this.categoryAll(this.props.user.userId);
   }
@@ -48,6 +62,9 @@ export default class MyGroceriesCategories extends React.Component {
       return <UserGroceries groceries={this.state.groceries} />;
     } // filter by this.state.group
 
+    if (this.state.group === 'meat' && this.state.view === 'meat-groceries') {
+      return <UserGroceries groceries={this.state.groceries} />;
+    }
     // filter the groceries based on the state group
     // pass the filtered list to the user groceries
     // return user groceries component passing the filtered list
@@ -61,7 +78,7 @@ export default class MyGroceriesCategories extends React.Component {
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Dairy</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Produce</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Frozen</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Meats</button>
+          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.categoryMeat}>Meats</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2">Etc.</button>
           <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.setCategory} >ALL</button>
         </div>
