@@ -28,13 +28,13 @@ export default class ExistingMemberLoginScreen extends React.Component {
     event.preventDefault();
     const setViewMethod = this.props.setView;
     const setExistingMemberMethod = this.props.setExistingMember;
-    setViewMethod('my-fridge-screen');
     fetch(`/api/users/${this.state.selectedMemberId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(response => {
+      setViewMethod('my-fridge-screen');
       setExistingMemberMethod(this.state.selectedMemberId);
     });
   }

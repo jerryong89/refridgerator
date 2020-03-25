@@ -127,6 +127,10 @@ p {
   background: white;
 }
 
+.card-color {
+  background-color: lightgray;
+}
+
 .test {
   background-color: pink;
   height: 80vh;

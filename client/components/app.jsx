@@ -11,6 +11,7 @@ import HomeScreenHeader from './home-screen-header';
 import AddFoodScreen from './add-food-screen';
 import AddMemberToFridge from './add-member-to-fridge';
 import ViewFridgeMembers from './view-fridge-members';
+import UpcomingExpirationsScreen from './upcoming-expirations';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -117,6 +118,13 @@ export default class App extends React.Component {
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
+        </div>
+      );
+    } else if (this.state.view === 'upcoming-expirations-screen') {
+      return (
+        <div>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <UpcomingExpirationsScreen />
         </div>
       );
     }
