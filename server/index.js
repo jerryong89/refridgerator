@@ -143,7 +143,8 @@ app.get('/api/produce', (req, res, next) => {
   const sql = `
     SELECT "groupName",
            "foodName",
-           "userName"
+           "userName",
+           "claimId"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -165,7 +166,8 @@ app.get('/api/frozen', (req, res, next) => {
   const sql = `
     SELECT "groupName",
            "foodName",
-           "userName"
+           "userName",
+           "claimId"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -187,7 +189,8 @@ app.get('/api/meats', (req, res, next) => {
   const sql = `
     SELECT "groupName",
            "foodName",
-           "userName"
+           "userName",
+           "claimId"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -209,7 +212,8 @@ app.get('/api/etc', (req, res, next) => {
   const sql = `
     SELECT "groupName",
            "foodName",
-           "userName"
+           "userName",
+           "claimId"
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
