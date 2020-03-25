@@ -24,6 +24,7 @@ export default class MyFridgeScreen extends React.Component {
   changeToMyGroceriesCategories() {
     const setViewMethod = this.props.setView;
     setViewMethod('my-groceries-categories');
+    const userId = this.state.userId;
   }
 
   render() {
