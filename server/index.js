@@ -335,6 +335,7 @@ app.post('/api/claims', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User can update the food quantity based on the claimId in the parameters - Blake
 app.put('/api/claims/:claimId', (req, res, next) => {
   const values = [req.body.qty, req.params.claimId];
   const sql = `
