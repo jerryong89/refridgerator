@@ -96,7 +96,7 @@ app.get('/api/users/', (req, res, next) => {
 app.get('/api/claims/', (req, res, next) => {
   const { userId } = req.query;
   const sql = `
-    SELECT "foodName"
+    SELECT *
     FROM "claims"
     WHERE "userId" = $1
     `;
