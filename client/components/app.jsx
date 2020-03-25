@@ -131,6 +131,8 @@ export default class App extends React.Component {
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <FridgeChat user={this.state.fridge}/>
+        </div>
+      );
     } else if (this.state.view === 'upcoming-expirations-screen') {
       return (
         <div>
