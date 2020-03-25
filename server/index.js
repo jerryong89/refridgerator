@@ -20,21 +20,25 @@ app.get('/api/health-check', (req, res, next) => {
 });
 
 app.get('/api/messages', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
   const sql = `
     select *
       from "messages"
-      join "users" using ("userId");
+      join "users" using ("userId")
+      where "messages"."fridgeId" = $1
   `;
-  db.query(sql)
+  db.query(sql, [fridgeId])
     .then(result => res.json(result.rows));
 });
 
 app.post('/api/messages', (req, res) => {
   const message = req.body.newMessage;
-  const params = [message];
+  const userId = req.session.userId;
+  const fridgeId = req.session.fridgeId;
+  const params = [message, userId, fridgeId];
   const sql = `
-    insert into "messages"("messageId", "userId", "message", "createdAt")
-    values(default, 1, $1, default)
+    insert into "messages"("messageId", "userId", "message", "createdAt", "fridgeId")
+    values(default, $2, $1, default, $3)
     returning *;
   `;
 
@@ -85,6 +89,7 @@ app.get('/api/users/', (req, res, next) => {
     WHERE "fridgeId" = $1`;
 
   const value = [fridgeId];
+
   db.query(sql, value)
     .then(result => {
       return res.status(200).json(result.rows);
@@ -102,6 +107,117 @@ app.get('/api/claims/', (req, res, next) => {
     `;
 
   const value = [userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/dairy', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT "groupName",
+           "foodName",
+           "userName",
+           "claimId"
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 2
+    `;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/produce', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT "groupName",
+           "foodName",
+           "userName"
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 1
+    `;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/frozen', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT "groupName",
+           "foodName",
+           "userName"
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" =
+    `;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/meats', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT "groupName",
+           "foodName",
+           "userName"
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" = 3
+    `;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/etc', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT "groupName",
+           "foodName",
+           "userName"
+    FROM "claims"
+    JOIN "users" using ("userId")
+    JOIN "groups" using ("groupId")
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."groupId" =
+    `;
+
+  const value = [fridgeId];
 
   db.query(sql, value)
     .then(result => {
@@ -157,22 +273,6 @@ app.post('/api/users', (req, res, next) => {
 app.post('/api/users/:userId', (req, res, next) => {
   req.session.userId = req.params.userId;
   res.sendStatus(200);
-});
-
-app.post('/api/newMember', (req, res, next) => {
-  const sql = `
-  INSERT INTO  "users" ("userId", "fridgeId", "userName")
-  VALUES       (default, $1, $2)
-  RETURNING     *;
-  `;
-  const fridgeId = req.session.fridgeId;
-  const newMember = req.body.newMember;
-
-  db.query(sql, [fridgeId, newMember])
-    .then(result => {
-      return res.status(201).json(result.rows[0]);
-    })
-    .catch(err => next(err));
 });
 
 // User Can View All Groceries in Fridge
@@ -257,6 +357,22 @@ app.delete('/api/claims/:claimId', (req, res, next) => {
         return res.status(500).json({ error: 'An unexpected error occured' });
       });
   }
+});
+
+app.get('/api/expirations', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const userId = req.session.userId;
+  const sql = `
+  SELECT *
+  FROM "claims"
+  WHERE "fridgeId" = $1 AND "userId" = $2
+  ORDER BY "expirationDate" ASC
+  `;
+
+  db.query(sql, [fridgeId, userId])
+    .then(result => {
+      res.json(result.rows);
+    }).catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {

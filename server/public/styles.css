@@ -1,31 +1,3 @@
-.wave {
-  height: 20vh;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  background: #11385b;
-}
-
-.headerButton{
-  width: fit-content;
-  margin-right: 0;
-  background-color: grey;
-  border-radius: 50%;
-  height: 25px;
-  width: 30px;
-  border: none;
-}
-
-.headerBiggerButton{
-  width: fit-content;
-  margin-right: 0;
-  background-color: grey;
-  border-radius: 50%;
-  height: 70px;
-  width: 80px;
-  border: none;
-}
-
 .buttonName {
  color: white;
 }
@@ -54,7 +26,7 @@
 }
 
 .chatBackground{
-  height: 100vh;
+  height: 80vh;
   background-color: #c2f0ff;
 }
 
@@ -93,6 +65,23 @@ p {
   background-color: white;
 }
 
+.buttonBody{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.groceryButton{
+  margin-bottom: 20px ;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  color: black;
+  width: 70%;}
+
 .home-screen-header {
   height: 20vh;
 }
@@ -125,6 +114,10 @@ p {
 
 .food-group-dropdown {
   background: white;
+}
+
+.card-color {
+  background-color: lightgray;
 }
 
 .test {
