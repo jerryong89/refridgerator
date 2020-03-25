@@ -10,6 +10,7 @@ export default class MyFridgeScreen extends React.Component {
     this.changeToViewFridgeMembers = this.changeToViewFridgeMembers.bind(this);
     this.changeToViewAllGroceries = this.changeToViewAllGroceries.bind(this);
     this.changeToViewFridgeChat = this.changeToViewFridgeChat.bind(this);
+    this.changeToUpcomingExpirationsScreen = this.changeToUpcomingExpirationsScreen.bind(this);
   }
 
   changeToAddFoodScreen() {
@@ -31,6 +32,11 @@ export default class MyFridgeScreen extends React.Component {
     const setViewMethod = this.props.setView;
     setViewMethod('view-fridge-chat');
   }
+  
+  changeToUpcomingExpirationsScreen() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('upcoming-expirations-screen');
+  }
 
   render() {
     return (
@@ -46,6 +52,9 @@ export default class MyFridgeScreen extends React.Component {
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeChat}>Fridge Chat</button>
+         </div>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
         </div>
       </div>
     );

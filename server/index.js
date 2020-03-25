@@ -331,6 +331,50 @@ app.post('/api/claims', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// User can Delete an entire entry in the Food Claim Table by the parameter claimId - Blake
+app.delete('/api/claims/:claimId', (req, res, next) => {
+  const sql = `
+    DELETE FROM "claims"
+    WHERE "claimId" = $1
+    RETURNING *
+    `;
+
+  const value = [req.params.claimId];
+
+  const param = parseInt(req.params.claimId);
+
+  if (param < 0 || isNaN(param)) {
+    return res.status(400).json({ error: 'This food item does not exist in the fridge' });
+  } else {
+    db.query(sql, value)
+      .then(result => {
+        if (result.rows[0]) {
+          return res.sendStatus(204);
+        } return res.status(404).json({ error: 'This food item does not exist' });
+      })
+      .catch(err => {
+        console.error(err);
+        return res.status(500).json({ error: 'An unexpected error occured' });
+      });
+  }
+});
+
+app.get('/api/expirations', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const userId = req.session.userId;
+  const sql = `
+  SELECT *
+  FROM "claims"
+  WHERE "fridgeId" = $1 AND "userId" = $2
+  ORDER BY "expirationDate" ASC
+  `;
+
+  db.query(sql, [fridgeId, userId])
+    .then(result => {
+      res.json(result.rows);
+    }).catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
