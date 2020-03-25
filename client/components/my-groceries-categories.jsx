@@ -42,7 +42,7 @@ export default class MyGroceriesCategories extends React.Component {
     });
   }
 
-  frozenCategor() {
+  frozenCategory() {
     this.setState({
       group: 'frozen-groceries'
     });
@@ -74,32 +74,38 @@ export default class MyGroceriesCategories extends React.Component {
     console.log(this.state);
 
     if (this.state.group === 'total-groceries' && this.state.view === 'my-groceries-categories') {
-      return <UserGroceries groceries={this.state.groceries} />;
+      const title = 'All';
+      return <UserGroceries groceries={this.state.groceries} title={title}/>;
     }
 
     if (this.state.group === 'meat-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedMeat = this.state.groceries.filter(food => food.groupId === 3);
-      return <UserGroceries groceries={sortedMeat} />;
+      const title = 'Meats';
+      return <UserGroceries groceries={sortedMeat} title={title}/>;
     }
 
     if (this.state.group === 'produce-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedProduce = this.state.groceries.filter(food => food.groupId === 1);
-      return <UserGroceries groceries={sortedProduce} />;
+      const title = 'Produce';
+      return <UserGroceries groceries={sortedProduce} title={title}/>;
     }
 
     if (this.state.group === 'dairy-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedDairy = this.state.groceries.filter(food => food.groupId === 2);
-      return <UserGroceries groceries={sortedDairy} />;
+      const title = 'Dairy';
+      return <UserGroceries groceries={sortedDairy} title={title}/>;
     }
 
     if (this.state.group === 'frozen-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedFrozen = this.state.groceries.filter(food => food.groupId === 4);
-      return <UserGroceries groceries={sortedFrozen} />;
+      const title = 'Frozen';
+      return <UserGroceries groceries={sortedFrozen} title={title}/>;
     }
 
     if (this.state.group === 'misc-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedMisc = this.state.groceries.filter(food => food.groupId === 5);
-      return <UserGroceries groceries={sortedMisc} />;
+      const title = 'Misc';
+      return <UserGroceries groceries={sortedMisc} title={title}/>;
     }
 
     if (this.state.view === 'my-groceries-categories') {

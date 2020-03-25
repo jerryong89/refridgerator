@@ -13,7 +13,8 @@ export default class UserGroceries extends React.Component {
     return (
       <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2">
         <h1>-My Groceries-</h1>
-        <div className="text-center">{mapGroceries}</div>
+        <h2>-{this.props.title}-</h2>
+        <div className="text-center col-10">{mapGroceries}</div>
       </div>
     );
   }
