@@ -335,6 +335,34 @@ app.post('/api/claims', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.put('/api/claims/:claimId', (req, res, next) => {
+  const values = [req.body.qty, req.params.claimId];
+  const sql = `
+    UPDATE "claims"
+    SET "qty" = $1
+    WHERE "claimId" = $2
+    RETURNING *
+    `;
+
+  const parsedClaimId = parseInt(req.params.claimId);
+  const parsedQty = parseInt(req.body.qty);
+
+  if (parsedClaimId < 0 || isNaN(parsedClaimId) || isNaN(parsedQty)) {
+    return res.status(400).json({ error: 'Invalid ClaimId or Qty entered' });
+  }
+
+  db.query(sql, values)
+    .then(data => {
+      if (data.rows[0]) {
+        return res.json(data.rows[0]);
+      } return res.status(404).json({ error: 'Claim ID does not exist' });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An unexpected error occured' });
+    });
+});
+
 // User can Delete an entire entry in the Food Claim Table by the parameter claimId - Blake
 app.delete('/api/claims/:claimId', (req, res, next) => {
   const sql = `
