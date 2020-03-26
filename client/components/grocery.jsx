@@ -9,9 +9,12 @@ export default class Grocery extends React.Component {
     this.changeScreenToSpecificFood = this.changeScreenToSpecificFood.bind(this);
   }
 
-  changeScreenToSpecificFood() {
+  changeScreenToSpecificFood(event) {
+    event.preventDefault();
     const setViewMethod = this.props.setView;
     setViewMethod('view-specific-food-screen');
+    const setClaimIdMethod = this.props.setClaimId;
+    setClaimIdMethod(event.currentTarget.value);
   }
 
   render() {

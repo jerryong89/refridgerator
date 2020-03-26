@@ -72,7 +72,7 @@ export default class AllGroceries extends React.Component {
       );
     } else if (this.state.view === 'groceryList') {
       return (
-        <Grocery foodprop={this.state.grocery} setView={this.props.setView}/>
+        <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
       );
     }
   }
