@@ -161,7 +161,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <ViewSpecificFoodInfoScreen specificClaimId={this.state.specificClaimId}/>
+          <ViewSpecificFoodInfoScreen setView={this.setView} specificClaimId={this.state.specificClaimId}/>
         </div>
       );
     }

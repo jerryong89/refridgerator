@@ -8,6 +8,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
     };
     this.getFoodInfo = this.getFoodInfo.bind(this);
     this.formatTime = this.formatTime.bind(this);
+    this.deleteFood = this.deleteFood.bind(this);
   }
 
   getFoodInfo() {
@@ -18,6 +19,20 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
         this.setState({
           foodInfo: result
         });
+      });
+  }
+
+  deleteFood(event) {
+    event.preventDefault();
+    fetch(`/api/claims/${this.state.foodInfo.claimId}`, {
+      method: 'DELETE'
+    })
+      .then(response => {
+        return response;
+      })
+      .then(result => {
+        const setViewMethod = this.props.setView;
+        setViewMethod('my-fridge-screen');
       });
   }
 
@@ -65,7 +80,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
           </div>
         </div>
         <div className="mt-5">
-          <button className="btn btn-danger">Remove Item</button>
+          <button className="btn btn-danger" onClick={this.deleteFood}>Remove Item</button>
         </div>
       </div>
     );
