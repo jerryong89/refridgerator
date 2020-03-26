@@ -118,10 +118,7 @@ app.get('/api/claims/', (req, res, next) => {
 app.get('/api/dairy', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -141,10 +138,7 @@ app.get('/api/dairy', (req, res, next) => {
 app.get('/api/produce', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -164,10 +158,7 @@ app.get('/api/produce', (req, res, next) => {
 app.get('/api/frozen', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -187,10 +178,7 @@ app.get('/api/frozen', (req, res, next) => {
 app.get('/api/meats', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -210,10 +198,7 @@ app.get('/api/meats', (req, res, next) => {
 app.get('/api/etc', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")

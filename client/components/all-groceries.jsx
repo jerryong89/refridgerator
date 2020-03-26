@@ -72,7 +72,7 @@ export default class AllGroceries extends React.Component {
       );
     } else if (this.state.view === 'groceryList') {
       return (
-        <Grocery foodprop={this.state.grocery}/>
+        <Grocery foodprop={this.state.grocery} setView={this.props.setView}/>
       );
     }
   }
@@ -136,7 +136,7 @@ export default class AllGroceries extends React.Component {
     return (
       <div className="chatBackground">
         <h2 className="center">-ALL GROCERIES-</h2>
-        <div >
+        <div className="container">
           {this.displayView()}
         </div>
       </div>
