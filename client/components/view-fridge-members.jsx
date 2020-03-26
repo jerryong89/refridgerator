@@ -25,6 +25,9 @@ export default class ViewFridgeMembers extends React.Component {
   }
 
   render() {
+    console.log(this.props.fridge);
+    const fridgeState = this.props.fridge;
+    const fridgeName = fridgeState.fridgeName;
     const membersList = this.state.members;
     const allMembers = membersList.map(member => {
       return (
@@ -33,6 +36,12 @@ export default class ViewFridgeMembers extends React.Component {
         </div>
       );
     });
-    return <div>{allMembers}</div>;
+    return (
+      <div>
+        <h1 className="text-center mt-2 mb-2">-Fridge Members-</h1>
+        <h2 className="text-center mt-2 mb-2">-{fridgeName}-</h2>
+        <div>{allMembers}</div>
+      </div>
+    );
   }
 }
