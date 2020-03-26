@@ -64,6 +64,9 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
             <p>{this.state.foodInfo.userName}</p>
           </div>
         </div>
+        <div className="mt-5">
+          <button className="btn btn-danger">Remove Item</button>
+        </div>
       </div>
     );
   }
