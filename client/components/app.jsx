@@ -14,6 +14,7 @@ import AddMemberToFridge from './add-member-to-fridge';
 import ViewFridgeMembers from './view-fridge-members';
 import MyGroceriesCategories from './my-groceries-categories';
 import UpcomingExpirationsScreen from './upcoming-expirations';
+import ViewSpecificFoodInfoScreen from './view-specific-food-info-screen';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,7 +30,8 @@ export default class App extends React.Component {
         userName: ''
       },
       view: 'start-screen',
-      loginError: false
+      loginError: false,
+      specificClaimId: ''
     };
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
@@ -38,6 +40,7 @@ export default class App extends React.Component {
     this.loginError = this.loginError.bind(this);
     this.createNewMember = this.createNewMember.bind(this);
     this.setExistingMember = this.setExistingMember.bind(this);
+    this.setClaimId = this.setClaimId.bind(this);
   }
 
   setView(name) {
@@ -52,6 +55,12 @@ export default class App extends React.Component {
         userId: clientUserId,
         userName: clientUserName
       }
+    });
+  }
+
+  setClaimId(claimId) {
+    this.setState({
+      specificClaimId: claimId
     });
   }
 
@@ -124,14 +133,14 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} />
+          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} setClaimId={this.setClaimId}/>
         </div>
       );
     } else if (this.state.view === 'view-all-groceries') {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <AllGroceries />
+          <AllGroceries setView={this.setView} setClaimId={this.setClaimId}/>
         </div>
       );
     } else if (this.state.view === 'view-fridge-chat') {
@@ -146,6 +155,13 @@ export default class App extends React.Component {
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
           <UpcomingExpirationsScreen />
+        </div>
+      );
+    } else if (this.state.view === 'view-specific-food-screen') {
+      return (
+        <div>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <ViewSpecificFoodInfoScreen specificClaimId={this.state.specificClaimId}/>
         </div>
       );
     }

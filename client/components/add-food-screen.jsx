@@ -92,6 +92,8 @@ export default class AddFoodScreen extends React.Component {
                 <option value="1">Produce</option>
                 <option value="2">Dairy</option>
                 <option value="3">Meat</option>
+                <option value="4">Frozen</option>
+                <option value="5">Misc.</option>
               </select>
             </div>
             <div className="mt-4">

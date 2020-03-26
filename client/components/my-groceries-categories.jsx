@@ -73,50 +73,66 @@ export default class MyGroceriesCategories extends React.Component {
   render() {
     if (this.state.group === 'total-groceries' && this.state.view === 'my-groceries-categories') {
       const title = 'All';
-      return <UserGroceries groceries={this.state.groceries} title={title}/>;
+      return <UserGroceries groceries={this.state.groceries} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.group === 'meat-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedMeat = this.state.groceries.filter(food => food.groupId === 3);
       const title = 'Meats';
-      return <UserGroceries groceries={sortedMeat} title={title}/>;
+      return <UserGroceries groceries={sortedMeat} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.group === 'produce-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedProduce = this.state.groceries.filter(food => food.groupId === 1);
       const title = 'Produce';
-      return <UserGroceries groceries={sortedProduce} title={title}/>;
+      return <UserGroceries groceries={sortedProduce} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.group === 'dairy-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedDairy = this.state.groceries.filter(food => food.groupId === 2);
       const title = 'Dairy';
-      return <UserGroceries groceries={sortedDairy} title={title}/>;
+      return <UserGroceries groceries={sortedDairy} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.group === 'frozen-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedFrozen = this.state.groceries.filter(food => food.groupId === 4);
       const title = 'Frozen';
-      return <UserGroceries groceries={sortedFrozen} title={title}/>;
+      return <UserGroceries groceries={sortedFrozen} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.group === 'misc-groceries' && this.state.view === 'my-groceries-categories') {
       const sortedMisc = this.state.groceries.filter(food => food.groupId === 5);
       const title = 'Misc';
-      return <UserGroceries groceries={sortedMisc} title={title}/>;
+      return <UserGroceries groceries={sortedMisc} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>;
     }
 
     if (this.state.view === 'my-groceries-categories') {
       return (
-        <div className="container d-flex flex-wrap justify-content-center col-10 mt-2 mb-2 pb-2 pt-2">
-          <h1>-My Groceries-</h1>
-          <h3>-Category-</h3>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.dairyCategory}>Dairy</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.produceCategory}>Produce</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.frozenCategory}>Frozen</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.meatCategory}>Meats</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.miscCategory}>Etc.</button>
-          <button className="bg-secondary text-white col-9 mt-2 mb-2 pb-2 pt-2" onClick={this.setCategory} >ALL</button>
+        <div className="container text-center">
+          <div>
+            <h1>-My Groceries-</h1>
+            <h3>-Category-</h3>
+          </div>
+          <div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.dairyCategory}>Dairy</button>
+            </div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.produceCategory}>Produce</button>
+            </div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.frozenCategory}>Frozen</button>
+            </div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.meatCategory}>Meats</button>
+            </div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.miscCategory}>Etc.</button>
+            </div>
+            <div className="mt-4">
+              <button className="btn btn-secondary" onClick={this.setCategory} >ALL</button>
+            </div>
+          </div>
         </div>
       );
     }
