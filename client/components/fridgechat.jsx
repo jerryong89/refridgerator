@@ -10,6 +10,8 @@ export default class FridgeChat extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.messageContainerRef = React.createRef();
   }
 
   handleChange(event) {
@@ -22,6 +24,7 @@ export default class FridgeChat extends React.Component {
     event.preventDefault();
     const newMessage = this.state.message;
     this.postChat(newMessage);
+    this.scrollToBottom();
   }
 
   getChat() {
@@ -29,7 +32,7 @@ export default class FridgeChat extends React.Component {
       .then(res => res.json())
       .then(messages => this.setState({
         chat: messages
-      }));
+      }, this.scrollToBottom));
   }
 
   postChat(newMessage) {
@@ -52,22 +55,27 @@ export default class FridgeChat extends React.Component {
     this.getChat();
   }
 
+  scrollToBottom() {
+    const messagesContainer = this.messageContainerRef.current;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
   render() {
     return (
       <div className="chatBackground">
         <h2 className="center">-FRIDGE CHAT-</h2>
         <h4 className="center">{this.props.user.fridgeName}</h4>
         <div className="container">
-          <div className="scrolling-box textContainer">
+          <div ref={this.messageContainerRef} className="scrolling-box textContainer ">
             <Chat message={this.state.chat} />
           </div>
-          <form /* onSubmit={this.handleSubmit} */>
-            <div className="row center">
-              <input required className="col-9 chatBox" value={this.state.message} onChange={this.handleChange} type="text" />
-              <button required type="submit" className=" center col-1 btn btn-success" onClick={this.handleSubmit}>&#8593;</button>
-            </div>
-          </form>
         </div>
+        <form>
+          <div className="center">
+            <input required className="col-9 chatBox" value={this.state.message} onChange={this.handleChange} type="text" />
+            <button required type="submit" className=" center col-1 btn btn-success" onClick={this.handleSubmit}>&#8593;</button>
+          </div>
+        </form>
       </div>
     );
   }
