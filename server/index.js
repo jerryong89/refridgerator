@@ -97,12 +97,28 @@ app.get('/api/users/', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+app.get('/api/claims/:specificClaim', (req, res, next) => {
+  const specificClaimdId = req.params.specificClaim;
+  const sql = `
+  SELECT *
+  FROM "claims"
+  JOIN "users" USING ("userId")
+  WHERE "claimId" = $1
+  `;
+
+  db.query(sql, [specificClaimdId])
+    .then(result => {
+      res.status(200).json(result.rows[0]);
+    }).catch(err => next(err));
+});
+
 // User Can View his or her Groceries in the Fridge - Blake
 app.get('/api/claims/', (req, res, next) => {
   const { userId } = req.query;
   const sql = `
     SELECT *
     FROM "claims"
+    JOIN "users" USING ("userId")
     WHERE "userId" = $1
     `;
 
@@ -118,10 +134,7 @@ app.get('/api/claims/', (req, res, next) => {
 app.get('/api/dairy', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -141,10 +154,7 @@ app.get('/api/dairy', (req, res, next) => {
 app.get('/api/produce', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -164,15 +174,12 @@ app.get('/api/produce', (req, res, next) => {
 app.get('/api/frozen', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
     WHERE "claims"."fridgeId" = $1
-    AND "claims"."groupId" =
+    AND "claims"."groupId" = 4
     `;
 
   const value = [fridgeId];
@@ -187,10 +194,7 @@ app.get('/api/frozen', (req, res, next) => {
 app.get('/api/meats', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
@@ -210,15 +214,12 @@ app.get('/api/meats', (req, res, next) => {
 app.get('/api/etc', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
-    SELECT "groupName",
-           "foodName",
-           "userName",
-           "claimId"
+    SELECT *
     FROM "claims"
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
     WHERE "claims"."fridgeId" = $1
-    AND "claims"."groupId" =
+    AND "claims"."groupId" = 5
     `;
 
   const value = [fridgeId];

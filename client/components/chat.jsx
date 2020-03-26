@@ -4,9 +4,7 @@ function Chat(props) {
   return props.message.map(text => {
     return (
       <div key={text.messageId}>
-        <div >
-          <div >{text.userName}{': '}{text.message}</div>
-        </div>
+        <div>{text.userName}{': '}{text.message}</div>
       </div>
     );
   });

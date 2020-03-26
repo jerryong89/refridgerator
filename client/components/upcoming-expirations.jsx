@@ -27,6 +27,12 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div className="mt-2">
           <button value="3" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Meat</button>
         </div>
+        <div className="mt-2">
+          <button value="4" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Frozen</button>
+        </div>
+        <div className="mt-2">
+          <button value="5" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Misc</button>
+        </div>
       </div>
     );
   }
@@ -105,6 +111,52 @@ export default class UpcomingExpirationsScreen extends React.Component {
     } else if (this.state.selectedFoodGroup === '3') {
       const allClaimsArray = this.state.allItems;
       const foodGroupSortedArray = allClaimsArray.filter(foodInfo => foodInfo.groupId === 3);
+      const allClaims = foodGroupSortedArray.map((claims, index) => {
+        const datetime = new Date(claims.expirationDate);
+        const date = datetime.toISOString().split('T')[0];
+        const splitDate = date.split('-');
+        const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+        return (
+          <div key={index} value={claims.claimId} className="mt-2">
+            <div className="card d-flex justify-content-around card-color">
+              <div className="d-flex justify-content-around">
+                {claims.foodName}
+                <p>Quantity: {claims.qty}</p>
+              </div>
+              <div className="text-center">Expires: {formattedDate}</div>
+            </div>
+          </div>
+        );
+      });
+      return (
+        <div>{allClaims}</div>
+      );
+    } else if (this.state.selectedFoodGroup === '4') {
+      const allClaimsArray = this.state.allItems;
+      const foodGroupSortedArray = allClaimsArray.filter(foodInfo => foodInfo.groupId === 4);
+      const allClaims = foodGroupSortedArray.map((claims, index) => {
+        const datetime = new Date(claims.expirationDate);
+        const date = datetime.toISOString().split('T')[0];
+        const splitDate = date.split('-');
+        const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+        return (
+          <div key={index} value={claims.claimId} className="mt-2">
+            <div className="card d-flex justify-content-around card-color">
+              <div className="d-flex justify-content-around">
+                {claims.foodName}
+                <p>Quantity: {claims.qty}</p>
+              </div>
+              <div className="text-center">Expires: {formattedDate}</div>
+            </div>
+          </div>
+        );
+      });
+      return (
+        <div>{allClaims}</div>
+      );
+    } else if (this.state.selectedFoodGroup === '5') {
+      const allClaimsArray = this.state.allItems;
+      const foodGroupSortedArray = allClaimsArray.filter(foodInfo => foodInfo.groupId === 5);
       const allClaims = foodGroupSortedArray.map((claims, index) => {
         const datetime = new Date(claims.expirationDate);
         const date = datetime.toISOString().split('T')[0];
