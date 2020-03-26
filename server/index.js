@@ -172,7 +172,7 @@ app.get('/api/frozen', (req, res, next) => {
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
     WHERE "claims"."fridgeId" = $1
-    AND "claims"."groupId" =
+    AND "claims"."groupId" = 4
     `;
 
   const value = [fridgeId];
@@ -218,7 +218,7 @@ app.get('/api/etc', (req, res, next) => {
     JOIN "users" using ("userId")
     JOIN "groups" using ("groupId")
     WHERE "claims"."fridgeId" = $1
-    AND "claims"."groupId" =
+    AND "claims"."groupId" = 5
     `;
 
   const value = [fridgeId];
