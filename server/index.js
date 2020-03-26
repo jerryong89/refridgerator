@@ -97,6 +97,20 @@ app.get('/api/users/', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+app.get('/api/claims/:specificClaim', (req, res, next) => {
+  const specificClaimdId = req.params.specificClaim;
+  const sql = `
+  SELECT *
+  FROM "claims"
+  WHERE "claimId" = $1
+  `;
+
+  db.query(sql, [specificClaimdId])
+    .then(result => {
+      res.status(200).json(result.rows[0]);
+    }).catch(err => next(err));
+});
+
 // User Can View his or her Groceries in the Fridge - Blake
 app.get('/api/claims/', (req, res, next) => {
   const { userId } = req.query;

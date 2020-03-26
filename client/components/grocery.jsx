@@ -9,12 +9,12 @@ export default class Grocery extends React.Component {
     this.changeScreenToSpecificFood = this.changeScreenToSpecificFood.bind(this);
   }
 
-  changeScreenToSpecificFood(event) {
+  changeScreenToSpecificFood(value) {
     event.preventDefault();
+    const setClaimIdMethod = this.props.setClaimId;
+    setClaimIdMethod(value);
     const setViewMethod = this.props.setView;
     setViewMethod('view-specific-food-screen');
-    const setClaimIdMethod = this.props.setClaimId;
-    setClaimIdMethod(event.currentTarget.value);
   }
 
   render() {
@@ -36,7 +36,7 @@ export default class Grocery extends React.Component {
                 <div>Quantity: {foods.qty}</div>
               </div>
               <div className="col-5 text-right">
-                <i value={foods.claimId} onClick={this.changeScreenToSpecificFood} className="fas fa-chevron-right fa-2x"></i>
+                <i value={foods.claimId} onClick={() => this.changeScreenToSpecificFood(foods.claimId)} className="fas fa-chevron-right fa-2x"></i>
               </div>
             </div>
           </div>
