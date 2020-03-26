@@ -118,6 +118,7 @@ app.get('/api/claims/', (req, res, next) => {
   const sql = `
     SELECT *
     FROM "claims"
+    JOIN "users" USING ("userId")
     WHERE "userId" = $1
     `;
 

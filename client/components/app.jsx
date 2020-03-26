@@ -133,7 +133,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} />
+          <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} setClaimId={this.setClaimId}/>
         </div>
       );
     } else if (this.state.view === 'view-all-groceries') {
