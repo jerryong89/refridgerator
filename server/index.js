@@ -467,6 +467,10 @@ app.get('/api/expirations', (req, res, next) => {
     }).catch(err => next(err));
 });
 
+app.delete('/api/delete', req => {
+  req.session.destroy();
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

@@ -12,6 +12,7 @@ export default class MyFridgeScreen extends React.Component {
     this.changeToViewAllGroceries = this.changeToViewAllGroceries.bind(this);
     this.changeToViewFridgeChat = this.changeToViewFridgeChat.bind(this);
     this.changeToUpcomingExpirationsScreen = this.changeToUpcomingExpirationsScreen.bind(this);
+    this.logOutChange = this.logOutChange.bind(this);
   }
 
   changeToAddFoodScreen() {
@@ -45,6 +46,13 @@ export default class MyFridgeScreen extends React.Component {
     setViewMethod('upcoming-expirations-screen');
   }
 
+  logOutChange() {
+    const setViewMethod = this.props.setView;
+    fetch('/api/delete', {
+      method: 'DELETE'
+    }).then(setViewMethod('start-screen'));
+  }
+
   render() {
     return (
       <div className="text-center">
@@ -65,6 +73,9 @@ export default class MyFridgeScreen extends React.Component {
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
+        </div>
+        <div className="mt-2">
+          <button className="btn btn-secondary mt-5" onClick={this.logOutChange}>Logout</button>
         </div>
       </div>
     );
