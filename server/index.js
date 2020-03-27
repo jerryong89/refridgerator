@@ -404,10 +404,18 @@ app.put('/api/claims/:claimId', (req, res, next) => {
   }
 
   db.query(sql, values)
-    .then(data => {
-      if (data.rows[0]) {
-        return res.json(data.rows[0]);
-      } return res.status(404).json({ error: 'Claim ID does not exist' });
+    .then(result => {
+      const sql = `
+      SELECT *
+      FROM "claims"
+      JOIN "users" USING ("userId")
+      WHERE "claimId" = $1
+      `;
+
+      db.query(sql, [req.params.claimId])
+        .then(result => {
+          return res.json(result.rows[0]);
+        });
     })
     .catch(err => {
       console.error(err);

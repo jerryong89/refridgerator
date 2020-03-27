@@ -11,6 +11,7 @@ export default class ExistingMemberLoginScreen extends React.Component {
     this.memberDropDown = this.memberDropDown.bind(this);
     this.selectInputMember = this.selectInputMember.bind(this);
     this.assignExistingMember = this.assignExistingMember.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
   }
 
   getMembers() {
@@ -46,6 +47,11 @@ export default class ExistingMemberLoginScreen extends React.Component {
     });
   }
 
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('member-login-screen');
+  }
+
   componentDidMount() {
     this.getMembers();
   }
@@ -75,6 +81,9 @@ export default class ExistingMemberLoginScreen extends React.Component {
           </div>
           <div className="text-center mt-4">
             <button className="btn btn-secondary" onClick={this.assignExistingMember}>Select Member</button>
+          </div>
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
           </div>
         </form>
       </div>

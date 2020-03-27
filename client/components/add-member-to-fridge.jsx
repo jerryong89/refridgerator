@@ -8,6 +8,7 @@ export default class AddMemberToFridge extends React.Component {
     };
     this.handleNewUserNameInput = this.handleNewUserNameInput.bind(this);
     this.addNewMemberToFridge = this.addNewMemberToFridge.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
   }
 
   handleNewUserNameInput(event) {
@@ -35,6 +36,11 @@ export default class AddMemberToFridge extends React.Component {
       });
   }
 
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
+  }
+
   render() {
     return (
       <div className="container d-flex align-items-center justify-content-center flex-wrap test">
@@ -44,6 +50,9 @@ export default class AddMemberToFridge extends React.Component {
           </div>
           <div className="mt-4">
             <button className="btn btn-secondary" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
+          </div>
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToPrevious}>Back To Fridge</button>
           </div>
         </div>
       </div>
