@@ -80,15 +80,15 @@ export default class AddFoodScreen extends React.Component {
   render() {
     return (
       <div className="container d-flex justify-content-center test">
-        <div className="col-10 d-flex justify-content-center">
+        <div className="col-10 d-flex justify-content-center align-items-center cursive-font">
           <form>
             <div className="mt-4">
               <p>Food Name:</p>
-              <input type="text" onChange={this.handleFoodNameInput}/>
+              <input type="text" className="w-100" onChange={this.handleFoodNameInput}/>
             </div>
             <div className="mt-4">
               <p>Food Group:</p>
-              <select name="food-groups" id="food-groups" className="food-group-dropdown" onChange={this.handleFoodGroupInput}>
+              <select name="food-groups" id="food-groups" className="food-group-dropdown w-100" onChange={this.handleFoodGroupInput}>
                 <option value="default">Choose Food Group</option>
                 <option value="1">Produce</option>
                 <option value="2">Dairy</option>
@@ -99,11 +99,11 @@ export default class AddFoodScreen extends React.Component {
             </div>
             <div className="mt-4">
               <p>Quantity:</p>
-              <input type="number" onChange={this.handleQuantityInput}/>
+              <input type="number" className="w-100" onChange={this.handleQuantityInput}/>
             </div>
             <div className="mt-4">
               <p>Expiration Date:</p>
-              <input type="date" onChange={this.handleDateInput}/>
+              <input type="date" className="w-100" onChange={this.handleDateInput}/>
             </div>
             <div className="mt-4">
               <p>Owner:</p>
