@@ -12,6 +12,8 @@ export default class ViewFridgeMembers extends React.Component {
       view: 'view-all-fridge-members'
     };
     this.memberItems = this.memberItems.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
+    this.backToMembers = this.backToMembers.bind(this);
   }
 
   getFridgeMembers() {
@@ -50,6 +52,17 @@ export default class ViewFridgeMembers extends React.Component {
     });
   }
 
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
+  }
+
+  backToMembers() {
+    this.setState({
+      view: 'view-all-fridge-members'
+    });
+  }
+
   render() {
     if (this.state.view === 'fridge-member-items') {
       const userName = this.state.userName;
@@ -59,14 +72,20 @@ export default class ViewFridgeMembers extends React.Component {
         const claimId = item.claimId;
         const qty = item.qty;
         return (
-          <div className="container d-flex flex-wrap justify-content-between mt-2 mb-2 pt-2 bg-secondary text-white" key={claimId}>
+          <div className="container d-flex flex-wrap justify-content-between mt-2 mb-2 p-3 bg-secondary text-white" key={claimId}>
             <div className="col-7">{groceryFoodname}</div>
             <div className="col">Qty: {qty}</div>
-            <div className="col justify-content-end"><i className="fas fa-chevron-right fa-2x"></i></div>
           </div>
         );
       });
-      return <FridgeMemberItems groceries={groceries} foodName={mappedGroceries} userName={userName} />;
+      return (
+        <div>
+          <FridgeMemberItems groceries={groceries} foodName={mappedGroceries} userName={userName} />
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToMembers}>Back</button>
+          </div>
+        </div >
+      );
     }
 
     const fridgeState = this.props.fridge;
@@ -84,6 +103,9 @@ export default class ViewFridgeMembers extends React.Component {
         <h1 className="text-center mt-2 mb-2">-Fridge Members-</h1>
         <h2 className="text-center mt-2 mb-2">-{fridgeName}-</h2>
         <div>{allMembers}</div>
+        <div className="text-center mt-4">
+          <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+        </div>
       </div>
     );
   }
