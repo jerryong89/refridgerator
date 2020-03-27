@@ -4,11 +4,19 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodInfo: ''
+      foodInfo: '',
+      updateInput: false,
+      newQty: ''
     };
     this.getFoodInfo = this.getFoodInfo.bind(this);
     this.formatTime = this.formatTime.bind(this);
     this.deleteFood = this.deleteFood.bind(this);
+    this.updateFoodInput = this.updateFoodInput.bind(this);
+    this.showInput = this.showInput.bind(this);
+    this.updateButtonChoice = this.updateButtonChoice.bind(this);
+    this.handleNewQtyInput = this.handleNewQtyInput.bind(this);
+    this.updateFood = this.updateFood.bind(this);
+    this.handleUpdateQtyClick = this.handleUpdateQtyClick.bind(this);
   }
 
   getFoodInfo() {
@@ -36,6 +44,37 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
       });
   }
 
+  updateFood() {
+    const claimId = this.state.foodInfo.claimId;
+    const newQty = {
+      qty: this.state.newQty
+    };
+    fetch(`/api/claims/${claimId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newQty)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(result => {
+        const setViewMethod = this.props.setView;
+        this.setState({
+          foodInfo: result
+        });
+        setViewMethod('view-specific-food-screen');
+      });
+  }
+
+  handleNewQtyInput(event) {
+    event.preventDefault();
+    this.setState({
+      newQty: event.currentTarget.value
+    });
+  }
+
   componentDidMount() {
     this.getFoodInfo();
   }
@@ -58,6 +97,48 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
     }
   }
 
+  updateFoodInput() {
+    if (this.state.updateInput === true) {
+      return (
+        <input type="number" placeholder={this.state.foodInfo.qty} onChange={this.handleNewQtyInput}/>
+      );
+    } else {
+      return (
+        <p>{this.state.foodInfo.qty}</p>
+      );
+    }
+  }
+
+  handleUpdateQtyClick(event) {
+    event.preventDefault();
+    this.updateFood();
+    this.showInput();
+  }
+
+  showInput() {
+    if (this.state.updateInput === true) {
+      this.setState({
+        updateInput: false
+      });
+    } else {
+      this.setState({
+        updateInput: true
+      });
+    }
+  }
+
+  updateButtonChoice() {
+    if (this.state.updateInput === true) {
+      return (
+        <button className="btn btn-warning" onClick={this.handleUpdateQtyClick}>Update</button>
+      );
+    } else {
+      return (
+        <button className="btn btn-success" onClick={this.showInput}>Update Item</button>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="container test">
@@ -68,7 +149,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
           </div>
           <div className="pt-3">
             <h5>Quantity:</h5>
-            <p>{this.state.foodInfo.qty}</p>
+            {this.updateFoodInput()}
           </div>
           <div className="pt-3">
             <h5>Expiration:</h5>
@@ -79,8 +160,15 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
             <p>{this.state.foodInfo.userName}</p>
           </div>
         </div>
-        <div className="mt-5">
-          <button className="btn btn-danger" onClick={this.deleteFood}>Remove Item</button>
+        <div className="d-flex justify-content-center">
+          <div className="mt-5 col-10 d-flex justify-content-around">
+            <div>
+              {this.updateButtonChoice()}
+            </div>
+            <div>
+              <button className="btn btn-danger" onClick={this.deleteFood}>Remove Item</button>
+            </div>
+          </div>
         </div>
       </div>
     );
