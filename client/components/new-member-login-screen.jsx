@@ -10,6 +10,7 @@ export default class NewMemberLoginScreen extends React.Component {
     };
     this.handleNewMemberInput = this.handleNewMemberInput.bind(this);
     this.handleCreateNewMember = this.handleCreateNewMember.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
   }
 
   handleNewMemberInput(event) {
@@ -28,6 +29,11 @@ export default class NewMemberLoginScreen extends React.Component {
     createNewMemberMethod(this.state.user);
   }
 
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('member-login-screen');
+  }
+
   render() {
     return (
       <div>
@@ -38,6 +44,9 @@ export default class NewMemberLoginScreen extends React.Component {
             </label>
             <div className="d-flex justify-content-center mt-4">
               <button className="btn btn-secondary" onClick={this.handleCreateNewMember}>Create New Member</button>
+            </div>
+            <div className="d-flex justify-content-center mt-4">
+              <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
             </div>
           </form>
         </div>

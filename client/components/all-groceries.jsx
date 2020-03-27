@@ -21,6 +21,8 @@ export default class AllGroceries extends React.Component {
     this.meat = this.meat.bind(this);
     this.etc = this.etc.bind(this);
     this.frozen = this.frozen.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
+    this.backToAllGroceries = this.backToAllGroceries.bind(this);
   }
 
   setView(name) {
@@ -59,6 +61,16 @@ export default class AllGroceries extends React.Component {
     this.changeViewCreateScreen();
   }
 
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
+  }
+
+  backToAllGroceries() {
+    const setViewMethod = this.setView;
+    setViewMethod('main');
+  }
+
   displayView() {
     if (this.state.view === 'main') {
       return (
@@ -68,11 +80,19 @@ export default class AllGroceries extends React.Component {
           <button type="button" className="groceryButton btn btn-secondary" onClick={this.frozen}>Frozen</button>
           <button type="button" className="groceryButton btn btn-secondary" onClick={this.meat}>Meats</button>
           <button type="button" className="groceryButton btn btn-secondary" onClick={this.etc}>Etc.</button>
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+          </div>
         </div>
       );
     } else if (this.state.view === 'groceryList') {
       return (
-        <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
+        <div>
+          <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToAllGroceries}>Back</button>
+          </div>
+        </div >
       );
     }
   }

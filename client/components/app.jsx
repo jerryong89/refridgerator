@@ -154,7 +154,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <UpcomingExpirationsScreen />
+          <UpcomingExpirationsScreen setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'view-specific-food-screen') {

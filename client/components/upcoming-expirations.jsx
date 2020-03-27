@@ -13,6 +13,8 @@ export default class UpcomingExpirationsScreen extends React.Component {
     this.foodGroups = this.foodGroups.bind(this);
     this.selectedFoodGroup = this.selectedFoodGroup.bind(this);
     this.getAllClaims = this.getAllClaims.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
+    this.backToGroups = this.backToGroups.bind(this);
   }
 
   foodGroups() {
@@ -32,6 +34,9 @@ export default class UpcomingExpirationsScreen extends React.Component {
         </div>
         <div className="mt-2">
           <button value="5" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Misc</button>
+        </div>
+        <div className="text-center mt-4">
+          <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
         </div>
       </div>
     );
@@ -83,7 +88,12 @@ export default class UpcomingExpirationsScreen extends React.Component {
         );
       });
       return (
-        <div>{allClaims}</div>
+        <div>
+          {allClaims}
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          </div>
+        </div>
       );
     } else if (this.state.selectedFoodGroup === '2') {
       const allClaimsArray = this.state.allItems;
@@ -106,7 +116,12 @@ export default class UpcomingExpirationsScreen extends React.Component {
         );
       });
       return (
-        <div>{allClaims}</div>
+        <div>
+          {allClaims}
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          </div>
+        </div>
       );
     } else if (this.state.selectedFoodGroup === '3') {
       const allClaimsArray = this.state.allItems;
@@ -129,7 +144,12 @@ export default class UpcomingExpirationsScreen extends React.Component {
         );
       });
       return (
-        <div>{allClaims}</div>
+        <div>
+          {allClaims}
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          </div>
+        </div>
       );
     } else if (this.state.selectedFoodGroup === '4') {
       const allClaimsArray = this.state.allItems;
@@ -152,7 +172,12 @@ export default class UpcomingExpirationsScreen extends React.Component {
         );
       });
       return (
-        <div>{allClaims}</div>
+        <div>
+          {allClaims}
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          </div>
+        </div>
       );
     } else if (this.state.selectedFoodGroup === '5') {
       const allClaimsArray = this.state.allItems;
@@ -175,9 +200,25 @@ export default class UpcomingExpirationsScreen extends React.Component {
         );
       });
       return (
-        <div>{allClaims}</div>
+        <div>
+          {allClaims}
+          <div className="text-center mt-4">
+            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          </div>
+        </div>
       );
     }
+  }
+
+  backToPrevious() {
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-fridge-screen');
+  }
+
+  backToGroups() {
+    this.setState({
+      foodGroupsView: true
+    });
   }
 
   componentDidMount() {
