@@ -131,6 +131,42 @@ app.get('/api/claims/', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+app.get('/api/fridgeTotal', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    WHERE "claims"."fridgeId" = $1
+    `;
+
+  const value = [fridgeId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/api/userTotal', (req, res, next) => {
+  const fridgeId = req.session.fridgeId;
+  const userId = req.session.userId;
+  const sql = `
+    SELECT *
+    FROM "claims"
+    WHERE "claims"."fridgeId" = $1
+    AND "claims"."userId" = $2
+    `;
+
+  const value = [fridgeId, userId];
+
+  db.query(sql, value)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
 app.get('/api/dairy', (req, res, next) => {
   const fridgeId = req.session.fridgeId;
   const sql = `
