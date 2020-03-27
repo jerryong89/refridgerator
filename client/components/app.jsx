@@ -31,7 +31,9 @@ export default class App extends React.Component {
       },
       view: 'start-screen',
       loginError: false,
-      specificClaimId: ''
+      specificClaimId: '',
+      itemTotal: [],
+      userTotal: []
     };
     this.setView = this.setView.bind(this);
     this.displayView = this.displayView.bind(this);
@@ -41,6 +43,9 @@ export default class App extends React.Component {
     this.createNewMember = this.createNewMember.bind(this);
     this.setExistingMember = this.setExistingMember.bind(this);
     this.setClaimId = this.setClaimId.bind(this);
+    this.getItemTotal = this.getItemTotal.bind(this);
+    this.getUserTotal = this.getUserTotal.bind(this);
+    this.updateTotals = this.updateTotals.bind(this);
   }
 
   setView(name) {
@@ -68,7 +73,7 @@ export default class App extends React.Component {
     if (this.state.view === 'start-screen') {
       return (
         <div>
-          <LoginHeader/>
+          <LoginHeader />
           {this.loginError()}
           <LoginScreen setView={this.setView} getFridges={this.getFridges}/>
         </div>
@@ -84,7 +89,7 @@ export default class App extends React.Component {
       return (
         <div>
           <LoginHeader />
-          <MemberLoginScreen setView={this.setView}/>
+          <MemberLoginScreen setView={this.setView} />
         </div>
       );
     } else if (this.state.view === 'new-member-login-screen') {
@@ -104,49 +109,49 @@ export default class App extends React.Component {
     } else if (this.state.view === 'my-fridge-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember}/>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <MyFridgeScreen setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'add-food-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <AddFoodScreen setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
+          <AddFoodScreen setView={this.setView} fridge={this.state.fridge} user={this.state.user} updateTotal={this.updateTotals}/>
         </div>
       );
     } else if (this.state.view === 'add-member-to-fridge-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <AddMemberToFridge setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'view-all-fridge-members') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <ViewFridgeMembers setView={this.setView} fridge={this.state.fridge} user={this.state.user}/>
         </div>
       );
     } else if (this.state.view === 'my-groceries-categories') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <MyGroceriesCategories setView={this.setView} fridge={this.state.fridge} user={this.state.user} setClaimId={this.setClaimId}/>
         </div>
       );
     } else if (this.state.view === 'view-all-groceries') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <AllGroceries setView={this.setView} setClaimId={this.setClaimId}/>
         </div>
       );
     } else if (this.state.view === 'view-fridge-chat') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
           <FridgeChat user={this.state.fridge}/>
         </div>
       );
@@ -160,8 +165,8 @@ export default class App extends React.Component {
     } else if (this.state.view === 'view-specific-food-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
-          <ViewSpecificFoodInfoScreen setView={this.setView} specificClaimId={this.state.specificClaimId}/>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal}/>
+          <ViewSpecificFoodInfoScreen setView={this.setView} specificClaimId={this.state.specificClaimId} updateTotal={this.updateTotals}/>
         </div>
       );
     }
@@ -234,6 +239,37 @@ export default class App extends React.Component {
         }
       });
     });
+  }
+
+  getItemTotal() {
+    fetch('/api/fridgeTotal')
+      .then(response => {
+        return response.json();
+      }).then(result => {
+        this.setState({
+          itemTotal: result
+        });
+      });
+  }
+
+  getUserTotal() {
+    fetch('/api/userTotal')
+      .then(response => {
+        return response.json();
+      }).then(result => {
+        this.setState({
+          userTotal: result
+        });
+      });
+  }
+
+  componentDidMount() {
+    this.updateTotals();
+  }
+
+  updateTotals() {
+    this.getItemTotal();
+    this.getUserTotal();
   }
 
   render() {

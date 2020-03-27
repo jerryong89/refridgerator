@@ -41,7 +41,8 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
       .then(result => {
         const setViewMethod = this.props.setView;
         setViewMethod('my-fridge-screen');
-      });
+      })
+      .then(() => this.props.updateTotal());
   }
 
   updateFood() {

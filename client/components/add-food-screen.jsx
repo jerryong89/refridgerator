@@ -73,7 +73,8 @@ export default class AddFoodScreen extends React.Component {
       }).then(result => {
         const setViewMethod = this.props.setView;
         setViewMethod('my-fridge-screen');
-      });
+      })
+      .then(() => this.props.updateTotal());
   }
 
   render() {

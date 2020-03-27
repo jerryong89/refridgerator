@@ -42,6 +42,7 @@ export default class HomeScreenHeader extends React.Component {
 
   componentDidMount() {
     this.getSpecificUserName(this.props.user.userId);
+    this.props.updateTotal();
   }
 
   changeToMyFridgeScreen(event) {
@@ -68,6 +69,14 @@ export default class HomeScreenHeader extends React.Component {
             <div className="mt-1 d-flex align-items-center" onClick={this.changeToAddMemberToFridgeScreen}>
               <div className="user-icon"></div>
               <p className="ml-1">Add Member</p>
+            </div>
+            <div className="mt-1 d-flex align-items-center">
+              <div className="user-icon"></div>
+              <p className="ml-1">Total Items: {this.props.totalItems.length}</p>
+            </div>
+            <div className="mt-1 d-flex align-items-center">
+              <div className="user-icon"></div>
+              <p className="ml-1">My Items: {this.props.userTotal.length}</p>
             </div>
           </div>
         </div>
