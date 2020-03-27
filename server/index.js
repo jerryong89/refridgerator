@@ -231,6 +231,20 @@ app.get('/api/etc', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
+// Endpoint for getting all the groceries in the claims table - Blake
+app.get('/api/groceries', (req, res, next) => {
+  const sql = `
+    SELECT *
+    FROM "claims"
+    `;
+
+  db.query(sql)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => console.error(err));
+});
+
 // User Can Add Create a Fridge (User enters a fridgeName) -Blake
 app.post('/api/fridges', (req, res, next) => {
   const fridgeName = req.body.fridgeName;
