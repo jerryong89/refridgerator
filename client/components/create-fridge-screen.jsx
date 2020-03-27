@@ -43,12 +43,12 @@ export default class CreateFridgeScreen extends React.Component {
               <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
             </div>
             <div className="text-center mt-4">
-              <button className="btn btn-secondary" onClick={this.handleCreateFridgeClick}>Create</button>
+              <button className="btn btn-secondary button-format" onClick={this.handleCreateFridgeClick}>Create</button>
             </div>
           </form>
         </div>
         <div className="d-flex justify-content-center mt-3">
-          <button className="btn btn-danger" onClick={this.changeViewLogin}>Back</button>
+          <button className="btn btn-danger button-format" onClick={this.changeViewLogin}>Back</button>
         </div>
       </div>
     );

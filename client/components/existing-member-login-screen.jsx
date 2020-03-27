@@ -80,10 +80,10 @@ export default class ExistingMemberLoginScreen extends React.Component {
             </select>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-secondary" onClick={this.assignExistingMember}>Select Member</button>
+            <button className="btn btn-secondary button-format" onClick={this.assignExistingMember}>Select Member</button>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
           </div>
         </form>
       </div>

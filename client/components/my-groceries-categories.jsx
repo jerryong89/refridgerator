@@ -90,7 +90,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={this.state.groceries} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -103,7 +103,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedMeat} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -116,7 +116,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedProduce} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -129,7 +129,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedDairy} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -142,7 +142,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedFrozen} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -155,7 +155,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedMisc} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -170,26 +170,26 @@ export default class MyGroceriesCategories extends React.Component {
           </div>
           <div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.dairyCategory}>Dairy</button>
+              <button className="btn btn-secondary button-format" onClick={this.dairyCategory}>Dairy</button>
             </div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.produceCategory}>Produce</button>
+              <button className="btn btn-secondary button-format" onClick={this.produceCategory}>Produce</button>
             </div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.frozenCategory}>Frozen</button>
+              <button className="btn btn-secondary button-format" onClick={this.frozenCategory}>Frozen</button>
             </div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.meatCategory}>Meats</button>
+              <button className="btn btn-secondary button-format" onClick={this.meatCategory}>Meats</button>
             </div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.miscCategory}>Etc.</button>
+              <button className="btn btn-secondary button-format" onClick={this.miscCategory}>Etc.</button>
             </div>
             <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.setCategory} >ALL</button>
+              <button className="btn btn-secondary button-format" onClick={this.setCategory} >ALL</button>
             </div>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
           </div>
         </div>
       );

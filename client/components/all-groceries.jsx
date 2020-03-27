@@ -75,13 +75,13 @@ export default class AllGroceries extends React.Component {
     if (this.state.view === 'main') {
       return (
         <div className="buttonBody container">
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.dairy} foodprop={this.state.grocery} >Dairy</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.produce}>Produce</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.frozen}>Frozen</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.meat}>Meats</button>
-          <button type="button" className="groceryButton btn btn-secondary" onClick={this.etc}>Etc.</button>
+          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.dairy} foodprop={this.state.grocery} >Dairy</button>
+          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.produce}>Produce</button>
+          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.frozen}>Frozen</button>
+          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.meat}>Meats</button>
+          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.etc}>Etc.</button>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
           </div>
         </div>
       );
@@ -90,7 +90,7 @@ export default class AllGroceries extends React.Component {
         <div>
           <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAllGroceries}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAllGroceries}>Back</button>
           </div>
         </div >
       );

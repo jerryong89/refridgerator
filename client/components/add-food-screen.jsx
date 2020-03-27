@@ -111,8 +111,8 @@ export default class AddFoodScreen extends React.Component {
             </div>
             <div className="mt-4">
               <div>
-                <button className="btn btn-success m-2" onClick={this.addFoodClaim}>Add Item</button>
-                <button className="btn btn-danger m-2" onClick={this.changeToMyFridgeScreen}>Cancel</button>
+                <button className="btn btn-success m-2 button-format" onClick={this.addFoodClaim}>Add Item</button>
+                <button className="btn btn-danger m-2 button-format" onClick={this.changeToMyFridgeScreen}>Cancel</button>
               </div>
             </div>
           </form>

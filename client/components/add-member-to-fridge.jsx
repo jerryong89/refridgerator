@@ -49,10 +49,10 @@ export default class AddMemberToFridge extends React.Component {
             <input type="text" onChange={this.handleNewUserNameInput}/>
           </div>
           <div className="mt-4">
-            <button className="btn btn-secondary" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
+            <button className="btn btn-secondary button-format" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back To Fridge</button>
+            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back To Fridge</button>
           </div>
         </div>
       </div>

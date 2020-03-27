@@ -82,7 +82,7 @@ export default class ViewFridgeMembers extends React.Component {
         <div>
           <FridgeMemberItems groceries={groceries} foodName={mappedGroceries} userName={userName} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToMembers}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToMembers}>Back</button>
           </div>
         </div >
       );
@@ -104,7 +104,7 @@ export default class ViewFridgeMembers extends React.Component {
         <h2 className="text-center mt-2 mb-2">-{fridgeName}-</h2>
         <div>{allMembers}</div>
         <div className="text-center mt-4">
-          <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+          <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
         </div>
       </div>
     );

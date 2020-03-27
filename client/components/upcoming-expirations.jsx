@@ -21,22 +21,22 @@ export default class UpcomingExpirationsScreen extends React.Component {
     return (
       <div className="text-center">
         <div className="mt-2">
-          <button value="1" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Produce</button>
+          <button value="1" className="btn btn-secondary mt-5 button-format" onClick={this.selectedFoodGroup}>Produce</button>
         </div>
         <div className="mt-2">
-          <button value="2" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Dairy</button>
+          <button value="2" className="btn btn-secondary mt-5 button-format" onClick={this.selectedFoodGroup}>Dairy</button>
         </div>
         <div className="mt-2">
-          <button value="3" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Meat</button>
+          <button value="3" className="btn btn-secondary mt-5 button-format" onClick={this.selectedFoodGroup}>Meat</button>
         </div>
         <div className="mt-2">
-          <button value="4" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Frozen</button>
+          <button value="4" className="btn btn-secondary mt-5 button-format" onClick={this.selectedFoodGroup}>Frozen</button>
         </div>
         <div className="mt-2">
-          <button value="5" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Misc</button>
+          <button value="5" className="btn btn-secondary mt-5 button-format" onClick={this.selectedFoodGroup}>Misc</button>
         </div>
         <div className="text-center mt-4">
-          <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+          <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
         </div>
       </div>
     );
@@ -91,7 +91,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -119,7 +119,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -147,7 +147,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -175,7 +175,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -203,7 +203,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );

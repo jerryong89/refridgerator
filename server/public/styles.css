@@ -37,8 +37,8 @@
 
 body {
   margin: 0;
-  background-image: url(./images/background.jpg);
-  background-size: cover;
+  background: rgb(46,204,233);
+  background: linear-gradient(0deg, rgba(46,204,233,1) 8%, rgba(44,65,139,1) 81%, rgba(53,85,150,1) 100%);
   width: 100%;
   height: 100vh;
 }
@@ -110,7 +110,7 @@ p {
 }
 
 .blank {
-  background-color: honeydew;
+  background-color: lightsteelblue;
 }
 
 .food-group-dropdown {
@@ -124,4 +124,15 @@ p {
 .test {
   background-color: pink;
   height: 80vh;
+}
+
+.border-test {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 1vh;
+}
+
+.button-format {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5em;
 }

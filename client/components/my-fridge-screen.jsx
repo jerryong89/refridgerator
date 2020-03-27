@@ -49,22 +49,22 @@ export default class MyFridgeScreen extends React.Component {
     return (
       <div className="text-center">
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToAddFoodScreen}>Add Food</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToAddFoodScreen}>Add Food</button>
         </div>
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewAllGroceries}>All Groceries</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToViewAllGroceries}>All Groceries</button>
         </div>
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
         </div>
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToMyGroceriesCategories}>My Groceries</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToMyGroceriesCategories}>My Groceries</button>
         </div>
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeChat}>Fridge Chat</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToViewFridgeChat}>Fridge Chat</button>
         </div>
         <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
+          <button className="btn btn-secondary mt-5 button-format" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
         </div>
       </div>
     );

@@ -110,6 +110,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
+          <div className="border-test col-12"></div>
           <MyFridgeScreen setView={this.setView}/>
         </div>
       );
@@ -158,14 +159,14 @@ export default class App extends React.Component {
     } else if (this.state.view === 'upcoming-expirations-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} />
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals} />
           <UpcomingExpirationsScreen setView={this.setView}/>
         </div>
       );
     } else if (this.state.view === 'view-specific-food-screen') {
       return (
         <div>
-          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal}/>
+          <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals} />
           <ViewSpecificFoodInfoScreen setView={this.setView} specificClaimId={this.state.specificClaimId} updateTotal={this.updateTotals}/>
         </div>
       );
