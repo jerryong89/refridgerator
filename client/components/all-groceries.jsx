@@ -75,11 +75,31 @@ export default class AllGroceries extends React.Component {
     if (this.state.view === 'main') {
       return (
         <div className="buttonBody container">
-          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.dairy} foodprop={this.state.grocery} >Dairy</button>
-          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.produce}>Produce</button>
-          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.frozen}>Frozen</button>
-          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.meat}>Meats</button>
-          <button type="button" className="groceryButton btn btn-secondary button-format" onClick={this.etc}>Etc.</button>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.dairy} foodprop={this.state.grocery}>
+            <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+            Dairy
+            <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+          </button>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.produce}>
+            <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+            Produce
+            <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+          </button>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.frozen}>
+            <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+            Frozen
+            <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+          </button>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.meat}>
+            <i className="fas fa-bacon d-flex justify-content-center"></i>
+            Meats
+            <i className="fas fa-bacon d-flex justify-content-center"></i>
+          </button>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.etc}>
+            <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+            Etc.
+            <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+          </button>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
           </div>
@@ -155,7 +175,7 @@ export default class AllGroceries extends React.Component {
   render() {
     return (
       <div className="chatBackground">
-        <h2 className="center">-ALL GROCERIES-</h2>
+        <h2 className="center header-font mt-3 mb-3">ALL GROCERIES</h2>
         <div className="container">
           {this.displayView()}
         </div>
