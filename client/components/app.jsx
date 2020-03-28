@@ -147,6 +147,7 @@ export default class App extends React.Component {
       return (
         <div>
           <HomeScreenHeader setView={this.setView} fridge={this.state.fridge} user={this.state.user} setExistingMember={this.setExistingMember} totalItems={this.state.itemTotal} userTotal={this.state.userTotal} updateTotal={this.updateTotals}/>
+          <div className="border-test col-12"></div>
           <AllGroceries setView={this.setView} setClaimId={this.setClaimId}/>
         </div>
       );

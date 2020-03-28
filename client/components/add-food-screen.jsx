@@ -81,7 +81,7 @@ export default class AddFoodScreen extends React.Component {
     return (
       <div>
         <div className="text-center">
-          <h2 className="header-font mt-5">Add Food</h2>
+          <h2 className="header-font mt-3">Add Food</h2>
         </div>
         <div className="container d-flex justify-content-center test">
           <div className="col-10 d-flex justify-content-center align-items-center cursive-font">

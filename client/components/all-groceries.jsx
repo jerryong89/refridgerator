@@ -107,7 +107,7 @@ export default class AllGroceries extends React.Component {
       );
     } else if (this.state.view === 'groceryList') {
       return (
-        <div>
+        <div className="all-items-card">
           <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format" onClick={this.backToAllGroceries}>Back</button>
@@ -176,7 +176,7 @@ export default class AllGroceries extends React.Component {
     return (
       <div className="chatBackground">
         <h2 className="center header-font mt-3 mb-3">ALL GROCERIES</h2>
-        <div className="container">
+        <div className="container d-flex justify-content-center">
           {this.displayView()}
         </div>
       </div>

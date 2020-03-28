@@ -126,7 +126,11 @@ p {
   font-family: 'Caveat', cursive;
 }
 
-.add-food-font {
+.bold-font {
+  font-family: 'Merienda One', cursive;
+}
+
+.add-food-font, .all-foods-font {
   font-size: 1.5em;
   color: floralwhite;
 }
@@ -134,6 +138,11 @@ p {
 .header-font {
   font-family: 'Merienda One', cursive;
   color: floralwhite;
+}
+
+.all-items-card {
+  width: 75%;
+  max-width: 500px;
 }
 
 .button-format {
