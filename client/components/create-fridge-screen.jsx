@@ -48,7 +48,7 @@ export default class CreateFridgeScreen extends React.Component {
           </form>
         </div>
         <div className="d-flex justify-content-center mt-3">
-          <button className="btn btn-danger button-format" onClick={this.changeViewLogin}>Back</button>
+          <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.changeViewLogin}>Back</button>
         </div>
       </div>
     );

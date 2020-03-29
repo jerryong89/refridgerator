@@ -52,7 +52,7 @@ export default class AddMemberToFridge extends React.Component {
             <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back To Fridge</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back To Fridge</button>
           </div>
         </div>
       </div>

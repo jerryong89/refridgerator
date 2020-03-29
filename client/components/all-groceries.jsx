@@ -101,7 +101,7 @@ export default class AllGroceries extends React.Component {
             <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
           </button>
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
           </div>
         </div>
       );
@@ -110,7 +110,7 @@ export default class AllGroceries extends React.Component {
         <div className="all-items-card">
           <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAllGroceries}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAllGroceries}>Back</button>
           </div>
         </div >
       );

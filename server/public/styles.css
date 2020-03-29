@@ -170,6 +170,18 @@ p {
   border-bottom: 5px solid #4f5963
 }
 
+.button-3d-red {
+  border-bottom: 5px solid #bf2635
+}
+
+.button-3d-green {
+  border-bottom: 5px solid #178a32
+}
+
+.button-3d-yellow {
+  border-bottom: 5px solid #e3aa00
+}
+
 .animate
 {
 	transition: all 0.1s;

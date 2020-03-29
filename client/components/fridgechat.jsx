@@ -73,7 +73,7 @@ export default class FridgeChat extends React.Component {
         <form>
           <div className="center">
             <input required className="col-9 chatBox" value={this.state.message} onChange={this.handleChange} type="text" />
-            <button required type="submit" className=" center col-1 btn btn-success button-format" onClick={this.handleSubmit}>&#8593;</button>
+            <button required type="submit" className=" center col-1 btn btn-success button-format button-3d-green action-button animate" onClick={this.handleSubmit}>&#8593;</button>
           </div>
         </form>
       </div>

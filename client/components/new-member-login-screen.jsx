@@ -46,7 +46,7 @@ export default class NewMemberLoginScreen extends React.Component {
               <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.handleCreateNewMember}>Create New Member</button>
             </div>
             <div className="d-flex justify-content-center mt-4">
-              <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
+              <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
             </div>
           </form>
         </div>

@@ -56,7 +56,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
           </button>
         </div>
         <div className="text-center mt-4">
-          <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
+          <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
         </div>
       </div>
     );
@@ -111,7 +111,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -139,7 +139,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -167,7 +167,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -195,7 +195,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -223,7 +223,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
         <div>
           {allClaims}
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );

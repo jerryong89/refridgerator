@@ -131,11 +131,11 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
   updateButtonChoice() {
     if (this.state.updateInput === true) {
       return (
-        <button className="btn btn-warning button-format" onClick={this.handleUpdateQtyClick}>Update</button>
+        <button className="btn btn-warning button-format button-3d-yellow action-button animate" onClick={this.handleUpdateQtyClick}>Update</button>
       );
     } else {
       return (
-        <button className="btn btn-success button-format" onClick={this.showInput}>Update Item</button>
+        <button className="btn btn-success button-format button-3d-green action-button animate" onClick={this.showInput}>Update Item</button>
       );
     }
   }
@@ -167,7 +167,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
               {this.updateButtonChoice()}
             </div>
             <div>
-              <button className="btn btn-danger button-format" onClick={this.deleteFood}>Remove Item</button>
+              <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.deleteFood}>Remove Item</button>
             </div>
           </div>
         </div>

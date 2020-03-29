@@ -90,7 +90,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={this.state.groceries} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -103,7 +103,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedMeat} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -116,7 +116,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedProduce} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -129,7 +129,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedDairy} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -142,7 +142,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedFrozen} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -213,7 +213,7 @@ export default class MyGroceriesCategories extends React.Component {
             </div>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
           </div>
         </div>
       );
