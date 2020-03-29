@@ -59,23 +59,31 @@ export default class HomeScreenHeader extends React.Component {
 
   render() {
     return (
-      <div className="home-screen-header d-flex blank">
+      <div className="home-screen-header d-flex blank header-text">
         <div className="col-6 header-left">
           <div>
             <div className="mt-1 d-flex align-items-center">
-              <div className="user-icon"></div>
+              <div className="user-icon d-flex justify-content-center align-items-center">
+                <i className="fas fa-user"></i>
+              </div>
               <p className="ml-1">{this.state.userName}</p>
             </div>
             <div className="mt-1 d-flex align-items-center" onClick={this.changeToAddMemberToFridgeScreen}>
-              <div className="user-icon"></div>
+              <div className="user-icon d-flex justify-content-center align-items-center">
+                <i className="fas fa-user-friends"></i>
+              </div>
               <p className="ml-1">Add Member</p>
             </div>
             <div className="mt-1 d-flex align-items-center">
-              <div className="user-icon"></div>
+              <div className="user-icon d-flex justify-content-center align-items-center">
+                <i className="fas fa-money-bill-wave"></i>
+              </div>
               <p className="ml-1">Total Items: {this.props.totalItems.length}</p>
             </div>
             <div className="mt-1 d-flex align-items-center">
-              <div className="user-icon"></div>
+              <div className="user-icon d-flex justify-content-center align-items-center">
+                <i className="fas fa-coins"></i>
+              </div>
               <p className="ml-1">My Items: {this.props.userTotal.length}</p>
             </div>
           </div>
@@ -84,7 +92,7 @@ export default class HomeScreenHeader extends React.Component {
           <div className="d-flex justify-content-center mt-3">
             <div className="client-fridge-logo" onClick={this.changeToMyFridgeScreen}></div>
           </div>
-          <h4 className="text-center">{this.props.fridge.fridgeName}</h4>
+          <h4 className="text-center fridge-name-styling">{this.props.fridge.fridgeName}</h4>
         </div>
       </div>
     );

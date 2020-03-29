@@ -21,35 +21,35 @@ export default class UpcomingExpirationsScreen extends React.Component {
     return (
       <div className="text-center">
         <div className="mt-4 d-flex justify-content-center">
-          <button value="1" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.selectedFoodGroup}>
+          <button value="1" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
             <i className="fas fa-apple-alt d-flex justify-content-center"></i>
             Produce
             <i className="fas fa-apple-alt d-flex justify-content-center"></i>
           </button>
         </div>
         <div className="mt-2 d-flex justify-content-center">
-          <button value="2" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.selectedFoodGroup}>
+          <button value="2" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
             <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
             Dairy
             <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
           </button>
         </div>
         <div className="mt-2 d-flex justify-content-center">
-          <button value="3" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.selectedFoodGroup}>
+          <button value="3" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
             <i className="fas fa-bacon d-flex justify-content-center"></i>
             Meat
             <i className="fas fa-bacon d-flex justify-content-center"></i>
           </button>
         </div>
         <div className="mt-2 d-flex justify-content-center">
-          <button value="4" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.selectedFoodGroup}>
+          <button value="4" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
             <i className="fas fa-ice-cream d-flex justify-content-center"></i>
             Frozen
             <i className="fas fa-ice-cream d-flex justify-content-center"></i>
           </button>
         </div>
         <div className="mt-2 d-flex justify-content-center">
-          <button value="5" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.selectedFoodGroup}>
+          <button value="5" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
             <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
             Etc.
             <i className="fas fa-pizza-slice d-flex justify-content-center"></i>

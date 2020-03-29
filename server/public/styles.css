@@ -90,14 +90,17 @@ p {
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-color: grey;
+  background-image: url(./images/logo.png);
+  background-size: contain;
 }
 
 .user-icon {
+  color: black;
   height: 30px;
   width: 30px;
   border-radius: 50%;
   background: grey;
+  border: 1px solid black;
 }
 
 .blank {
@@ -156,4 +159,26 @@ p {
 
 .expiration-font {
   font-size: 1.2em;
+}
+
+.fridge-name-styling, .header-text {
+  font-family: 'Merienda One', cursive;
+  color: rgb(53,85,150);
+}
+
+.button-3d {
+  border-bottom: 5px solid #4f5963
+}
+
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
 }

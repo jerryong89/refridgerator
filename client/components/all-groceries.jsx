@@ -75,27 +75,27 @@ export default class AllGroceries extends React.Component {
     if (this.state.view === 'main') {
       return (
         <div className="buttonBody container">
-          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.dairy} foodprop={this.state.grocery}>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.dairy} foodprop={this.state.grocery}>
             <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
             Dairy
             <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
           </button>
-          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.produce}>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.produce}>
             <i className="fas fa-apple-alt d-flex justify-content-center"></i>
             Produce
             <i className="fas fa-apple-alt d-flex justify-content-center"></i>
           </button>
-          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.frozen}>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.frozen}>
             <i className="fas fa-ice-cream d-flex justify-content-center"></i>
             Frozen
             <i className="fas fa-ice-cream d-flex justify-content-center"></i>
           </button>
-          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.meat}>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.meat}>
             <i className="fas fa-bacon d-flex justify-content-center"></i>
             Meats
             <i className="fas fa-bacon d-flex justify-content-center"></i>
           </button>
-          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between" onClick={this.etc}>
+          <button type="button" className="btn btn-secondary button-format mt-3 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.etc}>
             <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
             Etc.
             <i className="fas fa-pizza-slice d-flex justify-content-center"></i>

@@ -43,7 +43,7 @@ export default class CreateFridgeScreen extends React.Component {
               <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
             </div>
             <div className="text-center mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.handleCreateFridgeClick}>Create</button>
+              <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.handleCreateFridgeClick}>Create</button>
             </div>
           </form>
         </div>

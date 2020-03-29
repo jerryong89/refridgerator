@@ -43,7 +43,7 @@ export default class NewMemberLoginScreen extends React.Component {
               <input type="text" placeholder="Name" onChange={this.handleNewMemberInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.handleCreateNewMember}>Create New Member</button>
+              <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.handleCreateNewMember}>Create New Member</button>
             </div>
             <div className="d-flex justify-content-center mt-4">
               <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>
