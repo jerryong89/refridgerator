@@ -45,8 +45,8 @@ export default class UserGroceries extends React.Component {
     return (
       <div className="container">
         <div className="text-center">
-          <h1>-My Groceries-</h1>
-          <h2>-{this.props.title}-</h2>
+          <h2 className="header-font">My Groceries</h2>
+          <h4 className="header-font">{this.props.title}</h4>
         </div>
         <div>{mapGroceries}</div>
       </div>

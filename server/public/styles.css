@@ -153,3 +153,7 @@ p {
 .my-fridge-screen-button, .fridge-members, .member-item-card {
   width: 300px;
 }
+
+.expiration-font {
+  font-size: 1.2em;
+}
