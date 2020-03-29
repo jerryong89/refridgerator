@@ -93,7 +93,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
       const splitDate = date.split('-');
       const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
       return (
-        <p>{formattedDate}</p>
+        <p className="specific-food-font">{formattedDate}</p>
       );
     }
   }
@@ -105,7 +105,7 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
       );
     } else {
       return (
-        <p>{this.state.foodInfo.qty}</p>
+        <p className="specific-food-font">{this.state.foodInfo.qty}</p>
       );
     }
   }
@@ -142,32 +142,37 @@ export default class ViewSpecificFoodInfoScreen extends React.Component {
 
   render() {
     return (
-      <div className="container test">
-        <div className="col-10">
-          <div className="pt-3">
-            <h5>Food:</h5>
-            <p>{this.state.foodInfo.foodName}</p>
-          </div>
-          <div className="pt-3">
-            <h5>Quantity:</h5>
-            {this.updateFoodInput()}
-          </div>
-          <div className="pt-3">
-            <h5>Expiration:</h5>
-            {this.formatTime()}
-          </div>
-          <div className="pt-3">
-            <h5>Owner:</h5>
-            <p>{this.state.foodInfo.userName}</p>
-          </div>
-        </div>
-        <div className="d-flex justify-content-center">
-          <div className="mt-5 col-10 d-flex justify-content-around">
-            <div>
-              {this.updateButtonChoice()}
+      <div>
+        <h2 className="header-font mt-4 text-center">Food Details</h2>
+        <div className="container test d-flex justify-content-center align-items-center">
+          <div className="specific-food-background p-3">
+            <div className="col-12 text-center">
+              <div className="pt-3">
+                <h5 className="bold-font">Food:</h5>
+                <p className="specific-food-font">{this.state.foodInfo.foodName}</p>
+              </div>
+              <div className="pt-3">
+                <h5 className="bold-font">Quantity:</h5>
+                {this.updateFoodInput()}
+              </div>
+              <div className="pt-3">
+                <h5 className="bold-font">Expiration:</h5>
+                {this.formatTime()}
+              </div>
+              <div className="pt-3">
+                <h5 className="bold-font">Owner:</h5>
+                <p className="specific-food-font">{this.state.foodInfo.userName}</p>
+              </div>
             </div>
-            <div>
-              <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.deleteFood}>Remove Item</button>
+            <div className="d-flex justify-content-center">
+              <div className="mt-5 col-12 d-flex justify-content-around">
+                <div>
+                  {this.updateButtonChoice()}
+                </div>
+                <div>
+                  <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.deleteFood}>Remove Item</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

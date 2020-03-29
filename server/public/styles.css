@@ -148,7 +148,7 @@ p {
   max-width: 500px;
 }
 
-.button-format {
+.button-format, .specific-food-font {
   font-family: 'Caveat', cursive;
   font-size: 1.5em;
 }
@@ -193,4 +193,12 @@ p {
 	transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
+}
+
+.specific-food-background {
+  background-color: lightgray;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid black;
+  border-radius: 10%;
 }

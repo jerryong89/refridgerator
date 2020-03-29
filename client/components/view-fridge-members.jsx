@@ -93,7 +93,7 @@ export default class ViewFridgeMembers extends React.Component {
     const membersList = this.state.members;
     const allMembers = membersList.map(member => {
       return (
-        <div className="card container d-flex justify-content-around fridge-members mt-2 mb-2 pb-2 pt-2 bg-secondary text-white" key={member.userId} id={member.userId} value={member.userId}>
+        <div className="card container d-flex justify-content-around fridge-members mt-2 mb-2 pb-2 pt-2 bg-secondary text-white button-3d" key={member.userId} id={member.userId} value={member.userId}>
           <div className="d-flex justify-content-between">
             <h4 className="cursive-font ml-2">{member.userName}</h4>
             <i className="fas fa-chevron-right fa-2x" onClick={() => this.memberItems(member.userId, member.userName)}></i></div>

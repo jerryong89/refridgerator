@@ -44,6 +44,7 @@ export default class AddMemberToFridge extends React.Component {
   render() {
     return (
       <div className="container d-flex align-items-center justify-content-center flex-wrap test">
+        <h2 className="header-font text-center">Add Member</h2>
         <div className="">
           <div className="col-12">
             <input type="text" onChange={this.handleNewUserNameInput}/>
