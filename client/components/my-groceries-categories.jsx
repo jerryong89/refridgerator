@@ -165,27 +165,51 @@ export default class MyGroceriesCategories extends React.Component {
       return (
         <div className="container text-center">
           <div>
-            <h1>-My Groceries-</h1>
-            <h3>-Category-</h3>
+            <h2 className="header-font mt-2">My Groceries</h2>
+            <h3 className="header-font">Category</h3>
           </div>
           <div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.dairyCategory}>Dairy</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.dairyCategory}>
+                <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+                Dairy
+                <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.produceCategory}>Produce</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.produceCategory}>
+                <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+                Produce
+                <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.frozenCategory}>Frozen</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.frozenCategory}>
+                <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+                Frozen
+                <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.meatCategory}>Meats</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.meatCategory}>
+                <i className="fas fa-bacon d-flex justify-content-center"></i>
+                Meats
+                <i className="fas fa-bacon d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.miscCategory}>Etc.</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.miscCategory}>
+                <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+                Etc.
+                <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary button-format" onClick={this.setCategory} >ALL</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between" onClick={this.setCategory}>
+                <i className="fas fa-box-open d-flex justify-content-center"></i>
+                ALL
+                <i className="fas fa-box-open d-flex justify-content-center"></i>
+              </button>
             </div>
           </div>
           <div className="text-center mt-4">

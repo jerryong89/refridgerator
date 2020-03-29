@@ -72,7 +72,7 @@ export default class ViewFridgeMembers extends React.Component {
         const claimId = item.claimId;
         const qty = item.qty;
         return (
-          <div className="container d-flex flex-wrap justify-content-between mt-2 mb-2 p-3 bg-secondary text-white" key={claimId}>
+          <div className="container d-flex flex-wrap justify-content-between mt-2 mb-2 p-2 bg-secondary cursive-font member-items member-item-card" key={claimId}>
             <div className="col-7">{groceryFoodname}</div>
             <div className="col">Qty: {qty}</div>
           </div>
@@ -93,15 +93,17 @@ export default class ViewFridgeMembers extends React.Component {
     const membersList = this.state.members;
     const allMembers = membersList.map(member => {
       return (
-        <div className="card container d-flex justify-content-around col-8 mt-2 mb-2 pb-2 pt-2 bg-secondary text-white" key={member.userId} id={member.userId} value={member.userId}>
-          <div className="d-flex justify-content-between">{member.userName}<i className="fas fa-chevron-right fa-2x" onClick={() => this.memberItems(member.userId, member.userName)}></i></div>
+        <div className="card container d-flex justify-content-around fridge-members mt-2 mb-2 pb-2 pt-2 bg-secondary text-white" key={member.userId} id={member.userId} value={member.userId}>
+          <div className="d-flex justify-content-between">
+            <h4 className="cursive-font ml-2">{member.userName}</h4>
+            <i className="fas fa-chevron-right fa-2x" onClick={() => this.memberItems(member.userId, member.userName)}></i></div>
         </div>
       );
     });
     return (
       <div>
-        <h1 className="text-center mt-2 mb-2">-Fridge Members-</h1>
-        <h2 className="text-center mt-2 mb-2">-{fridgeName}-</h2>
+        <h2 className="text-center mt-2 mb-2 header-font">Fridge Members</h2>
+        <h4 className="text-center mt-2 mb-2 header-font">{fridgeName}</h4>
         <div>{allMembers}</div>
         <div className="text-center mt-4">
           <button className="btn btn-danger button-format" onClick={this.backToPrevious}>Back</button>

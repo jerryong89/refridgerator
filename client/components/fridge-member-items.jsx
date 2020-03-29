@@ -11,10 +11,12 @@ export default class FridgeMemberItems extends React.Component {
 
   render() {
     return (
-      <div className="container d-flex flex-wrap justify-content-center">
-        <h1 className="text-center">-Fridge Member-</h1>
-        <h2 className="text-center">-{this.props.userName}-</h2>
-        <div className="container">{this.props.foodName}</div>
+      <div className="container text-center">
+        <h1 className="text-center header-font mt-2">Member Items</h1>
+        <h4 className="text-center header-font">{this.props.userName}</h4>
+        <div className="container d-flex justify-content-center">
+          <div className="container">{this.props.foodName}</div>
+        </div>
       </div>
     );
   }

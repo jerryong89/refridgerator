@@ -130,7 +130,7 @@ p {
   font-family: 'Merienda One', cursive;
 }
 
-.add-food-font, .all-foods-font {
+.add-food-font, .all-foods-font, .member-items {
   font-size: 1.5em;
   color: floralwhite;
 }
@@ -150,6 +150,6 @@ p {
   font-size: 1.5em;
 }
 
-.my-fridge-screen-button {
+.my-fridge-screen-button, .fridge-members, .member-item-card {
   width: 300px;
 }
