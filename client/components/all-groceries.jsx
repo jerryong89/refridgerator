@@ -108,7 +108,9 @@ export default class AllGroceries extends React.Component {
     } else if (this.state.view === 'groceryList') {
       return (
         <div className="all-items-card">
-          <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
+          <div className="items-container">
+            <Grocery foodprop={this.state.grocery} setView={this.props.setView} setClaimId={this.props.setClaimId}/>
+          </div>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAllGroceries}>Back</button>
           </div>

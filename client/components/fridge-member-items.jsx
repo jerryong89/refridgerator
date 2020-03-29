@@ -15,7 +15,7 @@ export default class FridgeMemberItems extends React.Component {
         <h1 className="text-center header-font mt-2">Member Items</h1>
         <h4 className="text-center header-font">{this.props.userName}</h4>
         <div className="container d-flex justify-content-center">
-          <div className="container">{this.props.foodName}</div>
+          <div className="container items-container">{this.props.foodName}</div>
         </div>
       </div>
     );

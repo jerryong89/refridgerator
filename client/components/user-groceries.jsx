@@ -48,7 +48,7 @@ export default class UserGroceries extends React.Component {
           <h2 className="header-font">My Groceries</h2>
           <h4 className="header-font">{this.props.title}</h4>
         </div>
-        <div>{mapGroceries}</div>
+        <div className="items-container">{mapGroceries}</div>
       </div>
     );
   }

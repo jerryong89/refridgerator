@@ -109,8 +109,10 @@ export default class UpcomingExpirationsScreen extends React.Component {
       });
       return (
         <div>
-          {allClaims}
-          <div className="text-center mt-4">
+          <div className="items-container">
+            {allClaims}
+          </div>
+          <div className="text-center mt-2">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
@@ -137,7 +139,9 @@ export default class UpcomingExpirationsScreen extends React.Component {
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
@@ -165,7 +169,9 @@ export default class UpcomingExpirationsScreen extends React.Component {
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
@@ -193,7 +199,9 @@ export default class UpcomingExpirationsScreen extends React.Component {
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
@@ -221,7 +229,9 @@ export default class UpcomingExpirationsScreen extends React.Component {
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>

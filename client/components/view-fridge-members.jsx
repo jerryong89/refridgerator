@@ -104,7 +104,7 @@ export default class ViewFridgeMembers extends React.Component {
       <div>
         <h2 className="text-center mt-2 mb-2 header-font">Fridge Members</h2>
         <h4 className="text-center mt-2 mb-2 header-font">{fridgeName}</h4>
-        <div>{allMembers}</div>
+        <div className="fridge-members-container">{allMembers}</div>
         <div className="text-center mt-4">
           <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
         </div>
