@@ -224,6 +224,6 @@ p {
   font-size: 2em;
 }
 
-.add-food-font-size, .fridge-chat-font {
+.add-food-font-size, .fridge-chat-font, .logout-font {
   font-size: 1.3em;
 }

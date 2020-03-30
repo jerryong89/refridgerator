@@ -74,7 +74,7 @@ export default class HomeScreenHeader extends React.Component {
   render() {
     return (
       <div className="home-screen-header d-flex blank header-text">
-        <div className="col-6 header-left">
+        <div className="col-6 header-left d-flex justify-content-center">
           <div>
             <div className="mt-1 d-flex align-items-center" onClick={this.changeToMyGroceriesScreen}>
               <div className="user-icon d-flex justify-content-center align-items-center">
