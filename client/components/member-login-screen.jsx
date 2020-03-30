@@ -28,11 +28,11 @@ export default class MemberLoginScreen extends React.Component {
         <div className="d-flex justify-content-center mt-5">
           <form className="text-center">
             <label htmlFor="">
-              <button className="btn btn-secondary" onClick={this.changeViewNewMember}>New Member</button>
+              <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.changeViewNewMember}>New Member</button>
             </label>
             <div className="mt-3">
               <label htmlFor="">
-                <button className="btn btn-secondary" onClick={this.changeViewExistingMember}>Existing Member</button>
+                <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.changeViewExistingMember}>Existing Member</button>
               </label>
             </div>
           </form>

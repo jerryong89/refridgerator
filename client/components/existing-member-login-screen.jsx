@@ -71,19 +71,21 @@ export default class ExistingMemberLoginScreen extends React.Component {
       <div className="text-center mt-3">
         <form>
           <label htmlFor="Existing Members">
+            <h4 className="header-font">
             Existing Members:
+            </h4>
           </label>
           <div>
-            <select name="" className="member-dropdown mt-4" onChange={this.selectInputMember}>
+            <select name="" className="member-dropdown mt-4 cursive-font login-font-size" onChange={this.selectInputMember}>
               <option>Members</option>
               {this.memberDropDown()}
             </select>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-secondary" onClick={this.assignExistingMember}>Select Member</button>
+            <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.assignExistingMember}>Select Member</button>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
           </div>
         </form>
       </div>

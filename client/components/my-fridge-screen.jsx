@@ -56,23 +56,48 @@ export default class MyFridgeScreen extends React.Component {
   render() {
     return (
       <div className="text-center">
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToAddFoodScreen}>Add Food</button>
+        <h1 className="header-font mt-3 mb-3">My Fridge</h1>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToAddFoodScreen}>
+            <i className="fas fa-utensils col-2 d-flex justify-content-center"></i>
+              Add Food
+            <i className="fas fa-utensils col-2 justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewAllGroceries}>All Groceries</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToViewAllGroceries}>
+            <i className="fas fa-shopping-basket col-2 d-flex justify-content-center"></i>
+            All Groceries
+            <i className="fas fa-shopping-basket col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeMembers}>Fridge Members</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToViewFridgeMembers}>
+            <i className="fas fa-users col-2 d-flex justify-content-center"></i>
+            Fridge Members
+            <i className="fas fa-users col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToMyGroceriesCategories}>My Groceries</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToMyGroceriesCategories}>
+            <i className="fas fa-shopping-bag col-2 d-flex justify-content-center"></i>
+            My Groceries
+            <i className="fas fa-shopping-bag col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToViewFridgeChat}>Fridge Chat</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToViewFridgeChat}>
+            <i className="far fa-comments col-2 d-flex justify-content-center"></i>
+            Fridge Chat
+            <i className="far fa-comments col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button className="btn btn-secondary mt-5" onClick={this.changeToUpcomingExpirationsScreen}>Upcoming Expirations</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button className="btn btn-secondary mt-3 button-format my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.changeToUpcomingExpirationsScreen}>
+            <i className="far fa-clock col-2 d-flex justify-content-center"></i>
+            Upcoming Expirations
+            <i className="far fa-clock col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
         <div className="mt-2">
           <button className="btn btn-secondary mt-5" onClick={this.logOutChange}>Logout</button>

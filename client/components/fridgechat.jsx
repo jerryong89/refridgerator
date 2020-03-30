@@ -63,17 +63,17 @@ export default class FridgeChat extends React.Component {
   render() {
     return (
       <div className="chatBackground">
-        <h2 className="center">-FRIDGE CHAT-</h2>
-        <h4 className="center">{this.props.user.fridgeName}</h4>
+        <h2 className="center header-font">FRIDGE CHAT</h2>
+        <h4 className="center header-font">{this.props.user.fridgeName}</h4>
         <div className="container">
-          <div ref={this.messageContainerRef} className="scrolling-box textContainer ">
+          <div ref={this.messageContainerRef} className="scrolling-box textContainer cursive-font mb-2">
             <Chat message={this.state.chat} />
           </div>
         </div>
         <form>
-          <div className="center">
-            <input required className="col-9 chatBox" value={this.state.message} onChange={this.handleChange} type="text" />
-            <button required type="submit" className=" center col-1 btn btn-success" onClick={this.handleSubmit}>&#8593;</button>
+          <div className="center container d-flex justify-content-around">
+            <input required className="col-10 chatBox cursive-font fridge-chat-font" value={this.state.message} onChange={this.handleChange} type="text" />
+            <button required type="submit" className=" center col-1 btn btn-success button-format button-3d-green action-button animate" onClick={this.handleSubmit}>&#8593;</button>
           </div>
         </form>
       </div>

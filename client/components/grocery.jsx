@@ -21,22 +21,20 @@ export default class Grocery extends React.Component {
     const product = this.props.foodprop;
     return product.map(foods => {
       return (
-        <div key={foods.claimId} className="mt-2">
-          <div className="card d-flex justify-content-around card-color">
-            <div className="d-flex justify-content-around">
-              <div className="col-5">
-                {foods.foodName}
+        <div key={foods.claimId} className="mt-2 cursive-font">
+          <div className="card d-flex justify-content-between card-color">
+            <div className="d-flex justify-content-center">
+              <h6 className="bold-font">{foods.foodName}</h6>
+            </div>
+            <div className="d-flex justify-content-between mb-2">
+              <div className="col-4">
+                <div>Qty: {foods.qty}</div>
               </div>
               <div className="col-6">
                 <p>Owner: {foods.userName}</p>
               </div>
-            </div>
-            <div className="d-flex justify-content-around mb-2">
-              <div className="col-5">
-                <div>Quantity: {foods.qty}</div>
-              </div>
-              <div className="col-5 text-right">
-                <i value={foods.claimId} onClick={() => this.changeScreenToSpecificFood(foods.claimId)} className="fas fa-chevron-right fa-2x"></i>
+              <div className="col-2 text-right">
+                <i value={foods.claimId} onClick={() => this.changeScreenToSpecificFood(foods.claimId)} className="fas fa-chevron-right fa-1x"></i>
               </div>
             </div>
           </div>

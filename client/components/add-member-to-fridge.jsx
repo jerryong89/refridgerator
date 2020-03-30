@@ -44,15 +44,16 @@ export default class AddMemberToFridge extends React.Component {
   render() {
     return (
       <div className="container d-flex align-items-center justify-content-center flex-wrap test">
+        <h2 className="header-font text-center">Add Member</h2>
         <div className="">
           <div className="col-12">
-            <input type="text" onChange={this.handleNewUserNameInput}/>
+            <input type="text" className="cursive-font login-font-size" onChange={this.handleNewUserNameInput}/>
           </div>
-          <div className="mt-4">
-            <button className="btn btn-secondary" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
+          <div className="mt-4 text-center">
+            <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back To Fridge</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back To Fridge</button>
           </div>
         </div>
       </div>

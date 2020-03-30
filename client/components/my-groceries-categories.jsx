@@ -90,7 +90,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={this.state.groceries} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView}/>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -103,7 +103,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedMeat} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -116,7 +116,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedProduce} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -129,7 +129,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedDairy} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -142,7 +142,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedFrozen} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -155,7 +155,7 @@ export default class MyGroceriesCategories extends React.Component {
         <div>
           <UserGroceries groceries={sortedMisc} title={title} setClaimId={this.props.setClaimId} setView={this.props.setView} />
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToAll}>Back</button>
+            <button className="btn btn-danger button-format" onClick={this.backToAll}>Back</button>
           </div>
         </div>
       );
@@ -165,31 +165,55 @@ export default class MyGroceriesCategories extends React.Component {
       return (
         <div className="container text-center">
           <div>
-            <h1>-My Groceries-</h1>
-            <h3>-Category-</h3>
+            <h2 className="header-font mt-2">My Groceries</h2>
+            <h3 className="header-font">Category</h3>
           </div>
           <div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.dairyCategory}>Dairy</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.dairyCategory}>
+                <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+                Dairy
+                <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.produceCategory}>Produce</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.produceCategory}>
+                <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+                Produce
+                <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.frozenCategory}>Frozen</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.frozenCategory}>
+                <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+                Frozen
+                <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.meatCategory}>Meats</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.meatCategory}>
+                <i className="fas fa-bacon d-flex justify-content-center"></i>
+                Meats
+                <i className="fas fa-bacon d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.miscCategory}>Etc.</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.miscCategory}>
+                <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+                Etc.
+                <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+              </button>
             </div>
-            <div className="mt-4">
-              <button className="btn btn-secondary" onClick={this.setCategory} >ALL</button>
+            <div className="mt-2 d-flex justify-content-center">
+              <button className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.setCategory}>
+                <i className="fas fa-box-open d-flex justify-content-center"></i>
+                ALL
+                <i className="fas fa-box-open d-flex justify-content-center"></i>
+              </button>
             </div>
           </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
           </div>
         </div>
       );

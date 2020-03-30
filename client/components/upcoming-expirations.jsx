@@ -20,23 +20,43 @@ export default class UpcomingExpirationsScreen extends React.Component {
   foodGroups() {
     return (
       <div className="text-center">
-        <div className="mt-2">
-          <button value="1" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Produce</button>
+        <div className="mt-4 d-flex justify-content-center">
+          <button value="1" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
+            <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+            Produce
+            <i className="fas fa-apple-alt d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button value="2" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Dairy</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button value="2" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
+            <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+            Dairy
+            <i className="fas fa-cheese col-2 d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button value="3" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Meat</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button value="3" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
+            <i className="fas fa-bacon d-flex justify-content-center"></i>
+            Meat
+            <i className="fas fa-bacon d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button value="4" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Frozen</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button value="4" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
+            <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+            Frozen
+            <i className="fas fa-ice-cream d-flex justify-content-center"></i>
+          </button>
         </div>
-        <div className="mt-2">
-          <button value="5" className="btn btn-secondary mt-5" onClick={this.selectedFoodGroup}>Misc</button>
+        <div className="mt-2 d-flex justify-content-center">
+          <button value="5" className="btn btn-secondary button-format mt-1 my-fridge-screen-button d-flex justify-content-between button-3d action-button animate" onClick={this.selectedFoodGroup}>
+            <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+            Etc.
+            <i className="fas fa-pizza-slice d-flex justify-content-center"></i>
+          </button>
         </div>
         <div className="text-center mt-4">
-          <button className="btn btn-danger" onClick={this.backToPrevious}>Back</button>
+          <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToPrevious}>Back</button>
         </div>
       </div>
     );
@@ -76,22 +96,24 @@ export default class UpcomingExpirationsScreen extends React.Component {
         const splitDate = date.split('-');
         const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
         return (
-          <div key={index} value={claims.claimId} className="mt-2">
+          <div key={index} value={claims.claimId} className="mt-2 cursive-font">
             <div className="card d-flex justify-content-around card-color">
               <div className="d-flex justify-content-around">
-                {claims.foodName}
-                <p>Quantity: {claims.qty}</p>
+                <h6 className="bold-font">{claims.foodName}</h6>
+                <p>Qty: {claims.qty}</p>
               </div>
-              <div className="text-center">Expires: {formattedDate}</div>
+              <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
           </div>
         );
       });
       return (
         <div>
-          {allClaims}
-          <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+          <div className="items-container">
+            {allClaims}
+          </div>
+          <div className="text-center mt-2">
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -110,16 +132,18 @@ export default class UpcomingExpirationsScreen extends React.Component {
                 {claims.foodName}
                 <p>Quantity: {claims.qty}</p>
               </div>
-              <div className="text-center">Expires: {formattedDate}</div>
+              <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
           </div>
         );
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -138,16 +162,18 @@ export default class UpcomingExpirationsScreen extends React.Component {
                 {claims.foodName}
                 <p>Quantity: {claims.qty}</p>
               </div>
-              <div className="text-center">Expires: {formattedDate}</div>
+              <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
           </div>
         );
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -166,16 +192,18 @@ export default class UpcomingExpirationsScreen extends React.Component {
                 {claims.foodName}
                 <p>Quantity: {claims.qty}</p>
               </div>
-              <div className="text-center">Expires: {formattedDate}</div>
+              <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
           </div>
         );
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -194,16 +222,18 @@ export default class UpcomingExpirationsScreen extends React.Component {
                 {claims.foodName}
                 <p>Quantity: {claims.qty}</p>
               </div>
-              <div className="text-center">Expires: {formattedDate}</div>
+              <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
           </div>
         );
       });
       return (
         <div>
-          {allClaims}
+          <div className="items-container">
+            {allClaims}
+          </div>
           <div className="text-center mt-4">
-            <button className="btn btn-danger" onClick={this.backToGroups}>Back</button>
+            <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
       );
@@ -227,7 +257,8 @@ export default class UpcomingExpirationsScreen extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container all-items-card">
+        <h2 className="header-font text-center mt-3 mb-3">Upcoming Expirations</h2>
         {this.displayView()}
       </div >
     );
