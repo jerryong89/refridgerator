@@ -126,11 +126,11 @@ export default class UpcomingExpirationsScreen extends React.Component {
         const splitDate = date.split('-');
         const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
         return (
-          <div key={index} value={claims.claimId} className="mt-2">
+          <div key={index} value={claims.claimId} className="mt-2 cursive-font">
             <div className="card d-flex justify-content-around card-color">
               <div className="d-flex justify-content-around">
-                {claims.foodName}
-                <p>Quantity: {claims.qty}</p>
+                <h6 className="bold-font">{claims.foodName}</h6>
+                <p>Qty: {claims.qty}</p>
               </div>
               <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
@@ -142,7 +142,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
           <div className="items-container">
             {allClaims}
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-2">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
@@ -156,11 +156,11 @@ export default class UpcomingExpirationsScreen extends React.Component {
         const splitDate = date.split('-');
         const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
         return (
-          <div key={index} value={claims.claimId} className="mt-2">
+          <div key={index} value={claims.claimId} className="mt-2 cursive-font">
             <div className="card d-flex justify-content-around card-color">
               <div className="d-flex justify-content-around">
-                {claims.foodName}
-                <p>Quantity: {claims.qty}</p>
+                <h6 className="bold-font">{claims.foodName}</h6>
+                <p>Qty: {claims.qty}</p>
               </div>
               <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
@@ -172,7 +172,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
           <div className="items-container">
             {allClaims}
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-2">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
@@ -186,11 +186,11 @@ export default class UpcomingExpirationsScreen extends React.Component {
         const splitDate = date.split('-');
         const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
         return (
-          <div key={index} value={claims.claimId} className="mt-2">
+          <div key={index} value={claims.claimId} className="mt-2 cursive-font">
             <div className="card d-flex justify-content-around card-color">
               <div className="d-flex justify-content-around">
-                {claims.foodName}
-                <p>Quantity: {claims.qty}</p>
+                <h6 className="bold-font">{claims.foodName}</h6>
+                <p>Qty: {claims.qty}</p>
               </div>
               <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
@@ -202,7 +202,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
           <div className="items-container">
             {allClaims}
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-2">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>
@@ -216,11 +216,11 @@ export default class UpcomingExpirationsScreen extends React.Component {
         const splitDate = date.split('-');
         const formattedDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
         return (
-          <div key={index} value={claims.claimId} className="mt-2">
+          <div key={index} value={claims.claimId} className="mt-2 cursive-font">
             <div className="card d-flex justify-content-around card-color">
               <div className="d-flex justify-content-around">
-                {claims.foodName}
-                <p>Quantity: {claims.qty}</p>
+                <h6 className="bold-font">{claims.foodName}</h6>
+                <p>Qty: {claims.qty}</p>
               </div>
               <div className="text-center expiration-font">Expires: {formattedDate}</div>
             </div>
@@ -232,7 +232,7 @@ export default class UpcomingExpirationsScreen extends React.Component {
           <div className="items-container">
             {allClaims}
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-2">
             <button className="btn btn-danger button-format button-3d-red action-button animate" onClick={this.backToGroups}>Back</button>
           </div>
         </div>

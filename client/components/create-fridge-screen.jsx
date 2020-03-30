@@ -40,7 +40,7 @@ export default class CreateFridgeScreen extends React.Component {
         <div className="d-flex justify-content-center mt-5">
           <form>
             <div>
-              <input type="text" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
+              <input type="text" placeholder="Fridge Name" className="cursive-font login-font-size" onChange={this.handleFridgeNameInput}/>
             </div>
             <div className="text-center mt-4">
               <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.handleCreateFridgeClick}>Create</button>
