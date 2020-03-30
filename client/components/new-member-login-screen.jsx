@@ -40,7 +40,7 @@ export default class NewMemberLoginScreen extends React.Component {
         <div className="d-flex justify-content-center mt-5">
           <form>
             <label htmlFor="New Member Name">
-              <input type="text" placeholder="Name" onChange={this.handleNewMemberInput}/>
+              <input type="text" placeholder="Name" className="cursive-font login-font-size" onChange={this.handleNewMemberInput}/>
             </label>
             <div className="d-flex justify-content-center mt-4">
               <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.handleCreateNewMember}>Create New Member</button>
