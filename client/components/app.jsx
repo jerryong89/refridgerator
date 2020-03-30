@@ -184,7 +184,7 @@ export default class App extends React.Component {
   loginError() {
     if (this.state.loginError === true) {
       return (
-        <p className="text-center loginError">Please Enter An Existing Fridge Name</p>
+        <p className="text-center loginError bold-font">Please Enter An Existing Fridge Name</p>
       );
     }
   }

@@ -71,10 +71,12 @@ export default class ExistingMemberLoginScreen extends React.Component {
       <div className="text-center mt-3">
         <form>
           <label htmlFor="Existing Members">
+            <h4 className="header-font">
             Existing Members:
+            </h4>
           </label>
           <div>
-            <select name="" className="member-dropdown mt-4" onChange={this.selectInputMember}>
+            <select name="" className="member-dropdown mt-4 cursive-font login-font-size" onChange={this.selectInputMember}>
               <option>Members</option>
               {this.memberDropDown()}
             </select>

@@ -47,9 +47,9 @@ export default class AddMemberToFridge extends React.Component {
         <h2 className="header-font text-center">Add Member</h2>
         <div className="">
           <div className="col-12">
-            <input type="text" onChange={this.handleNewUserNameInput}/>
+            <input type="text" className="cursive-font login-font-size" onChange={this.handleNewUserNameInput}/>
           </div>
-          <div className="mt-4">
+          <div className="mt-4 text-center">
             <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.addNewMemberToFridge}>Add Member To Fridge</button>
           </div>
           <div className="text-center mt-4">

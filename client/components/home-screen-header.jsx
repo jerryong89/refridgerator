@@ -10,6 +10,8 @@ export default class HomeScreenHeader extends React.Component {
     this.getSpecificUserName = this.getSpecificUserName.bind(this);
     this.changeToMyFridgeScreen = this.changeToMyFridgeScreen.bind(this);
     this.changeToAddMemberToFridgeScreen = this.changeToAddMemberToFridgeScreen.bind(this);
+    this.changeToAllGroceriesScreen = this.changeToAllGroceriesScreen.bind(this);
+    this.changeToMyGroceriesScreen = this.changeToMyGroceriesScreen.bind(this);
   }
 
   getSpecificUserName(clientUserId) {
@@ -57,12 +59,24 @@ export default class HomeScreenHeader extends React.Component {
     setViewMethod('add-member-to-fridge-screen');
   }
 
+  changeToMyGroceriesScreen(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('my-groceries-categories');
+  }
+
+  changeToAllGroceriesScreen(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('view-all-groceries');
+  }
+
   render() {
     return (
       <div className="home-screen-header d-flex blank header-text">
         <div className="col-6 header-left">
           <div>
-            <div className="mt-1 d-flex align-items-center">
+            <div className="mt-1 d-flex align-items-center" onClick={this.changeToMyGroceriesScreen}>
               <div className="user-icon d-flex justify-content-center align-items-center">
                 <i className="fas fa-user"></i>
               </div>
@@ -74,13 +88,13 @@ export default class HomeScreenHeader extends React.Component {
               </div>
               <p className="ml-1">Add Member</p>
             </div>
-            <div className="mt-1 d-flex align-items-center">
+            <div className="mt-1 d-flex align-items-center" onClick={this.changeToAllGroceriesScreen}>
               <div className="user-icon d-flex justify-content-center align-items-center">
                 <i className="fas fa-money-bill-wave"></i>
               </div>
               <p className="ml-1">Total Items: {this.props.totalItems.length}</p>
             </div>
-            <div className="mt-1 d-flex align-items-center">
+            <div className="mt-1 d-flex align-items-center" onClick={this.changeToMyGroceriesScreen}>
               <div className="user-icon d-flex justify-content-center align-items-center">
                 <i className="fas fa-coins"></i>
               </div>
