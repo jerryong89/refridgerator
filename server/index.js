@@ -304,6 +304,21 @@ app.post('/api/fridges', (req, res, next) => {
   }
 });
 
+app.post('/api/newMember', (req, res, next) => {
+  const sql = `
+  INSERT INTO  "users" ("userId", "fridgeId", "userName")
+  VALUES       (default, $1, $2)
+  RETURNING     *;
+  `;
+  const fridgeId = req.session.fridgeId;
+  const newMember = req.body.newMember;
+  db.query(sql, [fridgeId, newMember])
+    .then(result => {
+      return res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 // User Can Add Member To A Fridge (expects FridgeId and UserName, returns User row)
 app.post('/api/users', (req, res, next) => {
   const values = [req.session.fridgeId, req.body.userName];
