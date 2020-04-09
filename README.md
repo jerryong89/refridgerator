@@ -44,4 +44,4 @@ Link: https://roommates.jerry-ong.com
     cd refridgerator/
     ```
 
-3. Go to `index.html` in Text Editor and open in browser
+3. Open in browser by typing `localhost:3000` in the url bar.
