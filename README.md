@@ -29,9 +29,9 @@ Link: https://roommates.jerry-ong.com
 - User can view his/her groceries in a fridge
 
 ## Preview
+![](https://github.com/jerryong89/refridgerator/blob/master/roommatesAppPreview.png)
 
 #### Getting Started
-
 1. Clone the repository.
 
     ```shell
