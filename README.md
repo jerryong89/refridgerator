@@ -1,5 +1,9 @@
 # Roommates
-A dynamic web application for roommates/spouse/co-inhabitants who want to organize the items in their shared refrigerator/freezer.
+> - Maintained by: `jerryong89`
+
+## Description
+A dynamic web application for roommates/spouse/co-inhabitants who want to organize the items in their shared
+refrigerator/freezer.
 
 ## Technologies Used
 - React
@@ -13,7 +17,6 @@ A dynamic web application for roommates/spouse/co-inhabitants who want to organi
 Link: https://roommates.jerry-ong.com
 
 ## Features
-
 - User can create a fridge
 - User can add members to a fridge
 - User can add food items to a fridge
@@ -26,3 +29,19 @@ Link: https://roommates.jerry-ong.com
 - User can view his/her groceries in a fridge
 
 ## Preview
+
+#### Getting Started
+
+1. Clone the repository.
+
+    ```shell
+    git clone https://github.com/jerryong89/refridgerator.git
+    ```
+
+2. Change directory to clone folder
+
+    ```shell
+    cd refridgerator/
+    ```
+
+3. Go to `index.html` in Text Editor and open in browser
