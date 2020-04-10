@@ -31,7 +31,13 @@ Link: https://roommates.jerry-ong.com
 ## Preview
 ![](https://github.com/jerryong89/refridgerator/blob/master/roommatesAppPreview.png)
 
-#### Getting Started
+# Development
+### System Requirements
+- Node.js 10 or higher
+- NPM 6 or higher
+- PostgreSQL 10 or higher
+- Express 4 or higher
+# Getting Started
 1. Clone the repository.
 
     ```shell
@@ -44,4 +50,19 @@ Link: https://roommates.jerry-ong.com
     cd refridgerator/
     ```
 
-3. Open in browser by typing `localhost:3000` in the url bar.
+2. Install all dependencies with NPM.
+
+  ```shell
+  npm install
+  ```
+
+3. Import the example database to the PostgreSQL database.
+
+  ```shell
+  npm run db:import
+  ```
+
+4. Start the project. After starting, you can view the application by opening http://localhost:3000 in your browser.
+  ```shell
+  npm run dev
+  ```
