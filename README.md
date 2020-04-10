@@ -40,21 +40,21 @@ Link: https://roommates.jerry-ong.com
 # Getting Started
 1. Clone the repository.
 
-    ```shell
-    git clone https://github.com/jerryong89/refridgerator.git
-    ```
+```shell
+git clone https://github.com/jerryong89/refridgerator.git
+```
 
 2. Change directory to clone folder
 
-    ```shell
-    cd refridgerator/
-    ```
+```shell
+cd refridgerator/
+```
 
 2. Install all dependencies with NPM.
 
-  ```shell
-  npm install
-  ```
+```shell
+npm install
+```
 
 3. Import the example database to the PostgreSQL database.
 
