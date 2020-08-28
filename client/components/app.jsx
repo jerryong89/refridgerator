@@ -15,6 +15,7 @@ import ViewFridgeMembers from './view-fridge-members';
 import MyGroceriesCategories from './my-groceries-categories';
 import UpcomingExpirationsScreen from './upcoming-expirations';
 import ViewSpecificFoodInfoScreen from './view-specific-food-info-screen';
+import StartScreen from './start';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -71,6 +72,15 @@ export default class App extends React.Component {
 
   displayView() {
     if (this.state.view === 'start-screen') {
+      return (
+        <div>
+          <LoginHeader />
+          {this.loginError()}
+          <StartScreen setView={this.setView} getFridges={this.getFridges} />
+        </div>
+      );
+    }
+    if (this.state.view === 'otherStart-screen') {
       return (
         <div>
           <LoginHeader />
