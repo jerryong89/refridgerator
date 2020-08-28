@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class LoginScreen extends React.Component {
+export default class StartScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +10,7 @@ export default class LoginScreen extends React.Component {
       }
     };
     this.changeViewCreateScreen = this.changeViewCreateScreen.bind(this);
+    this.changeJoinFridgeScreen = this.changeJoinFridgeScreen.bind(this);
     this.handleFridgeNameInput = this.handleFridgeNameInput.bind(this);
     this.joinFridge = this.joinFridge.bind(this);
   }
@@ -18,6 +19,12 @@ export default class LoginScreen extends React.Component {
     event.preventDefault();
     const setViewMethod = this.props.setView;
     setViewMethod('create-screen');
+  }
+
+  changeJoinFridgeScreen(event) {
+    event.preventDefault();
+    const setViewMethod = this.props.setView;
+    setViewMethod('otherStart-screen');
   }
 
   handleFridgeNameInput(event) {
@@ -39,13 +46,15 @@ export default class LoginScreen extends React.Component {
       <div>
         <div className="d-flex justify-content-center mt-5">
           <form>
-            <label htmlFor="Fridge Name">
-              <input type="text" className="cursive-font login-font-size" placeholder="Fridge Name" onChange={this.handleFridgeNameInput}/>
-            </label>
             <div className="d-flex justify-content-center mt-4">
-              <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.joinFridge}>Join Fridge</button>
+              <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.changeJoinFridgeScreen}>Join Fridge</button>
             </div>
           </form>
+        </div>
+        <div className="d-flex justify-content-center mt-4">
+          <div>
+            <button className="btn btn-secondary button-format button-3d action-button animate" onClick={this.changeViewCreateScreen}>Create Fridge</button>
+          </div>
         </div>
       </div >
     );
